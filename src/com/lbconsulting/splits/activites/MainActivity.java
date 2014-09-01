@@ -51,7 +51,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.lbconsulting.about.About;
 import com.lbconsulting.splits.R;
@@ -80,6 +79,7 @@ import com.lbconsulting.splits.database.Splits_ContentProvider;
 import com.lbconsulting.splits.dialogs.ContactAdder_DialogFragment;
 import com.lbconsulting.splits.dialogs.DeleteRace_DialogFragment;
 import com.lbconsulting.splits.dialogs.EditText_DialogFragment;
+import com.lbconsulting.splits.dialogs.Help_DialogFragment;
 import com.lbconsulting.splits.dialogs.Number_Picker_DialogFragment;
 import com.lbconsulting.splits.dialogs.PlayStore_DialogFragment;
 import com.lbconsulting.splits.fragments.Athletes_Fragment;
@@ -427,7 +427,10 @@ public class MainActivity extends Activity {
 
 		} else if (itemId == R.id.action_help) {
 			/*startActivity(new Intent(this, HelpActivity.class));*/
-			Toast.makeText(this, "action_help", Toast.LENGTH_SHORT).show();
+			// Toast.makeText(this, "action_help", Toast.LENGTH_SHORT).show();
+			FragmentManager fm = getFragmentManager();
+			Help_DialogFragment frag = Help_DialogFragment.newInstance();
+			frag.show(fm, "help_DialogFragment");
 			return true;
 
 		} else if (itemId == R.id.action_about) {

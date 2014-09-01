@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/overlay"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@null"
+	android:orientation="vertical"
+	android:padding="3dp" >
+
+	<ImageView
+		android:id="@+id/overlayImageView"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:src="@drawable/help0_swipe" />
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal" >
+
+		<Button
+			android:id="@+id/btnHelpOverlayBack"
+			style="@android:style/ButtonBar"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_margin="1dp"
+			android:layout_weight="1"
+			android:background="@drawable/about_email_button"
+			android:text="Back" />
+
+		<Button
+			android:id="@+id/btnHelpOverlayNext"
+			style="@android:style/ButtonBar"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_margin="1dp"
+			android:layout_weight="1"
+			android:background="@drawable/about_email_button"
+			android:text="Next" />
+	</LinearLayout>
+
+	<Button
+		android:id="@+id/btnHelpOverlayOK"
+		style="@android:style/ButtonBar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="1dp"
+		android:background="@drawable/about_email_button"
+		android:text="OK, Got it" />
+
+</LinearLayout>
