@@ -1,0 +1,112 @@
+<resources>
+
+	<string name="default_athlete_entry">[No Athlete]</string>
+	<string name="dialog_maxAthletesgMessage">You have reached the maximum number athletes allowed for this free trial version of Splits. Please purchase the unrestricted version. For more information about Splits goto http://www.google.com</string>
+	<string name="dialog_maxAthletesTitle">Unable To Add Athlete </string>
+	<string name="dialog_maxRacesMessage">You have reached the maximum number races allowed for this free trial version of Splits. Please purchase the unrestricted version. For more information about Splits goto http://www.google.com</string>
+	<string name="dialog_maxRacesTitle">Unable to Start Race</string>
+	<string name="dialog_maxRelaysMessage">You have reached the maximum number relay races allowed for this free trial version of Splits. Please purchase the unrestricted version. For more information about Splits goto http://www.google.com</string>
+	<string name="dialog_maxRelaysTitle">Unable to Start Relay</string>
+	<string name="dialogAbout_aboutText">
+<![CDATA[
+		<h1>Welcome to Splits</h1> <p>An app to time swim and track meet events.</p>
+		]]>
+	</string>
+	<string name="copyright_text">
+<![CDATA[
+		<p>Copyright © 2014 Loren A. Baker. All rights reserved.</p>
+		]]>
+	</string>
+	<string name="btnOK_text">OK</string>
+	<string name="relay_leg_text">Leg</string>
+	<string name="relay_text">Relay</string>
+	<string name="swimming_medley_text">Medley</string>
+	<string name="swimming_back_text">Back</string>
+	<string name="swimming_breast_text">Breast</string>
+	<string name="swimming_fly_text">Fly</string>
+	<string name="swimming_free_text">Free</string>
+	<string name="track_dash_text">Dash</string>
+	<string name="track_run_text">Run</string>
+	<string name="event_by">by</string>
+	<string name="meet_type_swimming">Swim</string>
+	<string name="meet_type_track">Track</string>
+	<string name="race_splits_edit_dialog_title">Enter Final Time</string>
+	<string name="race_splits_discard_dialog_message">Do you want to PERMANENTLY delete this race and all of its associated splits?</string>
+	<string name="race_splits_discard_dialog_title">Delete Race</string>
+	<string name="athletes_item_edit_dialog_title">Edit Athlete Display Name</string>
+	<string name="athletes_item_delete_message1">You are about to PERMANENTLY delete</string>
+	<string name="athletes_item_delete_message2">including all associated races and splits. Consider DESELECTING instead of deleting the items.</string>
+	<string name="athletes_item_delete_message3">Do you want to permanently delete the</string>
+	<string name="athletes_item_delete_question_mark">\?</string>
+	<string name="onItemCheckedStateChanged_selected_text">" selected."</string>
+	<string name="btnCreateEvent_style_not_provided">Event Style not provided!</string>
+	<string name="btnCreateEvent_distance_not_provided">Event Distance not provided!</string>
+	<string name="btnCreateEvent_lap_distance_not_provided">Lap Distance not provided!</string>
+	<string name="btnCreateEvent_distance_must_be_greater_than_0">Distance must be greater than 0!</string>
+	<string name="btnCreateEvent_lap_distance_may_not_exceed_event_distance">Lap Distance may not exceed Event Distance!</string>
+	<string name="successfully_created_text">SUCCESSFULLY created.</string>
+	<string name="btnCreateEvent_failed_to_create_event">FAILED to create event.</string>
+	<string name="showErrorDialog_unable_to_create_event">Unable To Create Event</string>
+	<string name="events_item_edit_dialog_title">Edit Event Title</string>
+	<string name="btnCreateMeetTitle_meet_title_not_provided">Meet Title not provided!</string>
+	<string name="btnCreateMeetTitle_failed_to_create_meet_title">FAILED to create Meet Title.</string>
+	<string name="btnCreateMeetTitle_unable_to_create_meet">Unable To Create Meet</string>
+	<string name="meets_item_edit_dialog_title">Edit Meet Title</string>
+	<string name="not_available_text">N/A</string>
+	<string name="best_time_text">Best Time:</string>
+	<string name="best_times_text">Best Times:</string>
+	<string name="createNewRace_unable_to_start_race">Unable to start race.</string>
+	<string name="createNewRace_no_athletes_selected">No athletes selected!</string>
+	<string name="createNewRace_no_meet_selected">No meet selected!</string>
+	<string name="createNewRace_no_event_selected">No event selected!</string>
+	<string name="createNewRelayRace_unable_to_start_relay">Unable to start relay.</string>
+	<string name="createNewRelayRace_no_athletes_selected">All four athletes must be selected!</string>
+	<string name="cancel_text">Cancel</string>
+	<string name="apply_text">Apply</string>
+	<string name="delete_text">Delete</string>
+	<string name="hrs_abbr_text">Hrs</string>
+	<string name="min_abbr_text">Min</string>
+	<string name="seconds_abbr_text">Sec</string>
+	<string name="tenths_of_sconds_abbr_text">Tenths</string>
+	<string name="buy_splits_text">Buy Splits</string>
+	<string name="event_is_a_relay_text">Event is a relay</string>
+	<string name="event_distance_hint">Event Distance</string>
+	<string name="event_style_hint">Event Style</string>
+	<string name="lap_distance_hint">Lap Distance</string>
+	<string name="meet_title_hint">Meet Title</string>
+	<string name="btnCreateMeetTitle_add_meet_text">Add Meet</string>
+	<string name="rbIndividualEvents_individual_events_text">Individual Events</string>
+	<string name="rbInRelays_in_relays_text">In Relays</string>
+	<string name="section_label_placeholder_text">"Placeholder for fragment: "</string>
+	<string name="event_text">Event</string>
+	<string name="time_text">Time</string>
+	<string name="date_text">Date</string>
+	<string name="lap_text">Lap</string>
+	<string name="distance_text">Distance</string>
+	<string name="splits_text">Splits</string>
+	<string name="athlete_text">Athlete</string>
+	<string name="btnStart_text">Start</string>
+	<string name="btnStop_text">Stop</string>
+	<string name="btnSplit_text">Split</string>
+	<string name="btnCreateEvent_text">Create Event</string>
+	<string name="menu_accept_title">Accept</string>
+	<string name="menu_results_title">Results</string>
+	<string name="menu_relay_races_title">Relay Races</string>
+	<string name="menu_setup_title">Setup</string>
+	<string name="menu_preferences_title">Preferences</string>
+	<string name="menu_help_title">Help</string>
+	<string name="menu_about_title">About</string>
+	<string name="menu_edit_title">Edit</string>
+	<string name="menu_individual_races_title">Individual Races</string>
+	<string name="menu_add_person_title">Add Person</string>
+	<string name="menu_add_athlete_name_title">Add Athlete Name</string>
+	<string name="menu_select_all_title">Select All</string>
+	<string name="menu_deselect_all_title">Deselect All</string>
+	<string name="drawer_open">Open navigation drawer</string>
+	<string name="drawer_close">Close navigation drawer</string>
+	<string name="menu_email_times_title">Email Times</string>
+	<string name="menu_email_race_results_title">Email Race Results</string>
+	<string name="menu_email_splits_csv_file_title">Email Splits CSV File</string>
+	<string name="send_your_email_using_text">Send your email using:</string>
+
+</resources>

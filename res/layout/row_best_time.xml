@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:gravity="left|center_vertical"
+	android:orientation="horizontal"
+	android:padding="1dp" >
+
+	<TextView
+		android:id="@+id/tvEvent"
+		style="@style/tvStyle_BTResultsRow"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="32" />
+
+	<TextView
+		android:id="@+id/tvTime"
+		style="@style/tvStyle_BTResultsRow"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginRight="1dp"
+		android:layout_weight="16"
+		android:gravity="right|center_vertical"
+		android:singleLine="true" />
+
+	<TextView
+		android:id="@+id/tvDate"
+		style="@style/tvStyle_BTResultsRow"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginRight="6dp"
+		android:layout_weight="24"
+		android:gravity="right|center_vertical"
+		android:singleLine="true" />
+
+</LinearLayout>

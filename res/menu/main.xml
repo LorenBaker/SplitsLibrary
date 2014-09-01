@@ -1,0 +1,105 @@
+<!--
+  Copyright 2013 The Android Open Source Project
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+	<item
+		android:id="@+id/action_accept"
+		android:icon="@drawable/ic_action_accept"
+		android:orderInCategory="100"
+		android:showAsAction="ifRoom"
+		android:title="@string/menu_accept_title"
+		android:visible="true"/>
+	<item
+		android:id="@+id/action_add_person"
+		android:icon="@drawable/ic_action_add_person"
+		android:orderInCategory="110"
+		android:showAsAction="ifRoom"
+		android:title="@string/menu_add_person_title"
+		android:visible="false"/>
+	<item
+		android:id="@+id/action_add_athlete_name"
+		android:icon="@drawable/ic_action_new"
+		android:orderInCategory="120"
+		android:showAsAction="ifRoom"
+		android:title="@string/menu_add_athlete_name_title"
+		android:visible="false"/>
+	<item
+		android:id="@+id/action_select_all_events"
+		android:icon="@drawable/ic_action_add_to_queue"
+		android:orderInCategory="130"
+		android:showAsAction="ifRoom"
+		android:title="@string/menu_select_all_title"
+		android:visible="false"/>
+	<item
+		android:id="@+id/action_deselect_all_events"
+		android:icon="@drawable/ic_action_remove_from_queue"
+		android:orderInCategory="140"
+		android:showAsAction="ifRoom"
+		android:title="@string/menu_deselect_all_title"
+		android:visible="false"/>
+	<item
+		android:id="@+id/action_race_splits_edit"
+		android:icon="@drawable/ic_action_edit"
+		android:orderInCategory="150"
+		android:showAsAction="ifRoom"
+		android:title="@string/menu_edit_title"
+		android:visible="false"/>
+	<item
+		android:id="@+id/action_race_splits_discard"
+		android:icon="@drawable/ic_action_discard"
+		android:orderInCategory="160"
+		android:showAsAction="ifRoom"
+		android:title="@string/delete_text"
+		android:visible="false"/>
+	<item
+		android:id="@+id/action_email_times"
+		android:orderInCategory="170"
+		android:showAsAction="never"
+		android:title="@string/menu_email_times_title"
+		android:visible="false"/>
+	<item
+		android:id="@+id/action_email_race_results"
+		android:orderInCategory="180"
+		android:showAsAction="never"
+		android:title="@string/menu_email_race_results_title"
+		android:visible="false"/>
+	<!--
+         <item
+		android:id="@+id/action_email_splits_csv_file"
+		android:orderInCategory="190"
+		android:showAsAction="never"
+		android:title="@string/menu_email_splits_csv_file_title"
+		android:visible="false"/>
+	-->
+
+	<item
+		android:id="@+id/action_preferences"
+		android:orderInCategory="200"
+		android:showAsAction="never"
+		android:title="@string/menu_preferences_title"/>
+	<item
+		android:id="@+id/action_help"
+		android:orderInCategory="210"
+		android:showAsAction="never"
+		android:title="@string/menu_help_title"/>
+	<item
+		android:id="@+id/action_about"
+		android:orderInCategory="220"
+		android:showAsAction="never"
+		android:title="@string/menu_about_title"/>
+
+</menu>

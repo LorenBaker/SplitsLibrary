@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical" >
+
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1" >
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:padding="4dp" >
+
+			<Spinner
+				android:id="@+id/spinRaceMeets"
+				android:layout_width="match_parent"
+				android:layout_height="52dp" />
+
+			<Spinner
+				android:id="@+id/spinRaceEvents"
+				android:layout_width="match_parent"
+				android:layout_height="52dp" />
+
+			<TextView
+				android:id="@+id/tvRacetime"
+				style="@style/tvStyleRaceTimer"
+				android:layout_width="match_parent"
+				android:layout_height="52dp"
+				android:layout_marginBottom="5dp"
+				android:paddingBottom="5dp" >
+			</TextView>
+
+			<include layout="@layout/table_relay_timer" />
+		</LinearLayout>
+	</ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/tblSplitTimes"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:background="@drawable/rec_bkgrd_smoke_white_no_stroke"
+	android:orientation="horizontal" >
+
+	<TextView
+		android:id="@+id/tvLeg"
+		style="@style/tvStyleSplitTable"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="11"
+		android:gravity="center" />
+
+	<TextView
+		android:id="@+id/tvAthleteDisplayName"
+		style="@style/tvStyleSplitTable"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="30"
+		android:gravity="left"
+		android:paddingLeft="8dp" />
+
+	<TextView
+		android:id="@+id/tvEventShortTitle"
+		style="@style/tvStyleSplitTable"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="25"
+		android:gravity="left"
+		android:paddingLeft="10dp" />
+
+	<TextView
+		android:id="@+id/tvSplit"
+		style="@style/tvStyleSplitTable"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="22"
+		android:gravity="right"
+		android:paddingRight="8dp" />
+
+</LinearLayout>

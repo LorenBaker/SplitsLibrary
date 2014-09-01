@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:padding="4dp" >
+
+	<Spinner
+		android:id="@+id/accountSpinner"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1" />
+
+	<EditText
+		android:id="@+id/contactNameEditText"
+		style="@style/txtStyleDialogEntry"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:hint="Athlete Name"
+		android:inputType="textPersonName" />
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:orientation="horizontal" >
+
+		<EditText
+			android:id="@+id/contactPhoneEditText"
+			style="@style/txtStyleDialogEntry"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+			android:hint="Phone Number"
+			android:inputType="phone" />
+
+		<Spinner
+			android:id="@+id/contactPhoneTypeSpinner"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1" />
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:orientation="horizontal" >
+
+		<EditText
+			android:id="@+id/contactEmailEditText"
+			style="@style/txtStyleDialogEntry"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+			android:hint="Email"
+			android:inputType="textEmailAddress" />
+
+		<Spinner
+			android:id="@+id/contactEmailTypeSpinner"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1" />
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/llButtons"
+		android:layout_width="match_parent"
+		android:layout_height="72dp"
+		android:orientation="horizontal"
+		android:paddingBottom="6dp"
+		android:paddingLeft="2dp"
+		android:paddingRight="2dp"
+		android:paddingTop="2dp" >
+
+		<Button
+			android:id="@+id/btnCancel"
+			style="@android:style/ButtonBar"
+			android:layout_width="0dp"
+			android:layout_height="72dp"
+			android:layout_gravity="center"
+			android:layout_margin="2dp"
+			android:layout_weight="1"
+			android:background="@drawable/about_email_button"
+			android:text="@string/cancel_text"
+			android:textSize="17sp" />
+
+		<Button
+			android:id="@+id/btnSave"
+			style="@android:style/ButtonBar"
+			android:layout_width="0dp"
+			android:layout_height="72dp"
+			android:layout_gravity="center"
+			android:layout_margin="2dp"
+			android:layout_weight="1"
+			android:background="@drawable/about_email_button"
+			android:text="@string/save"
+			android:textSize="17sp" />
+	</LinearLayout>
+
+</LinearLayout>

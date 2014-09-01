@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="settings_meet_type_default">10</string>
+	<string name="settings_meet_type_key">settingsKey_MeetType</string>
+	<string name="settings_split_min_duration_key">settingsKey_MinSplitDuration</string>
+	<string name="settings_split_min_duration_default">2000</string>
+	<string name="settings_reset_athletes_key">settingsKey_ResetAthletes</string>
+	<string name="settings_reset_athletes_default">false</string>
+
+</resources>

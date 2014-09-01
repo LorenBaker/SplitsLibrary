@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:gravity="center_vertical"
+	android:orientation="vertical"
+	android:paddingLeft="4dp"
+	android:paddingRight="4dp" >
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center_horizontal"
+		android:orientation="horizontal"
+		android:padding="4dp" >
+
+		<RelativeLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" >
+
+			<TextView
+				android:id="@+id/tvHours"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerHorizontal="true"
+				android:text="@string/hrs_abbr_text"
+				android:textStyle="italic" />
+
+			<NumberPicker
+				android:id="@+id/npHours"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/tvHours" />
+		</RelativeLayout>
+
+		<RelativeLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" >
+
+			<TextView
+				android:id="@+id/tvMinutes"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerHorizontal="true"
+				android:text="@string/min_abbr_text"
+				android:textStyle="italic" />
+
+			<NumberPicker
+				android:id="@+id/npMinutes"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/tvMinutes" />
+		</RelativeLayout>
+
+		<RelativeLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" >
+
+			<TextView
+				android:id="@+id/tvSeconds"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerHorizontal="true"
+				android:text="@string/seconds_abbr_text"
+				android:textStyle="italic" />
+
+			<NumberPicker
+				android:id="@+id/npSeconds"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/tvSeconds" />
+		</RelativeLayout>
+
+		<RelativeLayout
+			android:id="@+id/rlMilliSeconds"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" >
+
+			<TextView
+				android:id="@+id/tvMilliSeconds"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerHorizontal="true"
+				android:text="@string/tenths_of_sconds_abbr_text"
+				android:textStyle="italic" />
+
+			<NumberPicker
+				android:id="@+id/npMilliSeconds"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/tvMilliSeconds" />
+		</RelativeLayout>
+	</LinearLayout>
+
+	<include layout="@layout/apply_cancel_buttons" />
+
+</LinearLayout>

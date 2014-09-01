@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<plurals name="athletes">
+		<item quantity="zero">no Athletes </item>
+		<item quantity="one">1 Athlete </item>
+		<item quantity="other">%d  Athletes</item>
+	</plurals>
+	<plurals name="meets">
+		<item quantity="zero">no Meets </item>
+		<item quantity="one">1 Meet </item>
+		<item quantity="other">%d  Meets</item>
+	</plurals>
+	<plurals name="events">
+		<item quantity="zero">no Events </item>
+		<item quantity="one">1 Event </item>
+		<item quantity="other">%d  Events</item>
+	</plurals>
+
+</resources>

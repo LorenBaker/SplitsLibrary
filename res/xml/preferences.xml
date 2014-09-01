@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+	<ListPreference
+		android:defaultValue="@string/settings_meet_type_default"
+		android:dialogTitle="@string/settings_select_meet_type_dialog_title"
+		android:entries="@array/settings_meet_type_entries"
+		android:entryValues="@array/settings_meet_type_values"
+		android:key="@string/settings_meet_type_key"
+		android:title="@string/settings_meet_type_title" />
+	<ListPreference
+		android:defaultValue="@string/settings_split_min_duration_default"
+		android:dialogTitle="@string/settings_split_min_duration_dialog_title"
+		android:entries="@array/settings_split_min_duration_entries"
+		android:entryValues="@array/settings_split_min_duration_values"
+		android:key="@string/settings_split_min_duration_key"
+		android:title="@string/settings_split_min_duration_title" />
+
+	<CheckBoxPreference
+		android:defaultValue="@string/settings_reset_athletes_default"
+		android:key="@string/settings_reset_athletes_key"
+		android:title="@string/settings_reset_athletes_title" />
+
+	<!--
+     	<ListPreference
+		android:defaultValue="@string/settings_time_format_default"
+		android:dialogTitle="Select Time Format"
+		android:entries="@array/settings_time_format_entries"
+		android:entryValues="@array/settings_time_format_values"
+		android:key="TimeFormat"
+		android:title="Time Format" />
+	-->
+
+</PreferenceScreen>
