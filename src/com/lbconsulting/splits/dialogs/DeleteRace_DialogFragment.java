@@ -1,5 +1,8 @@
 package com.lbconsulting.splits.dialogs;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.flurry.android.FlurryAgent;
 import com.lbconsulting.splits.R;
 import com.lbconsulting.splits.classes.MyLog;
 import com.lbconsulting.splits.database.RacesTable;
@@ -76,14 +80,21 @@ public class DeleteRace_DialogFragment extends DialogFragment {
 
 				@Override
 				public void onClick(View v) {
+					Map<String, String> deleteRaceParams = new HashMap<String, String>();
 					if (mIsRelay) {
 						RelaysTable.deleteRelayRace(getActivity(), mRaceID);
+						String eventShortTitle = RelaysTable.getEventShortTitle(getActivity(), mRaceID);
+						deleteRaceParams.put("DeleteRelay", eventShortTitle);
 					} else {
 						RacesTable.deleteRace(getActivity(), mRaceID);
+						String eventShortTitle = RacesTable.getEventShortTitle(getActivity(), mRaceID);
+						deleteRaceParams.put("DeleteRace", eventShortTitle);
 					}
 
+					// send event to Flurry
+					FlurryAgent.logEvent("RaceEventDeleted", deleteRaceParams);
+
 					getDialog().dismiss();
-					// EventBus.getDefault().post(new FinishRaceSplitsActivity());
 				}
 			});
 		}

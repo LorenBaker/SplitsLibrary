@@ -1,85 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<string-array name="helpActivity_tabs">
-		<item>Quick Start</item>
-		<item>FAQ</item>
-		<item>Preferences</item>
-		<item>Setup</item>
-		<item>Individual Races</item>
-		<item>Relays Races</item>
-		<item>Results</item>
-	</string-array>
-
 	<string name="help_quick_start">
 <![CDATA[
-<p><b>Welcome to Splits … an app that times and records swim and track meet events. Follow the following six steps to get started.</b></p>
-<p><b><i>1. Enter athlete names and contact information.</i></b> Start by entering all athletes you plan to track into your Contacts. (i.e. use the Google Peoples app to enter your athlete’s name and contact information.)</p>
-<p><b><i>2. Select the type of meet you’ll be timing.</i></b> From the Individual Races View (the app’s starting screen), select Preferences from the dropdown menu, select Meet Type, then choose either Swim Meet or Track Meet. Swim Meet is the app’s starting default.</p>
-<p><b><i>3. Add athletes and enter the meet name.</i></b> Navigate to the Setup View either from the drop down menu or by long pressing an Athlete drop down button.</p>
-<p>&emsp;a) From the Athletes tab add the athletes you plan to track. Note: Splits makes no changes to your contact’s information.</p>
-<p>&emsp;b) From the Meets Tab type in one or more meet names.</p>
-<p>&emsp;c) Press the <i>back button</i> to take you back to the Individual Races View.</p>
-<p><b><i>4. Select the meet, event, and athlete(s).</i></b> From the drop down buttons select the meet, event, and athlete(s) you want to time. You can time one or two athletes for a given race event.</p>
-<p><b><i>5. Start the race.</i></b> Press either Start button to start a race. Press the applicable Split button(s) to record the athlete’s splits, and the Stop button(s) to end the athlete’s race. Split times of less than 5 seconds are inhibited to avoid creating unintended splits if a button is double clicked. On some devices the applicable action is initiated upon <i>releasing</i> the button.</p>
-<p><b><i>6. Reset to prepare for the next race.</i></b> After completing a race, press the <i>Checkmark</i> in the action bar to prepare for the next race.</p>
+<h1>Welcome to Splits</h1>
+<h1>Quick Start</h1>
+<p>1. Select <b><i>Preferences</i></b> from the upper right hand corner dropdown menu. Select either <b><i>Swim Meet</i></b> or <b><i>Track Meet</i></b>. Swim Meet is the default.</p>
+<p>2. Open the Splits navigation drawer by swiping the screen from left edge to right or tapping the Splits stopwatch icon on the action bar.</p>
+<p>3. Navigate to the Athletes screen and add the athletes you want to time.</p>
+<p>4. Navigate to the Meets screen and add meet title(s).</p>
+<p>5. Navigate to the Individual Races or Relay Races screen. Select the meet, event, and athletes to time from their respective dropdown button lists. Press the <b><i>Start</i></b> button to begin the race; the <b><i>Split</i></b> button to record race splits; and the <b><i>Stop</i></b> button to end the race.</p>
+<p>6. After the race is finished, press the <b><i>Checkmark</i></b> to prepare for next race.</p>
+<p>7. Help is available from the upper right hand corner dropdown menu.</p>
+]]>
+	</string>
+	<string name="help_individual_races">
+<![CDATA[
+<h1>Help: Individual Races</h1>
+<p>1. Select the meet, event, and athletes to time from their respective dropdown button lists.</p>
+<p>2. One or two athletes may be timed in any individual race event.
+<p>2. Press a <b><i>Start</i></b> button to begin the race; the <b><i>Split</i></b> button to record race splits; and the <b><i>Stop</i></b> button to end the race.</p>
+<p>3. To add additional meet, event, or athletes long press its dropdown button or select the applicable screen from the navigation drawer.</p>
+<p>4. After race is finished, press the <b><i>Checkmark</i></b> to prepare for next race.</p>
+]]>
+	</string>
+	<string name="help_relay_races">
+<![CDATA[
+<h1>Help: Relay Races</h1>
+<p>1. Select the meet, event, and athletes to time from their respective dropdown button lists.</p>
+<p>2. Press the <b><i>Start</i></b> button to begin the relay race; the <b><i>Split</i></b> button to record relay splits; and the <b><i>Stop</i></b> button to end the relay.</p>
+<p>3. To add additional meet, event, or athletes long press its dropdown button or select the applicable screen from the navigation drawer.</p>
+<p>4. After race is finished, press the <b><i>Checkmark</i></b> to prepare for next relay race.</p>
+]]>
+	</string>
+	<string name="help_results_best_times">
+<![CDATA[
+<h1>Help: Best Times</h1>
+<p>1. Select an athlete from the dropdown button list.</p>
+<p>2. Select <b><i>Individual Event</i></b> or <b><i>Relay</i></b>.</p>
+<p>3. Press on an event to see race splits.</p>
+<p>4. Email times from the upper right hand corner dropdown menu.</p>
+]]>
+	</string>
+	<string name="help_results_all_races">
+<![CDATA[
+<h1>Help: All Races</h1>
+<p>1. Select an athlete from the dropdown button list.</p>
+<p>2. Select <b><i>Individual Event</i></b> or <b><i>Relay</i></b>.</p>
+<p>3. Press on an event to see race splits.</p>
+<p>4. Email times from the upper right hand corner dropdown menu.</p>
+]]>
+	</string>
+	<string name="help_race_and_relay_splits">
+<![CDATA[
+<h1>Help: Race and Relay Splits</h1>
+<p>1. Press <b><i>edit icon</i></b> to correct or set official race time.</p>
+<p>2. Press <b><i>delete icon</i></b> to delete race.</p>
+<p>3. Email times from the upper right hand corner dropdown menu.</p>
+]]>
+	</string>
+	<string name="help_athletes">
+<![CDATA[
+<h1>Help: Athletes</h1>
+<p>1. Press the <b><i>Add Person icon</i></b> to add athletes from your contacts.</p>
+<p>2. Press the<b><i>Add icon</i></b> to enter an athlete’s name not in contacts.</p>
+<p>3. Checked athletes are shown in dropdown button lists; unchecked athletes are hidden from dropdown button lists.</p>
+<p>4. Long press on an athlete to edit or delete an athlete’s name. It is not recommended to delete athletes; rather uncheck them instead. Note: When revising an athlete’s name, no changes are made in your device’s contacts. </p>
+<p>5. Press on an athlete’s image to show the athlete’s contact information.</p>
+]]>
+	</string>
+	<string name="help_meets">
+<![CDATA[
+<h1>Help: Meets</h1>
+<p>1. Type the meet title then press <b><i>Add Meet</i></b> button.</p>
+<p>2. Checked meets are shown in dropdown button lists; unchecked meets are hidden from dropdown button lists.</p>
+<p>3. Long press on a meet to edit or delete the meet. It is not recommended to delete meets; rather uncheck them instead.</p>
+]]>
+	</string>
+	<string name="help_events">
+<![CDATA[
+<h1>Help: Events</h1>
+<p>1. This screen is pre-populated with common swim and track meet events.</p>
+<p>2. Checked events are shown in dropdown button lists; unchecked events are hidden from dropdown button lists.</p>
+<p>3. Long press on an event to edit or delete the event. It is not recommended to delete events; rather uncheck them instead.</p>
+<p>4. Pressing the <b><i>+ icon</i></b> checks all events. Pressing the <b><i>- icon</i></b> unchecks all events.</p>
+]]>
+	</string>
+	<string name="help_creat_events">
+<![CDATA[
+<h1>Help: Create Events</h1>
+<p>1. Fill in all required data.</p>
+<p>2. Press the <b><i>Create Event</i></b> button.</p>
 ]]>
 	</string>
 	<string name="help_FAQ">
 <![CDATA[
-<p><b><i>1. How do I add athletes?</i></b> The Splits app uses your device’s contacts, so add all athletes you plan to track into your Contacts (i.e. Use the Google Peoples app to enter your athlete’s name and contact information.) Next, navigate to the Setup View either from the drop down menu or by making a long press on one of the athlete drop down buttons. From the Athletes tab add the athletes that you plan to track. Note: Splits makes no changes to your contact’s information.</p>
-<p><b><i>2. How do I add an events? or meets?</i></b> Navigate to the Setup View either from the drop down menu or by making a long pressing on an event or meet drop down button. From the applicable tab you can add, delete, or edit the event or meet titles.</p>
-<p><b><i>3. What do I do if I’ve started a race and there is a false start?</i></b> While the race is running, press the <i>Checkmark</i> in the action bar. This will stop the race and any splits will not be saved. If you have already stopped the race, navigate to the Results View and press on the race you want to delete. This opens the Splits View. From there you can delete the race.</p>
-<p><b><i>4. What do I do if I can’t find an athlete, event, or meet in the one of the  drop down buttons?</i></b> Long press the drop down button to navigate to the Setup View where you can then select the items (by placing a checkmark in the item’s box). Selected items populate the drop down buttons.</p>
-<p><b><i>5. How do I remove athletes, events, or meets from the drop down buttons?</i></b> Long press the drop down button to navigate to the Setup View where you can then deselect items (by removing the checkmark in the item’s box). Deselected items are not shown in the drop down buttons.</p>
-<p><b><i>6. Can I adjust a race’s time after I’ve stopped the race?</i></b> Yes. Navigate to the Results View and press on a race to open its Splits View. From there you can delete the race or edit its time. Editing a race’s time also adjusts each of its splits.</p>
-]]>
-	</string>
-	<string name="help_preferences_view">
-<![CDATA[
-<p>From the Preferences menu you can select the meet type: Swim Meet or Track Meet.</p>
-<p>You may also select the option to “Reset athletes on clearing race.” With this option checked, when a race is reset by pressing 
-the <i>Checkmark</i> in the Action Bar (Individual Races or Relay Races Views) the athletes will also be reset to “No 
-Athlete.”</p>
+<h1>Help: FAQ</h1>
+<p><b><i>1. How do I add athletes?</i></b> Navigate to the Athletes screen via the navigation drawer or by long pressing on one of the athlete dropdown buttons. Then press either the <b><i>Add Person icon</i></b> to add athletes from your contacts or press <b><i>Add icon</i></b> to enter an athlete’s name that is not in your contacts. </p> <p>Note: Splits makes no changes to your contact’s information. Use the Google People’s app to enter phone numbers, email address, etc.</p>
 
-<p>You can select Splits Preferences from the drop down menu from Individual Races, Relay Races, or Setup Views.</p>
-]]>
-	</string>
-	<string name="help_setup_view">
-<![CDATA[
-<p>From the Setup View you can add, edit, delete, and select athletes, meets, and events. Selected items (by placing a checkmark in the item’s box) populate the Split app’s drop down buttons.</p>
-<p><b><i>Athletes Tab.</i></b> Pressing the add <i>Athlete Icon</i> in the Action Bar will bring up a list of your contacts. Select any contact to add an athlete to the Splits app. Note: Splits makes no changes to your contacts. Tapping on the Athlete’s picture will bring up that Athlete’s contact information.</p>
-<p><b><i>Meets Tab.</i></b> Enter a new Meet Title, then press <i>Add Meet</i> to add the meet title to the Splits app database.</p>
-<p><b><i>Events Tab.</i></b> The Splits app database is pre-populated with the most common swim and track meet events.</p>
-<p><b><i>Create Events Tab.</i></b> This is where you can create an event. Check the box if this event will be a relay. Then enter the event’s distance, distance units (Yard or Meter), style (Back, Breast, Fly, Free for swimming events, or Dash or Run for track meets). Enter the event’s lap distance. As you enter this information you will see the new event’s title being composed. When complete, press <i>Create Event</i>.</p>
-<p><b><i>Selecting Items.</i></b> Place a checkmark by an Athlete, Meet, or Event to select the item. Selected items are displayed in the various Splits app’s drop down buttons. Removing the checkmark excludes that item in their respective drop down buttons. For example, if you have no interest in seeing swimming events that are in meters, uncheck all of the meter events.</p>
-<p><b><i>Editing and Deleting Items.</i></b> Long pressing any item under the Athletes, Meets, or Event tabs brings up the edit mode (red background) of the respective tab. Press the <i>Edit Icon</i> or <i>Delete Icon</i> to edit or delete the selected item. Generally you should deselect an item rather than deleting it.</p>
-<p><b><i>Navigation.</i></b> Swipe either right or left, or press a tab to navigate among the the tabs. Note: swiping the tab titles in the Action bar displays any hidden tabs. From the dropdown menu, you may navigate to the Preferences or this Help View.</p> 
-]]>
-	</string>
-	<string name="help_individual_races_view">
-<![CDATA[
-<p>The Individual Races View is where you time up to two athletes in an individual event.</p> 
-<p><b><i>Select the meet, event, and athlete(s).</i></b> From the drop down buttons select the meet, event, and athlete(s) that you want to time. If you do not see the item you want, long press its drop down button to navigate to the Setup View. From this view select the item that you want or added it. (See Setup View) Press the <i>back button</i> to return to the Individual Races View.</p>
-<p><b><i>Start the race.</i></b> Press either <i>Start Button</i> to start a race. Press the applicable <i>Split Button(s)</i> to record the athlete’s splits, and the <i>Stop Button(s)</i> to end the athlete’s race. Split times of less than 5 seconds are inhibited to avoid creating unintended splits if a button is double clicked. On some devices the applicable action is initiated upon <i>releasing</i> the button.</p>
-<p><b><i>Reset to prepare for the next race.</i></b> After completing a race, press the <i>Checkmark</i> in the action bar to prepare for the next race.</p>
-<p><b><i>Navigation.</i></b> From the dropdown menu, you may navigate to the Results, Relay Races, Setup, Preferences, or this Help View.</p>
-]]>
-	</string>
-	<string name="help_relay_races_view">
-<![CDATA[
-<p>The Relay Races View is where you time four athletes in a relay event.</p>
-<p><b><i>Select the meet, event, and athletes.</i></b> From the drop down buttons select the meet, event, and athletes that you want to time. If you do not see the item you want, long press its drop down button to navigate to the Setup View. Either select the item that you want, or added it. (See Setup View) Press the <i>back button</i> to return the the Relay Races View.</p>
-<p><b><i>Start the relay race.</i></b> Press the <i>Start Button</i> to start a race. Press the <i>Split Button</i> to record the athletes’ splits, and the Stop button to end the relay race.</p>
-<p><b><i>Reset to prepare for the next relay race.</i></b> After completing a relay race, press the <i>Checkmark</i> in the action bar to prepare for the next race.</p>
-<p><b><i>Navigation.</i></b> From the dropdown menu, you may navigate to the Results, Individual Races, Setup, Preferences, or this Help View.</p>
-]]>
-	</string>
-	<string name="help_results_views">
-<![CDATA[
-<p>The Results View is where you view an athlete’s Best Times or All Races results for individual events and relays. Pressing a 
-race will open the detailed Splits View. The Splits View shows a race’s splits. From this view you can delete the race or edit its 
-time. Editing a race’s final time also adjusts each splits time.</p>
+<p><b><i>2. Can I add an event if it was not included in the pre-populated list?</i></b> Yes. Navigate to the Create Events screen via the navigation drawer. Fill in the required information and then press the <b><i>Create Event</i></b> button.
+
+<p><b><i>3. There are several pre-populated events that I’ll never use. Is there a way to hide them so they are not visible in the dropdown button lists?</i></b> Yes. Navigate to the Events screen and uncheck all the events that you want to hide. You can also hide athletes and meets is a similar manner.</p>
+
+<p><b><i>4. How do I delete or edit athletes, meets, and events?</i></b> Navigate to the applicable screen, then long press on the item that you want to edit or delete.</p><p> Note: it is not recommended to delete these items, rather uncheck them so they are not displayed in the dropdown button lists.</p>
+
+<p><b><i>5. What do I do if I’ve started a race and there is a false start?</i></b> While the race is running, press the <b><i>Checkmark</i></b> in the action bar. This will stop the race and nothing will be saved.</p><p> If you have already pressed the stopped button, navigate to a Results screen and press the race you want to delete. This opens the race’s Splits screen. From there you can delete the race.</p>
+
+<p><b><i>6. Can I adjust a race’s final time?</i></b> Yes. Navigate to a Results screen and press on a race to open its Splits screen. From there you can delete the race or edit its time. Editing a race’s time also adjusts each of its splits.</p>
 ]]>
 	</string>
 

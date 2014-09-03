@@ -539,6 +539,20 @@ public class RacesTable {
 		return relayID;
 	}
 
+	public static String getEventShortTitle(Context context, long raceID) {
+		String eventShortTitle = "";
+
+		Cursor cursor = getRaceCursor(context, raceID);
+		if (cursor != null && cursor.getCount() > 0) {
+			cursor.moveToFirst();
+			eventShortTitle = cursor.getString(cursor.getColumnIndexOrThrow(COL_EVENT_SHORT_TITLE));
+		}
+		if (cursor != null) {
+			cursor.close();
+		}
+		return eventShortTitle;
+	}
+
 	// /////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Update Methods
 	// /////////////////////////////////////////////////////////////////////////////////////////////////////////

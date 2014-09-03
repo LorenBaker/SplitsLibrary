@@ -1,5 +1,8 @@
 package com.lbconsulting.splits.fragments;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
@@ -23,10 +26,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.flurry.android.FlurryAgent;
 import com.lbconsulting.splits.R;
-import com.lbconsulting.splits.classes.SplitsEvents.ShowPreviousFragment;
 import com.lbconsulting.splits.classes.MyLog;
 import com.lbconsulting.splits.classes.MySettings;
+import com.lbconsulting.splits.classes.SplitsEvents.ShowPreviousFragment;
 import com.lbconsulting.splits.database.EventsTable;
 
 import de.greenrobot.event.EventBus;
@@ -54,11 +58,7 @@ public class Create_Event_Fragment extends Fragment implements OnClickListener, 
 
 	public static Create_Event_Fragment newInstance() {
 		MyLog.i("Create_Event_Fragment", "newInstance()");
-
 		Create_Event_Fragment fragment = new Create_Event_Fragment();
-		/*Bundle args = new Bundle();
-		args.putInt(MySettings.KEY_MEET_TYPE, meetType);
-		fragment.setArguments(args);*/
 		return fragment;
 	}
 
@@ -66,15 +66,6 @@ public class Create_Event_Fragment extends Fragment implements OnClickListener, 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		MyLog.i("Create_Event_Fragment", "onCreateView()");
 		View view = inflater.inflate(R.layout.frag_create_event, container, false);
-
-		/*		if (savedInstanceState != null && savedInstanceState.containsKey(MySettings.KEY_MEET_TYPE)) {
-					mMeetType = savedInstanceState.getInt(MySettings.KEY_MEET_TYPE, MySettings.SWIM_MEET);
-				} else {
-					Bundle bundle = getArguments();
-					if (bundle != null) {
-						mMeetType = bundle.getInt(MySettings.KEY_MEET_TYPE, MySettings.SWIM_MEET);
-					}
-				}*/
 
 		Resources res = getActivity().getResources();
 		YardsAbbr = res.getStringArray(R.array.units)[1];
@@ -230,6 +221,12 @@ public class Create_Event_Fragment extends Fragment implements OnClickListener, 
 					lapDistance,
 					ckIsRelay.isChecked());
 			if (newEventID > 0) {
+
+				// send event to Flurry
+				Map<String, String> raceParams = new HashMap<String, String>();
+				raceParams.put("NewEventTitle", tvEventTitle.getText().toString());
+				FlurryAgent.logEvent("NewEventCreated", raceParams);
+
 				String toastMessage = new StringBuilder()
 						.append(tvEventTitle.getText().toString())
 						.append(System.getProperty("line.separator"))

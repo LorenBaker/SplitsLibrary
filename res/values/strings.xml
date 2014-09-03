@@ -76,7 +76,7 @@
 	<string name="meet_title_hint">Meet Title</string>
 	<string name="btnCreateMeetTitle_add_meet_text">Add Meet</string>
 	<string name="rbIndividualEvents_individual_events_text">Individual Events</string>
-	<string name="rbInRelays_in_relays_text">In Relays</string>
+	<string name="rbInRelays_in_relays_text">Relays</string>
 	<string name="section_label_placeholder_text">"Placeholder for fragment: "</string>
 	<string name="event_text">Event</string>
 	<string name="time_text">Time</string>
@@ -108,5 +108,8 @@
 	<string name="menu_email_race_results_title">Email Race Results</string>
 	<string name="menu_email_splits_csv_file_title">Email Splits CSV File</string>
 	<string name="send_your_email_using_text">Send your email using:</string>
+	<string name="menu_help_faq_title">Help: FAQ</string>
+	<string name="menu_help_quick_start_title">Help: Quick Start</string>
+	<string name="help_image_view_content_description">Swipe right to open navigation drawer</string>
 
 </resources>

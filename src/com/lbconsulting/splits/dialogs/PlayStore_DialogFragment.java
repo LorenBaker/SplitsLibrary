@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.flurry.android.FlurryAgent;
 import com.lbconsulting.splits.R;
 import com.lbconsulting.splits.classes.MyLog;
 
@@ -63,6 +64,9 @@ public class PlayStore_DialogFragment extends DialogFragment {
 
 				@Override
 				public void onClick(View v) {
+					// send event to Flurry
+					FlurryAgent.logEvent("btn_BUY_Splits");
+
 					// start the play store application
 					Intent intent = new Intent(Intent.ACTION_VIEW);
 					// TODO: verify play store market URI
@@ -80,7 +84,8 @@ public class PlayStore_DialogFragment extends DialogFragment {
 
 				@Override
 				public void onClick(View v) {
-					// Do Nothing
+					// send event to Flurry
+					FlurryAgent.logEvent("btn_CANCEL_BuySplits");
 					getDialog().dismiss();
 				}
 			});

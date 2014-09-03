@@ -319,4 +319,10 @@ public class SplitsEvents {
 		}
 	}
 
+	/*	public static class FAQ_DialogClosed {
+
+			public FAQ_DialogClosed() {
+			}
+		}*/
+
 }

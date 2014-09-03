@@ -250,6 +250,20 @@ public class RelaysTable {
 		return bestTime;
 	}
 
+	public static String getEventShortTitle(Context context, long relayRaceID) {
+		String eventShortTitle = "";
+
+		Cursor cursor = getRelayRaceCursor(context, relayRaceID);
+		if (cursor != null && cursor.getCount() > 0) {
+			cursor.moveToFirst();
+			eventShortTitle = cursor.getString(cursor.getColumnIndexOrThrow(COL_EVENT_SHORT_TITLE));
+		}
+		if (cursor != null) {
+			cursor.close();
+		}
+		return eventShortTitle;
+	}
+
 	// /////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Update Methods
 	// /////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,17 +1,6 @@
 /*
- * Copyright 2013 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2014 Loren A. Baker
+ * All rights reserved.
  */
 
 package com.lbconsulting.splits.activites;
@@ -21,12 +10,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -52,6 +46,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.flurry.android.FlurryAgent;
 import com.lbconsulting.about.About;
 import com.lbconsulting.splits.R;
 import com.lbconsulting.splits.R.string;
@@ -123,6 +118,7 @@ public class MainActivity extends Activity {
 	private int mMeetType;
 	private long mSelectedRaceID;
 	private boolean mIsRelay = false;
+	// private boolean mIsFAQ = false;
 
 	private static final int CONTACTS_URI_REQUEST = 333;
 	private static LruCache<String, Bitmap> mMemoryCache;
@@ -135,13 +131,31 @@ public class MainActivity extends Activity {
 
 		MySettings.setContext(this);
 
+		// long now = System.currentTimeMillis(); // current time
+		if (MySettings.IS_BETA) {
+			Calendar now = Calendar.getInstance();
+
+			if (now.get(Calendar.YEAR) > MySettings.BETA_EXPIRATION_YEAR) {
+				ShowBetaExpirationDialog();
+			} else if (now.get(Calendar.YEAR) == MySettings.BETA_EXPIRATION_YEAR) {
+				if (now.get(Calendar.MONTH) + 1 > MySettings.BETA_EXPIRATION_MONTH) {
+					ShowBetaExpirationDialog();
+				} else if (now.get(Calendar.MONTH) + 1 == MySettings.BETA_EXPIRATION_MONTH) {
+					if (now.get(Calendar.DAY_OF_MONTH) >= MySettings.BETA_EXPIRATION_DAY) {
+						ShowBetaExpirationDialog();
+					}
+				}
+			}
+		}
+
 		SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 		mMeetType = Integer.valueOf(sharedPrefs.getString(MySettings.KEY_MEET_TYPE,
 				String.valueOf(MySettings.SWIM_MEET)));
 
 		mMemoryCache = Splits_ContentProvider.getAthleteThumbnailMemoryCache();
-
-		mTitle = mDrawerTitle = getTitle();
+		mDrawerTitle = getResources().getString(R.string.app_name);
+		mTitle = mDrawerTitle;
+		// mTitle = mDrawerTitle = getTitle();
 		mFragmentTitles = getResources().getStringArray(R.array.navDrawerTitles);
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
@@ -182,6 +196,39 @@ public class MainActivity extends Activity {
 		if (savedInstanceState == null) {
 			SelectFragment(0);
 		}
+
+		if (MySettings.isFirstTimeMainActivityShown()) {
+			Bundle MainActivityBundle = new Bundle();
+			MainActivityBundle.putBoolean(MySettings.STATE_MAIN_ACTIVITY_FIRST_TIME_SHOWN, false);
+			MySettings.set("", MainActivityBundle);
+
+			ShowHelpQuickStart();
+		}
+	}
+
+	private void ShowBetaExpirationDialog() {
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+		// set title
+		alertDialogBuilder.setTitle("Splits Beta Has Expired");
+
+		// set dialog message
+		alertDialogBuilder
+				.setMessage(MySettings.BETA_EXPIRATION_MESSAGE)
+				.setCancelable(false)
+				.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+					public void onClick(DialogInterface dialog, int id) {
+						// if this button is clicked, close
+						// current activity
+						MainActivity.this.finish();
+					}
+				});
+
+		// create alert dialog
+		AlertDialog alertDialog = alertDialogBuilder.create();
+
+		// show it
+		alertDialog.show();
 	}
 
 	@Override
@@ -199,6 +246,7 @@ public class MainActivity extends Activity {
 		// If the nav drawer is open, hide action items related to the content view
 		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
 		if (drawerOpen) {
+
 			menu.findItem(R.id.action_accept).setVisible(false);
 			menu.findItem(R.id.action_add_person).setVisible(false);
 			menu.findItem(R.id.action_add_athlete_name).setVisible(false);
@@ -211,6 +259,8 @@ public class MainActivity extends Activity {
 
 			menu.findItem(R.id.action_preferences).setVisible(false);
 			menu.findItem(R.id.action_help).setVisible(false);
+			menu.findItem(R.id.action_help_faq).setVisible(false);
+			menu.findItem(R.id.action_help_quick_start).setVisible(false);
 			menu.findItem(R.id.action_about).setVisible(true);
 
 		} else {
@@ -231,6 +281,9 @@ public class MainActivity extends Activity {
 
 					menu.findItem(R.id.action_preferences).setVisible(true);
 					menu.findItem(R.id.action_help).setVisible(true);
+					menu.findItem(R.id.action_help_faq).setVisible(true);
+					menu.findItem(R.id.action_help_quick_start).setVisible(true);
+
 					menu.findItem(R.id.action_about).setVisible(true);
 
 					break;
@@ -249,6 +302,8 @@ public class MainActivity extends Activity {
 
 					menu.findItem(R.id.action_preferences).setVisible(true);
 					menu.findItem(R.id.action_help).setVisible(true);
+					menu.findItem(R.id.action_help_faq).setVisible(true);
+					menu.findItem(R.id.action_help_quick_start).setVisible(true);
 					menu.findItem(R.id.action_about).setVisible(true);
 
 					break;
@@ -268,6 +323,8 @@ public class MainActivity extends Activity {
 
 					menu.findItem(R.id.action_preferences).setVisible(true);
 					menu.findItem(R.id.action_help).setVisible(true);
+					menu.findItem(R.id.action_help_faq).setVisible(true);
+					menu.findItem(R.id.action_help_quick_start).setVisible(true);
 					menu.findItem(R.id.action_about).setVisible(true);
 					break;
 
@@ -287,6 +344,8 @@ public class MainActivity extends Activity {
 
 					menu.findItem(R.id.action_preferences).setVisible(true);
 					menu.findItem(R.id.action_help).setVisible(true);
+					menu.findItem(R.id.action_help_faq).setVisible(true);
+					menu.findItem(R.id.action_help_quick_start).setVisible(true);
 					menu.findItem(R.id.action_about).setVisible(true);
 					break;
 
@@ -306,6 +365,8 @@ public class MainActivity extends Activity {
 
 					menu.findItem(R.id.action_preferences).setVisible(true);
 					menu.findItem(R.id.action_help).setVisible(true);
+					menu.findItem(R.id.action_help_faq).setVisible(true);
+					menu.findItem(R.id.action_help_quick_start).setVisible(true);
 					menu.findItem(R.id.action_about).setVisible(true);
 					break;
 
@@ -326,6 +387,8 @@ public class MainActivity extends Activity {
 
 					menu.findItem(R.id.action_preferences).setVisible(true);
 					menu.findItem(R.id.action_help).setVisible(true);
+					menu.findItem(R.id.action_help_faq).setVisible(true);
+					menu.findItem(R.id.action_help_quick_start).setVisible(true);
 					menu.findItem(R.id.action_about).setVisible(true);
 					break;
 
@@ -353,7 +416,6 @@ public class MainActivity extends Activity {
 				Intent addPersonIntent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
 				startActivityForResult(addPersonIntent, CONTACTS_URI_REQUEST);
 			} else {
-				// TODO: show dialog stating you can't add any more athletes
 				return true;
 			}
 
@@ -373,7 +435,6 @@ public class MainActivity extends Activity {
 					MySettings.set("", SetupActivityBundle);
 				}
 			} else {
-				// TODO: show dialog stating you can't add any more athletes
 				return true;
 			}
 
@@ -426,14 +487,99 @@ public class MainActivity extends Activity {
 			return true;
 
 		} else if (itemId == R.id.action_help) {
-			/*startActivity(new Intent(this, HelpActivity.class));*/
-			// Toast.makeText(this, "action_help", Toast.LENGTH_SHORT).show();
-			FragmentManager fm = getFragmentManager();
-			Help_DialogFragment frag = Help_DialogFragment.newInstance();
-			frag.show(fm, "help_DialogFragment");
+			String dialogMessage = "";
+			Map<String, String> helpParams = new HashMap<String, String>();
+
+			switch (mActiveFragment) {
+
+				case FRAG_INDIVIDUAL_RACES:
+					dialogMessage = getResources().getString(R.string.help_individual_races);
+					helpParams.put("HelpRequest", "help_individual_races");
+					break;
+
+				case FRAG_RELAY_RACES:
+					dialogMessage = getResources().getString(R.string.help_relay_races);
+					helpParams.put("HelpRequest", "help_relay_races");
+					break;
+
+				case FRAG_RESULTS_BEST_TIMES:
+					dialogMessage = getResources().getString(R.string.help_results_best_times);
+					helpParams.put("HelpRequest", "help_results_best_times");
+					break;
+
+				case FRAG_RESULTS_ALL_RACES:
+					dialogMessage = getResources().getString(R.string.help_results_all_races);
+					helpParams.put("HelpRequest", "help_results_all_races");
+					break;
+
+				case FRAG_ATHLETES:
+					dialogMessage = getResources().getString(R.string.help_athletes);
+					helpParams.put("HelpRequest", "help_athletes");
+					break;
+
+				case FRAG_MEETS:
+					dialogMessage = getResources().getString(R.string.help_meets);
+					helpParams.put("HelpRequest", "help_meets");
+					break;
+
+				case FRAG_EVENTS:
+					dialogMessage = getResources().getString(R.string.help_events);
+					helpParams.put("HelpRequest", "help_events");
+					break;
+
+				case FRAG_CREATE_EVENTS:
+					dialogMessage = getResources().getString(R.string.help_creat_events);
+					helpParams.put("HelpRequest", "help_creat_events");
+					break;
+
+				case FRAG_RESULTS_RACE_SPLITS:
+				case FRAG_RESULTS_RELAY_SPLITS:
+					dialogMessage = getResources().getString(R.string.help_race_and_relay_splits);
+					helpParams.put("HelpRequest", "help_race_and_relay_splits");
+					break;
+				default:
+					break;
+
+			}
+			if (!dialogMessage.isEmpty()) {
+				// send event to Flurry
+				FlurryAgent.logEvent("SplitsHelp", helpParams);
+
+				FragmentManager fm = getFragmentManager();
+				Help_DialogFragment frag = Help_DialogFragment.newInstance(dialogMessage);
+				frag.show(fm, "help_DialogFragment");
+			}
+			return true;
+
+		} else if (itemId == R.id.action_help_faq) {
+			String dialogMessage = getResources().getString(R.string.help_FAQ);
+			if (!dialogMessage.isEmpty()) {
+				// send event to Flurry
+				Map<String, String> helpParams = new HashMap<String, String>();
+				helpParams.put("HelpRequest", "help_FAQ");
+				FlurryAgent.logEvent("SplitsHelp", helpParams);
+
+				FragmentManager fm = getFragmentManager();
+				Help_DialogFragment frag = Help_DialogFragment.newInstance(dialogMessage);
+				frag.show(fm, "help_DialogFragment");
+			}
+			return true;
+
+		} else if (itemId == R.id.action_help_quick_start) {
+			ShowHelpQuickStart();
+			// send event to Flurry
+			Map<String, String> helpParams = new HashMap<String, String>();
+			helpParams.put("HelpRequest", "help_quick_start");
+			FlurryAgent.logEvent("SplitsHelp", helpParams);
 			return true;
 
 		} else if (itemId == R.id.action_about) {
+
+			// send event to Flurry
+			Map<String, String> helpParams = new HashMap<String, String>();
+			helpParams.put("HelpRequest", "action_about");
+			FlurryAgent.logEvent("SplitsHelp", helpParams);
+
 			Resources res = getResources();
 			String aboutText = res.getString(string.dialogAbout_aboutText);
 			String copyrightText = res.getString(string.copyright_text);
@@ -448,16 +594,15 @@ public class MainActivity extends Activity {
 
 	}
 
-	/*	public static final String COL_SPLIT_ID = "_id";
-		public static final String COL_RACE_ID = "raceID";
-		public static final String COL_ATHLETE_ID = "athleteID";
-		public static final String COL_EVENT_SHORT_TITLE = "eventShortTitle";
+	private void ShowHelpQuickStart() {
+		String dialogMessage = getResources().getString(R.string.help_quick_start);
+		if (!dialogMessage.isEmpty()) {
 
-		public static final String COL_IS_RELAY = "isRelay";
-		public static final String COL_LAP_NUMBER = "lapNumber";
-		public static final String COL_DISTANCE = "distance";
-		public static final String COL_SPLIT_TIME = "splitDuration";
-		public static final String COL_CUMULATIVE_TIME = "cumulativeTime";*/
+			FragmentManager fm = getFragmentManager();
+			Help_DialogFragment frag = Help_DialogFragment.newInstance(dialogMessage);
+			frag.show(fm, "help_DialogFragment");
+		}
+	}
 
 	@SuppressWarnings("resource")
 	private void EmailRaceResults() {
@@ -826,6 +971,12 @@ public class MainActivity extends Activity {
 	}
 
 	private void EmailResults(String emailSubject, StringBuilder emailBody) {
+
+		// send event to Flurry
+		Map<String, String> raceParams = new HashMap<String, String>();
+		raceParams.put("EmailSubject", emailSubject);
+		FlurryAgent.logEvent("EmailResults", raceParams);
+
 		Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
 		emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, emailSubject);
 		emailIntent.setType("plain/text");
@@ -1054,6 +1205,7 @@ public class MainActivity extends Activity {
 	private void SelectFragment(int position) {
 
 		Fragment fragment = null;
+
 		mPreviousFragment = mActiveFragment;
 		mActiveFragment = position;
 
@@ -1101,6 +1253,7 @@ public class MainActivity extends Activity {
 				fragmentTitle = "Relay Splits";
 				fragment = Results_RelaySplitsFragment.newInstance(mSelectedRaceID);
 				break;
+
 			default:
 				break;
 		}
@@ -1133,6 +1286,7 @@ public class MainActivity extends Activity {
 			fragmentTitle = meetTypeString + " " + fragmentTitle;
 		}
 		setTitle(fragmentTitle);
+
 	}
 
 	@Override
@@ -1201,4 +1355,19 @@ public class MainActivity extends Activity {
 		super.onPause();
 	}
 
+	@Override
+	protected void onStart()
+	{
+		MyLog.i("MainActivity", "onStart()");
+		super.onStart();
+		FlurryAgent.onStartSession(this, MySettings.getFlurryAPIkey());
+	}
+
+	@Override
+	protected void onStop()
+	{
+		MyLog.i("MainActivity", "onStop()");
+		super.onStop();
+		FlurryAgent.onEndSession(this);
+	}
 }

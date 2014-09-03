@@ -1,3 +1,8 @@
+/*
+ * Copyright 2014 Loren A. Baker
+ * All rights reserved.
+ */
+
 package com.lbconsulting.splits.classes;
 
 import java.lang.reflect.Field;
@@ -22,7 +27,10 @@ public class MySettings {
 
 	public static final boolean DEVELOPER_MODE = false;
 	public static final boolean IS_BETA = true;
-	public static final long BETA_EXPIRATION_DATE = 1412146800000L; // Oct 1, 2014
+	public static final int BETA_EXPIRATION_MONTH = 10;
+	public static final int BETA_EXPIRATION_DAY = 21;
+	public static final int BETA_EXPIRATION_YEAR = 2014;
+	public static String BETA_EXPIRATION_MESSAGE = "";
 
 	// TODO: revise max number of races, relays, and athletes for free version
 	public static final int MAX_NUMBER_OF_RACES = 20;
@@ -136,6 +144,15 @@ public class MySettings {
 		KEY_RESET_ATHLETES = res.getString(R.string.settings_reset_athletes_key);
 
 		string_relay_leg_text = res.getString(R.string.relay_leg_text);
+		BETA_EXPIRATION_MESSAGE = "This Splits beta version expired on "
+				+ String.valueOf(BETA_EXPIRATION_MONTH) + "/"
+				+ String.valueOf(BETA_EXPIRATION_DAY) + "/"
+				+ String.valueOf(BETA_EXPIRATION_YEAR) + ".";
+		/*
+				Calendar expirationDate = Calendar.getInstance();
+				// expirationDate.set(2014, 9, 1);
+				expirationDate.set(2014, 9, 1, 0, 0, 0);
+				BETA_EXPIRATION_DATE = expirationDate.getTimeInMillis();*/
 	}
 
 	public static final String HELP_MESSAGE = "helpMessage";
@@ -202,7 +219,8 @@ public class MySettings {
 
 	public static CharSequence getMainActivityDrawerTitle() {
 		SharedPreferences storedStates = mContext.getSharedPreferences(SPLITS_SHARED_PREFERENCES, Context.MODE_PRIVATE);
-		return storedStates.getString(STATE_MAIN_ACTIVITY_DRAWER_TITLE, "");
+		return storedStates.getString(STATE_MAIN_ACTIVITY_DRAWER_TITLE,
+				mContext.getResources().getString(R.string.app_name));
 	}
 
 	public static CharSequence getMainActivityTitle() {

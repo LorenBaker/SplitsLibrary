@@ -97,6 +97,16 @@
 		android:showAsAction="never"
 		android:title="@string/menu_help_title"/>
 	<item
+		android:id="@+id/action_help_faq"
+		android:orderInCategory="215"
+		android:showAsAction="never"
+		android:title="@string/menu_help_faq_title"/>
+	<item
+		android:id="@+id/action_help_quick_start"
+		android:orderInCategory="215"
+		android:showAsAction="never"
+		android:title="@string/menu_help_quick_start_title"/>
+	<item
 		android:id="@+id/action_about"
 		android:orderInCategory="220"
 		android:showAsAction="never"

@@ -1,7 +1,9 @@
 package com.lbconsulting.splits.dialogs;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import android.app.DialogFragment;
 import android.content.ContentValues;
@@ -16,6 +18,7 @@ import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.flurry.android.FlurryAgent;
 import com.lbconsulting.splits.R;
 import com.lbconsulting.splits.classes.DateTimeUtils;
 import com.lbconsulting.splits.classes.MyLog;
@@ -210,6 +213,8 @@ public class Number_Picker_DialogFragment extends DialogFragment {
 
 				@Override
 				public void onClick(View v) {
+					// send event to Flurry
+					Map<String, String> timeAdjustmentParams = new HashMap<String, String>();
 
 					// calculate the time adjustment amount
 					ArrayList<Integer> finalTime_HrsMinSec = new ArrayList<Integer>();
@@ -231,6 +236,7 @@ public class Number_Picker_DialogFragment extends DialogFragment {
 					long finalTime = DateTimeUtils.getTime(finalTime_HrsMinSec);
 					long totalDelta = finalTime - mOrignialTime;
 					if (mIsRelay) {
+						timeAdjustmentParams.put("RelayTimeAdjustment", String.valueOf(totalDelta));
 						UpdateRaceSplits(totalDelta);
 						// update the race's time
 						ContentValues newFieldValues = new ContentValues();
@@ -240,12 +246,15 @@ public class Number_Picker_DialogFragment extends DialogFragment {
 
 					} else {
 						UpdateRaceSplits(totalDelta);
+						timeAdjustmentParams.put("RaceTimeAdjustment", String.valueOf(totalDelta));
 						// update the race's time
 						ContentValues newFieldValues = new ContentValues();
 						newFieldValues.put(RacesTable.COL_RACE_TIME, finalTime);
 						RacesTable.UpdateRaceFieldValues(getActivity(), mRaceID, newFieldValues);
 						RacesTable.setAthleteEventBestTime(getActivity(), mEventShortTitle, mRaceAthleteID, false, 0);
 					}
+
+					FlurryAgent.logEvent("RaceTimeChanged", timeAdjustmentParams);
 					getDialog().dismiss();
 				}
 
