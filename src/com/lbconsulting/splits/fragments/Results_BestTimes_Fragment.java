@@ -97,8 +97,6 @@ public class Results_BestTimes_Fragment extends Fragment implements LoaderCallba
 					Bundle bestTimesBundle = new Bundle();
 					bestTimesBundle.putLong(MySettings.STATE_BEST_TIMES_ATHLETE_ID, mAthleteID);
 					MySettings.set("", bestTimesBundle);
-
-					// EventBus.getDefault().post(new UpdateAllRacesAthlete(mAthleteID, pos));
 				}
 
 				@Override
@@ -137,9 +135,6 @@ public class Results_BestTimes_Fragment extends Fragment implements LoaderCallba
 				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 					mLoaderManager.restartLoader(MySettings.LOADER_FRAG_RESULTS_BEST_TIMES, null,
 							mBestTimesFragmentCallbacks);
-					/*if (!mProhibitAllRacesRadioButtonUpdate) {
-						EventBus.getDefault().post(new UpdateAllRacesRadioButtons(isChecked));
-					}*/
 				}
 			});
 		}
@@ -149,21 +144,6 @@ public class Results_BestTimes_Fragment extends Fragment implements LoaderCallba
 		mBestTimesFragmentCallbacks = this;
 		return view;
 	}
-
-	/*	public void onEvent(UpdateBestTimesAthlete event) {
-			mAthleteID = event.getAthleteID();
-			spinResultsAthletes.setSelection(event.getSpinnerPosition());
-		}*/
-
-	/*	public void onEvent(UpdateBestTimesRadioButtons event) {
-			mProhibitAllRacesRadioButtonUpdate = true;
-			if (event.isRelaysChecked()) {
-				rbInRelays.setChecked(true);
-			} else {
-				rbIndividualEvents.setChecked(true);
-			}
-			mProhibitAllRacesRadioButtonUpdate = false;
-		}*/
 
 	private void setRadioButtons(boolean inRelays) {
 		if (inRelays) {

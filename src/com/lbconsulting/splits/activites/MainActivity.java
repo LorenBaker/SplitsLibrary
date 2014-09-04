@@ -131,7 +131,6 @@ public class MainActivity extends Activity {
 
 		MySettings.setContext(this);
 
-		// long now = System.currentTimeMillis(); // current time
 		if (MySettings.IS_BETA) {
 			Calendar now = Calendar.getInstance();
 
@@ -155,7 +154,6 @@ public class MainActivity extends Activity {
 		mMemoryCache = Splits_ContentProvider.getAthleteThumbnailMemoryCache();
 		mDrawerTitle = getResources().getString(R.string.app_name);
 		mTitle = mDrawerTitle;
-		// mTitle = mDrawerTitle = getTitle();
 		mFragmentTitles = getResources().getStringArray(R.array.navDrawerTitles);
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
@@ -274,16 +272,12 @@ public class MainActivity extends Activity {
 					menu.findItem(R.id.action_deselect_all_events).setVisible(false);
 					menu.findItem(R.id.action_race_splits_edit).setVisible(false);
 					menu.findItem(R.id.action_race_splits_discard).setVisible(false);
-
 					menu.findItem(R.id.action_email_times).setVisible(false);
 					menu.findItem(R.id.action_email_race_results).setVisible(false);
-					// menu.findItem(R.id.action_email_splits_csv_file).setVisible(false);
-
 					menu.findItem(R.id.action_preferences).setVisible(true);
 					menu.findItem(R.id.action_help).setVisible(true);
 					menu.findItem(R.id.action_help_faq).setVisible(true);
 					menu.findItem(R.id.action_help_quick_start).setVisible(true);
-
 					menu.findItem(R.id.action_about).setVisible(true);
 
 					break;
@@ -295,11 +289,8 @@ public class MainActivity extends Activity {
 					menu.findItem(R.id.action_deselect_all_events).setVisible(false);
 					menu.findItem(R.id.action_race_splits_edit).setVisible(false);
 					menu.findItem(R.id.action_race_splits_discard).setVisible(false);
-
 					menu.findItem(R.id.action_email_times).setVisible(false);
 					menu.findItem(R.id.action_email_race_results).setVisible(false);
-					// menu.findItem(R.id.action_email_splits_csv_file).setVisible(false);
-
 					menu.findItem(R.id.action_preferences).setVisible(true);
 					menu.findItem(R.id.action_help).setVisible(true);
 					menu.findItem(R.id.action_help_faq).setVisible(true);
@@ -316,11 +307,8 @@ public class MainActivity extends Activity {
 					menu.findItem(R.id.action_deselect_all_events).setVisible(true);
 					menu.findItem(R.id.action_race_splits_edit).setVisible(false);
 					menu.findItem(R.id.action_race_splits_discard).setVisible(false);
-
 					menu.findItem(R.id.action_email_times).setVisible(false);
 					menu.findItem(R.id.action_email_race_results).setVisible(false);
-					// menu.findItem(R.id.action_email_splits_csv_file).setVisible(false);
-
 					menu.findItem(R.id.action_preferences).setVisible(true);
 					menu.findItem(R.id.action_help).setVisible(true);
 					menu.findItem(R.id.action_help_faq).setVisible(true);
@@ -337,11 +325,8 @@ public class MainActivity extends Activity {
 					menu.findItem(R.id.action_deselect_all_events).setVisible(false);
 					menu.findItem(R.id.action_race_splits_edit).setVisible(true);
 					menu.findItem(R.id.action_race_splits_discard).setVisible(true);
-
 					menu.findItem(R.id.action_email_times).setVisible(false);
 					menu.findItem(R.id.action_email_race_results).setVisible(true);
-					// menu.findItem(R.id.action_email_splits_csv_file).setVisible(true);
-
 					menu.findItem(R.id.action_preferences).setVisible(true);
 					menu.findItem(R.id.action_help).setVisible(true);
 					menu.findItem(R.id.action_help_faq).setVisible(true);
@@ -358,11 +343,8 @@ public class MainActivity extends Activity {
 					menu.findItem(R.id.action_deselect_all_events).setVisible(false);
 					menu.findItem(R.id.action_race_splits_edit).setVisible(false);
 					menu.findItem(R.id.action_race_splits_discard).setVisible(false);
-
 					menu.findItem(R.id.action_email_times).setVisible(true);
 					menu.findItem(R.id.action_email_race_results).setVisible(false);
-					// menu.findItem(R.id.action_email_splits_csv_file).setVisible(true);
-
 					menu.findItem(R.id.action_preferences).setVisible(true);
 					menu.findItem(R.id.action_help).setVisible(true);
 					menu.findItem(R.id.action_help_faq).setVisible(true);
@@ -380,18 +362,14 @@ public class MainActivity extends Activity {
 					menu.findItem(R.id.action_deselect_all_events).setVisible(false);
 					menu.findItem(R.id.action_race_splits_edit).setVisible(false);
 					menu.findItem(R.id.action_race_splits_discard).setVisible(false);
-
 					menu.findItem(R.id.action_email_times).setVisible(false);
 					menu.findItem(R.id.action_email_race_results).setVisible(false);
-					// menu.findItem(R.id.action_email_splits_csv_file).setVisible(false);
-
 					menu.findItem(R.id.action_preferences).setVisible(true);
 					menu.findItem(R.id.action_help).setVisible(true);
 					menu.findItem(R.id.action_help_faq).setVisible(true);
 					menu.findItem(R.id.action_help_quick_start).setVisible(true);
 					menu.findItem(R.id.action_about).setVisible(true);
 					break;
-
 			}
 		}
 
@@ -421,7 +399,7 @@ public class MainActivity extends Activity {
 
 		} else if (itemId == R.id.action_add_athlete_name) {
 			if (OkToAddAthlete()) {
-				String dialogTitle = "Enter Athlete Name";
+				String dialogTitle = getString(R.string.dialog_enter_athlete_name_title);
 				FragmentManager fm = getFragmentManager();
 				EditText_DialogFragment editAthleteDisplayName = EditText_DialogFragment
 						.newInstance(dialogTitle, -1, null, MySettings.DIALOG_EDIT_TEXT_ADD_ATHLETE_NAME);
@@ -445,7 +423,6 @@ public class MainActivity extends Activity {
 
 		} else if (itemId == R.id.action_deselect_all_events) {
 			EventsTable.SelectAllEvents(this, mMeetType, false);
-			// Toast.makeText(this, "action_deselect_all_events", Toast.LENGTH_SHORT).show();
 			return true;
 
 		} else if (itemId == R.id.action_race_splits_edit) {
@@ -454,7 +431,6 @@ public class MainActivity extends Activity {
 					.newInstance(dialogTitle, mSelectedRaceID, mIsRelay, DateTimeUtils.FORMAT_TENTHS);
 			FragmentManager fm = getFragmentManager();
 			finalTimeNumberPicker.show(fm, "fragment_final_number_picker");
-			// Toast.makeText(this, "action_edit", Toast.LENGTH_SHORT).show();
 			return true;
 
 		} else if (itemId == R.id.action_race_splits_discard) {
@@ -464,22 +440,15 @@ public class MainActivity extends Activity {
 					.newInstance(dialogTitle, message, mSelectedRaceID, mIsRelay);
 			FragmentManager fm = getFragmentManager();
 			deleteAthletes.show(fm, "fragment_delete_race");
-			// Toast.makeText(this, "action_discard", Toast.LENGTH_SHORT).show();
 			return true;
 
 		} else if (itemId == R.id.action_email_times) {
 			EmailTimes();
-			// Toast.makeText(this, "action_email_times", Toast.LENGTH_SHORT).show();
 			return true;
 
 		} else if (itemId == R.id.action_email_race_results) {
 			EmailRaceResults();
-			// Toast.makeText(this, "action_email_race_results", Toast.LENGTH_SHORT).show();
 			return true;
-
-			/*} else if (itemId == R.id.action_email_splits_csv_file) {
-				Toast.makeText(this, "action_email_splits_csv_file", Toast.LENGTH_SHORT).show();
-				return true;*/
 
 		} else if (itemId == R.id.action_preferences) {
 			ClearRace();
@@ -654,17 +623,17 @@ public class MainActivity extends Activity {
 					eventShortTitle = raceCursor.getString(raceCursor
 							.getColumnIndexOrThrow(RacesTable.COL_EVENT_SHORT_TITLE));
 					raceHeader = makeRaceHeader(athleteName, meetID, raceDateValue, raceTimeValue, eventShortTitle);
-					emailSubject = athleteName + " " + eventShortTitle + " " + "Results";
+					emailSubject = athleteName + " " + eventShortTitle + " " + getString(R.string.menu_results_title);
 				}
 
 				// records: Lap Distance Split Time
 				splitsCursor = SplitsTable.getAllSplitsCursor(this, raceID, false, SplitsTable.SORT_ORDER_SPLIT_ID_ASC);
 				if (splitsCursor != null && splitsCursor.getCount() > 0) {
 					// add column headers into their column arrays
-					lapList.add("Lap");
-					distanceList.add("Dist");
-					splitList.add("Split");
-					timeList.add("Time");
+					lapList.add(getString(R.string.lap_text));
+					distanceList.add(getString(R.string.dist_text));
+					splitList.add(getString(R.string.btnSplit_text));
+					timeList.add(getString(R.string.time_text));
 
 					NumberFormat localNumberFormater = NumberFormat.getInstance();
 					// add split data into their column arrays
@@ -711,20 +680,18 @@ public class MainActivity extends Activity {
 					eventShortTitle = relayRaceCursor.getString(relayRaceCursor
 							.getColumnIndexOrThrow(RelaysTable.COL_EVENT_SHORT_TITLE));
 					raceHeader = makeRaceHeader(null, meetID, raceDateValue, raceTimeValue, eventShortTitle);
-					emailSubject = athleteName + " " + eventShortTitle + " " + "Results";
+					emailSubject = athleteName + " " + eventShortTitle + " " + getString(R.string.menu_results_title);
 				}
 
 				// records: Leg Name Event Split Time
 				splitsCursor = SplitsTable.getAllSplitsCursor(this, relayID, true, SplitsTable.SORT_ORDER_SPLIT_ID_ASC);
 				if (splitsCursor != null && splitsCursor.getCount() > 0) {
 					// add column headers into their column arrays
-					lapList.add("Leg");
-					athleteList.add("Athlete Name");
-					eventShortTitleList.add("Event");
-					splitList.add("Split");
-					// timeList.add("Time");
+					lapList.add(getString(R.string.relay_leg_text));
+					athleteList.add(getString(R.string.athlete_name_text));
+					eventShortTitleList.add(getString(R.string.event_text));
+					splitList.add(getString(R.string.splits_text));
 
-					// NumberFormat localNumberFormater = NumberFormat.getInstance();
 					// add split data into their column arrays
 					while (splitsCursor.moveToNext()) {
 						lapNumber = splitsCursor.getString(splitsCursor
@@ -737,22 +704,14 @@ public class MainActivity extends Activity {
 						eventShortTitle = splitsCursor.getString(splitsCursor
 								.getColumnIndexOrThrow(SplitsTable.COL_EVENT_SHORT_TITLE));
 
-						/*distance = localNumberFormater.format(
-								splitsCursor.getInt(splitsCursor.getColumnIndexOrThrow(SplitsTable.COL_DISTANCE)));*/
-
 						splitDuration = splitsCursor.getLong(splitsCursor
 								.getColumnIndexOrThrow(SplitsTable.COL_SPLIT_TIME));
 						splitTime = DateTimeUtils.formatDuration(splitDuration, DateTimeUtils.FORMAT_TENTHS);
-
-						/*cumulativeDuration = splitsCursor.getLong(splitsCursor
-								.getColumnIndexOrThrow(SplitsTable.COL_CUMULATIVE_TIME));
-						cumulativeTime = DateTimeUtils.formatDuration(cumulativeDuration, DateTimeUtils.FORMAT_TENTHS);*/
 
 						athleteList.add(athleteName);
 						lapList.add(lapNumber);
 						eventShortTitleList.add(eventShortTitle);
 						splitList.add(splitTime);
-						// timeList.add(cumulativeTime);
 					}
 
 				}
@@ -817,9 +776,9 @@ public class MainActivity extends Activity {
 				isRelay = Results_BestTimes_Fragment.IsRelay();
 				athleteName = AthletesTable.getDisplayName(this, athleteID);
 				if (isRelay) {
-					emailSubject = athleteName + " " + "Relay Best Times";
+					emailSubject = athleteName + " " + getString(R.string.relay_best_times_text);
 				} else {
-					emailSubject = athleteName + " " + "Best Times";
+					emailSubject = athleteName + " " + getString(R.string.best_times_text);
 				}
 				cursor = RacesTable.getAllBestTimeRacesCursor(this, athleteID, mMeetType, isRelay);
 				break;
@@ -829,9 +788,9 @@ public class MainActivity extends Activity {
 				isRelay = Results_AllRaces_Fragment.IsRelay();
 				athleteName = AthletesTable.getDisplayName(this, athleteID);
 				if (isRelay) {
-					emailSubject = athleteName + " " + "Relay Times";
+					emailSubject = athleteName + " " + getString(R.string.relay_times_text);
 				} else {
-					emailSubject = athleteName + " " + "Times";
+					emailSubject = athleteName + " " + getString(R.string.times_text);
 				}
 				cursor = RacesTable.getAllRacesCursor(this, athleteID, mMeetType, isRelay);
 				break;
@@ -1036,7 +995,6 @@ public class MainActivity extends Activity {
 		if (SplitsBuild.isFree(this)) {
 			if (mAthleteCount >= MySettings.MAX_NUMBER_OF_ATHLETES) {
 				result = false;
-				// TODO: create Splits web site and revise dialog_maxAthletesgMessage
 				Resources res = getResources();
 				String dialogTitle = res.getString(string.dialog_maxAthletesTitle);
 				String dialogMessage = res.getString(string.dialog_maxAthletesgMessage);
@@ -1218,19 +1176,19 @@ public class MainActivity extends Activity {
 		// create the new fragment
 		switch (position) {
 			case FRAG_INDIVIDUAL_RACES:
-				fragmentTitle = "Race";
+				fragmentTitle = getString(R.string.race_text);
 				fragment = Race_Timer_Fragment.newInstance();
 				break;
 			case FRAG_RELAY_RACES:
-				fragmentTitle = "Relay";
+				fragmentTitle = getString(R.string.relay_text);
 				fragment = Relay_Timer_Fragment.newInstance();
 				break;
 			case FRAG_RESULTS_BEST_TIMES:
-				fragmentTitle = ": Best Times";
+				fragmentTitle = ": " + getString(R.string.best_times_text);
 				fragment = Results_BestTimes_Fragment.newInstance();
 				break;
 			case FRAG_RESULTS_ALL_RACES:
-				fragmentTitle = ": All Races";
+				fragmentTitle = ": " + getString(R.string.all_races_text);
 				fragment = Results_AllRaces_Fragment.newInstance();
 				break;
 			case FRAG_ATHLETES:
@@ -1246,11 +1204,11 @@ public class MainActivity extends Activity {
 				fragment = Create_Event_Fragment.newInstance();
 				break;
 			case FRAG_RESULTS_RACE_SPLITS:
-				fragmentTitle = "Race Splits";
+				fragmentTitle = getString(R.string.race_splits_text);
 				fragment = Results_RaceSplitsFragment.newInstance(mSelectedRaceID);
 				break;
 			case FRAG_RESULTS_RELAY_SPLITS:
-				fragmentTitle = "Relay Splits";
+				fragmentTitle = getString(R.string.relay_splits_text);
 				fragment = Results_RelaySplitsFragment.newInstance(mSelectedRaceID);
 				break;
 
@@ -1360,6 +1318,7 @@ public class MainActivity extends Activity {
 	{
 		MyLog.i("MainActivity", "onStart()");
 		super.onStart();
+		FlurryAgent.setReportLocation(true);
 		FlurryAgent.onStartSession(this, MySettings.getFlurryAPIkey());
 	}
 

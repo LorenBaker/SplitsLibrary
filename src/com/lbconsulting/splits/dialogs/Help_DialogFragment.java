@@ -16,7 +16,6 @@ import com.lbconsulting.splits.classes.MyLog;
 
 public class Help_DialogFragment extends DialogFragment {
 
-	// private static final String ACTIVE_FRAGMENT = "activeFragment";
 	private static final String DIALOG_MESSAGE = "dialogMessage";
 
 	// private int mActiveFragment;
@@ -32,7 +31,6 @@ public class Help_DialogFragment extends DialogFragment {
 	public static Help_DialogFragment newInstance(String dialogMessage) {
 		Help_DialogFragment fragment = new Help_DialogFragment();
 		Bundle args = new Bundle();
-		// args.putInt(ACTIVE_FRAGMENT, activeFragment);
 		args.putString(DIALOG_MESSAGE, dialogMessage);
 		fragment.setArguments(args);
 		return fragment;
@@ -44,7 +42,6 @@ public class Help_DialogFragment extends DialogFragment {
 
 		Bundle args = getArguments();
 		if (args != null) {
-			// mActiveFragment = args.getInt(ACTIVE_FRAGMENT, -1);
 			mDialogMessage = args.getString(DIALOG_MESSAGE);
 		}
 
@@ -52,7 +49,6 @@ public class Help_DialogFragment extends DialogFragment {
 
 		getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getDialog().setCanceledOnTouchOutside(false);
-		// getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
 		tvDialogMessage = (TextView) view.findViewById(R.id.tvDialogMessage);
 		if (tvDialogMessage != null) {

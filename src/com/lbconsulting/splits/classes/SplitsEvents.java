@@ -2,19 +2,6 @@ package com.lbconsulting.splits.classes;
 
 public class SplitsEvents {
 
-	/*	public static class HeatDescriptionChanged {
-
-			String mHeatDescription;
-
-			public HeatDescriptionChanged(String heatDescription) {
-				mHeatDescription = heatDescription;
-			}
-
-			public String getHeatDescription() {
-				return mHeatDescription;
-			}
-		}*/
-
 	public static class ClearRace {
 
 		public ClearRace() {
@@ -34,32 +21,6 @@ public class SplitsEvents {
 			return mEventShortTitle;
 		}
 	}
-
-	/*	public static class MeetTypeChanged {
-
-			int mMeetType;
-
-			public MeetTypeChanged(int meetType) {
-				mMeetType = meetType;
-			}
-
-			public int getMeetType() {
-				return mMeetType;
-			}
-		}*/
-
-	/*	public static class NumberFormatChanged {
-
-			int mNumberFormat;
-
-			public NumberFormatChanged(int NumberFormat) {
-				mNumberFormat = NumberFormat;
-			}
-
-			public int getNumberFormat() {
-				return mNumberFormat;
-			}
-		}*/
 
 	public static class ShowStopButton {
 
@@ -137,98 +98,12 @@ public class SplitsEvents {
 		}
 	}
 
-	/*	public static class UpdateBestTimesAthlete {
-
-			long mAthleteID;
-			int mSpinnerPosition;
-
-			public UpdateBestTimesAthlete(long athleteID, int spinnerPosition) {
-				mAthleteID = athleteID;
-				mSpinnerPosition = spinnerPosition;
-			}
-
-			public long getAthleteID() {
-				return mAthleteID;
-			}
-
-			public int getSpinnerPosition() {
-				return mSpinnerPosition;
-			}
-		}*/
-
-	/*	public static class UpdateBestTimesRadioButtons {
-
-			boolean mrbRelaysChecked;
-
-			public UpdateBestTimesRadioButtons(boolean rbRelaysChecked) {
-				mrbRelaysChecked = rbRelaysChecked;
-			}
-
-			public boolean isRelaysChecked() {
-				return mrbRelaysChecked;
-			}
-
-		}*/
-
-	/*	public static class UpdateAllRacesAthlete {
-
-			long mAthleteID;
-			int mSpinnerPosition;
-
-			public UpdateAllRacesAthlete(long athleteID, int spinnerPosition) {
-				mAthleteID = athleteID;
-				mSpinnerPosition = spinnerPosition;
-			}
-
-			public long getAthleteID() {
-				return mAthleteID;
-			}
-
-			public int getSpinnerPosition() {
-				return mSpinnerPosition;
-			}
-		}*/
-
-	/*	public static class UpdateAllRacesRadioButtons {
-
-			boolean mrbRelaysChecked;
-
-			public UpdateAllRacesRadioButtons(boolean rbRelaysChecked) {
-				mrbRelaysChecked = rbRelaysChecked;
-			}
-
-			public boolean isRelaysChecked() {
-				return mrbRelaysChecked;
-			}
-
-		}*/
-
 	public static class UpdateBestTimes {
 
 		public UpdateBestTimes() {
 		}
 
 	}
-
-	/*	public static class FinishRaceSplitsActivity {
-
-			public FinishRaceSplitsActivity() {
-			}
-
-		}*/
-
-	/*	public static class RaceFinalTime {
-
-			long mRaceFinalTime;
-
-			public RaceFinalTime(long raceFinalTime) {
-				mRaceFinalTime = raceFinalTime;
-			}
-
-			public long getRaceFinalTime() {
-				return mRaceFinalTime;
-			}
-		}*/
 
 	public static class DuplicateAthleteSelected {
 
@@ -318,11 +193,5 @@ public class SplitsEvents {
 			return mSplitsResultsFragment;
 		}
 	}
-
-	/*	public static class FAQ_DialogClosed {
-
-			public FAQ_DialogClosed() {
-			}
-		}*/
 
 }

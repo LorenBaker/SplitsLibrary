@@ -12,9 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.lbconsulting.splits.R;
-import com.lbconsulting.splits.classes.SplitsEvents.AddAthletetNameToContacts;
 import com.lbconsulting.splits.classes.MyLog;
 import com.lbconsulting.splits.classes.MySettings;
+import com.lbconsulting.splits.classes.SplitsEvents.AddAthletetNameToContacts;
 import com.lbconsulting.splits.database.AthletesTable;
 import com.lbconsulting.splits.database.EventsTable;
 import com.lbconsulting.splits.database.MeetsTable;
@@ -76,7 +76,7 @@ public class EditText_DialogFragment extends DialogFragment {
 			if (mItemText != null) {
 				txtEditText.setText(mItemText);
 			} else {
-				txtEditText.setHint("Athlete Name");
+				txtEditText.setHint(getString(R.string.athlete_name_text));
 			}
 		}
 

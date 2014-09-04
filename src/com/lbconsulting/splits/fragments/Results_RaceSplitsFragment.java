@@ -62,7 +62,6 @@ public class Results_RaceSplitsFragment extends Fragment implements LoaderCallba
 		// Supply listID input as an argument.
 		Bundle args = new Bundle();
 		args.putLong(MySettings.STATE_RACE_SPLITS_RACE_ID, raceID);
-		// args.putBoolean(MySettings.STATE_RACE_SPLITS_IS_RELAY, isRelay);
 		fragment.setArguments(args);
 		return fragment;
 	}
@@ -142,12 +141,6 @@ public class Results_RaceSplitsFragment extends Fragment implements LoaderCallba
 
 	}
 
-	/*	public void onEvent(RaceFinalTime event) {
-			tvAthleteName_RaceAndTime.setText(getAthleteName_Race_Time(mAthleteID, mShortRaceTitle,
-					event.getRaceFinalTime(), mNumberFormat));
-			RacesTable.setAthleteEventBestTime(getActivity(), mShortRaceTitle, mAthleteID, false, 0);
-		}*/
-
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		MyLog.i("Results_RaceSplitsFragment", "onActivityCreated()");
@@ -161,14 +154,12 @@ public class Results_RaceSplitsFragment extends Fragment implements LoaderCallba
 	@Override
 	public void onResume() {
 		MyLog.i("Results_RaceSplitsFragment", "onResume()");
-		// EventBus.getDefault().register(this);
 		super.onResume();
 	}
 
 	@Override
 	public void onPause() {
 		MyLog.i("Results_RaceSplitsFragment", "onPause()");
-		// EventBus.getDefault().unregister(this);
 		super.onPause();
 	}
 

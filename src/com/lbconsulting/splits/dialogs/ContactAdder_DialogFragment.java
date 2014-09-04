@@ -86,7 +86,7 @@ public class ContactAdder_DialogFragment extends DialogFragment implements OnAcc
 
 		Bundle args = getArguments();
 		if (args != null) {
-			mDialogTitle = "Save To Contacts";
+			mDialogTitle = getActivity().getString(R.string.save_to_contacts_text);
 			mAthleteID = args.getLong(DIALOG_ATHLETE_ID, -1);
 			mAthleteDisplayName = args.getString(DIALOG_ATHLETE_DISPLAY_NAME);
 		}

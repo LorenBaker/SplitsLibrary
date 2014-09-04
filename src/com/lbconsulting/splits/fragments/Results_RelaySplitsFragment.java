@@ -62,7 +62,6 @@ public class Results_RelaySplitsFragment extends Fragment implements LoaderCallb
 		Results_RelaySplitsFragment fragment = new Results_RelaySplitsFragment();
 		Bundle args = new Bundle();
 		args.putLong(MySettings.STATE_RACE_SPLITS_RACE_ID, relayID);
-		// args.putBoolean(MySettings.STATE_RACE_SPLITS_IS_RELAY, isRelay);
 		fragment.setArguments(args);
 		return fragment;
 	}
@@ -75,7 +74,6 @@ public class Results_RelaySplitsFragment extends Fragment implements LoaderCallb
 		Bundle args = getArguments();
 		if (args != null) {
 			mRelayID = args.getLong(MySettings.STATE_RACE_SPLITS_RACE_ID, -1);
-			// mIsRelay = args.getBoolean(MySettings.STATE_RACE_SPLITS_IS_RELAY);
 		}
 
 		Cursor relayRaceCursor = RelaysTable.getRelayRaceCursor(getActivity(), mRelayID);
@@ -138,11 +136,6 @@ public class Results_RelaySplitsFragment extends Fragment implements LoaderCallb
 		return sb.toString();
 	}
 
-	/*	public void onEvent(RaceFinalTime event) {
-			tvRelayNameAndTime.setText(getRelayNameAndTime(event.getRaceFinalTime()));
-			RelaysTable.setRelayBestTime(getActivity(), mShortRelayTitle);
-		}*/
-
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		MyLog.i("Results_RelaySplitsFragment", "onActivityCreated()");
@@ -156,14 +149,12 @@ public class Results_RelaySplitsFragment extends Fragment implements LoaderCallb
 	@Override
 	public void onResume() {
 		MyLog.i("Results_RelaySplitsFragment", "onResume()");
-		// EventBus.getDefault().register(this);
 		super.onResume();
 	}
 
 	@Override
 	public void onPause() {
 		MyLog.i("Results_RelaySplitsFragment", "onPause()");
-		// EventBus.getDefault().unregister(this);
 		super.onPause();
 	}
 

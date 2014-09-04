@@ -188,7 +188,7 @@ public class Number_Picker_DialogFragment extends DialogFragment {
 					break;
 
 				case 2:
-					tvMilliSeconds.setText("Hunds");
+					tvMilliSeconds.setText(R.string.hunds_text);
 					npMilliSeconds.setMaxValue(99);
 					npMilliSeconds.setFormatter(new NumberPicker.Formatter() {
 

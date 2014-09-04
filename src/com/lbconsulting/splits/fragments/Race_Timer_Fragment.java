@@ -134,11 +134,6 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 	public static Race_Timer_Fragment newInstance() {
 		MyLog.i("Race_Timer_Fragment", "newInstance()");
 		Race_Timer_Fragment fragment = new Race_Timer_Fragment();
-
-		/*		Bundle args = new Bundle();
-				args.putInt(MySettings.KEY_MEET_TYPE, meetType);
-				args.putBoolean(MySettings.KEY_BEST_TIMES_SHOWN, areBestTimesShown);
-				fragment.setArguments(args);*/
 		return fragment;
 	}
 
@@ -146,15 +141,6 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		MyLog.i("Race_Timer_Fragment", "onCreateView()");
 		View view = inflater.inflate(R.layout.frag_race_timer, container, false);
-
-		/*		Bundle bundle = getArguments();
-				if (bundle != null) {
-					mMeetType = bundle.getInt(MySettings.KEY_MEET_TYPE, MySettings.SWIM_MEET);
-				}*/
-
-		/*SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-		mMeetType = Integer.valueOf(sharedPrefs.getString(MySettings.KEY_MEET_TYPE,
-				String.valueOf(MySettings.SWIM_MEET)));*/
 
 		mEventShortTitle = getActivity().getResources().getString(R.string.not_available_text);
 
@@ -694,7 +680,6 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 				resetRaceStartTime();
 				SoundError();
 
-				// TODO: create Splits web site and revise dialog_maxRacesMessage
 				String dialogTitle = res.getString(string.dialog_maxRacesTitle);
 				String dialogMessage = res.getString(string.dialog_maxRacesMessage);
 

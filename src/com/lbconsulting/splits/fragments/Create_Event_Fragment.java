@@ -156,7 +156,7 @@ public class Create_Event_Fragment extends Fragment implements OnClickListener, 
 							.append(txtStyle.getText().toString())
 							.append(" [").append(BY)
 							.append(txtLapDistance.getText().toString())
-							.append("s]");
+							.append(R.string.s_close_right_brack_text);
 				} else {
 					// lapDistance == distance
 					sb.append(txtDistance.getText().toString()).append(" ")

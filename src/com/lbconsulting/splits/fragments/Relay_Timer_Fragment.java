@@ -141,10 +141,6 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 	public static Relay_Timer_Fragment newInstance() {
 		MyLog.i("Relay_Timer_Fragment", "newInstance()");
 		Relay_Timer_Fragment fragment = new Relay_Timer_Fragment();
-
-		/*		Bundle args = new Bundle();
-				args.putInt(MySettings.KEY_MEET_TYPE, meetType);
-				fragment.setArguments(args);*/
 		return fragment;
 	}
 
@@ -152,11 +148,6 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		MyLog.i("Relay_Timer_Fragment", "onCreateView()");
 		View view = inflater.inflate(R.layout.frag_relay_timer, container, false);
-
-		/*		Bundle bundle = getArguments();
-				if (bundle != null) {
-					mMeetType = bundle.getInt(MySettings.KEY_MEET_TYPE, MySettings.SWIM_MEET);
-				}*/
 
 		mRelayEventShortTitle = getActivity().getResources().getString(R.string.not_available_text);
 
@@ -744,7 +735,6 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 				mRelay.setRelayStartTime(-1);
 				SoundError();
 
-				// TODO: create Splits web site and revise dialog_maxRacesMessage
 				String dialogTitle = res.getString(string.dialog_maxRelaysTitle);
 				String dialogMessage = res.getString(string.dialog_maxRelaysMessage);
 
