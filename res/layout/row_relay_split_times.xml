@@ -21,7 +21,7 @@
 		android:layout_height="wrap_content"
 		android:layout_weight="30"
 		android:gravity="left"
-		android:paddingLeft="8dp" />
+		android:paddingLeft="12dp" />
 
 	<TextView
 		android:id="@+id/tvEventShortTitle"
@@ -30,7 +30,7 @@
 		android:layout_height="wrap_content"
 		android:layout_weight="25"
 		android:gravity="left"
-		android:paddingLeft="10dp" />
+		android:paddingLeft="12dp" />
 
 	<TextView
 		android:id="@+id/tvSplit"
@@ -39,6 +39,6 @@
 		android:layout_height="wrap_content"
 		android:layout_weight="22"
 		android:gravity="right"
-		android:paddingRight="8dp" />
+		android:paddingRight="12dp" />
 
 </LinearLayout>

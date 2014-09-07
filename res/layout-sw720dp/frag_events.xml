@@ -3,12 +3,20 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:orientation="vertical"
-	android:padding="4dp" >
+	android:padding="64dp" >
 
 	<ListView
-		android:id="@+id/lvMeetEvents"
+		android:id="@+id/lvEvents"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent" >
+		android:layout_height="0dp"
+		android:layout_weight="1" >
 	</ListView>
+
+	<Button
+		android:id="@+id/btnOkFinished"
+		style="@style/btnStyleGenoa"
+		android:layout_width="match_parent"
+		android:layout_height="96dp"
+		android:text="@string/btnOK_text" />
 
 </LinearLayout>

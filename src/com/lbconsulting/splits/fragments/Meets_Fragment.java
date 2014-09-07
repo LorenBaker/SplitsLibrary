@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.LoaderManager;
 import android.app.LoaderManager.LoaderCallbacks;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.DialogInterface;
 import android.content.Loader;
@@ -21,6 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView.MultiChoiceModeListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -75,49 +77,9 @@ public class Meets_Fragment extends Fragment implements LoaderCallbacks<Cursor> 
 
 			@Override
 			public void onClick(View v) {
-				if (txtMeetTitle.getText().toString().isEmpty()) {
-					ShowErrorDialog(getActivity().getString(R.string.btnCreateMeetTitle_meet_title_not_provided));
-					return;
-				}
-
-				long newMeetID = MeetsTable.CreateMeet(getActivity(), mMeetType, txtMeetTitle.getText().toString());
-
-				if (newMeetID > 0) {
-					String toastMessage = new StringBuilder()
-							.append(txtMeetTitle.getText().toString().trim())
-							.append(System.getProperty("line.separator"))
-							.append(getActivity().getResources()
-									.getString(R.string.successfully_created_text))
-							.toString();
-
-					Toast.makeText(getActivity(), toastMessage, Toast.LENGTH_SHORT).show();
-				} else {
-					Toast.makeText(
-							getActivity(),
-							getActivity().getResources().getString(
-									R.string.btnCreateMeetTitle_failed_to_create_meet_title),
-							Toast.LENGTH_SHORT).show();
-				}
-				txtMeetTitle.setText("");
+				CreateMeetTitle(txtMeetTitle.getText().toString().trim(), false);
 			}
 
-			private void ShowErrorDialog(String message) {
-				AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-
-				alert.setTitle(getActivity().getResources()
-						.getString(R.string.btnCreateMeetTitle_unable_to_create_meet));
-				alert.setMessage(message);
-				alert.setIcon(R.drawable.ic_action_error);
-				String ok = getActivity().getResources().getString(R.string.btnOK_text);
-				alert.setPositiveButton(ok, new DialogInterface.OnClickListener() {
-
-					public void onClick(DialogInterface dialog, int whichButton) {
-
-					}
-				});
-
-				alert.show();
-			}
 		});
 
 		txtMeetTitle = (EditText) view.findViewById(R.id.txtMeetTitle);
@@ -257,6 +219,7 @@ public class Meets_Fragment extends Fragment implements LoaderCallbacks<Cursor> 
 
 				@Override
 				public void onClick(View v) {
+					CreateMeetTitle(txtMeetTitle.getText().toString().trim(), true);
 					EventBus.getDefault().post(new ShowPreviousFragment());
 				}
 			});
@@ -264,6 +227,54 @@ public class Meets_Fragment extends Fragment implements LoaderCallbacks<Cursor> 
 
 		mMeetTitlesCallbacks = this;
 		return view;
+	}
+
+	protected void CreateMeetTitle(String meetTitle, boolean fromOkButton) {
+		if (meetTitle.isEmpty()) {
+			if (!fromOkButton) {
+				ShowErrorDialog(getActivity().getString(R.string.btnCreateMeetTitle_meet_title_not_provided));
+			}
+			return;
+		}
+
+		long newMeetID = MeetsTable.CreateMeet(getActivity(), mMeetType, meetTitle);
+
+		if (newMeetID > 0) {
+			String toastMessage = new StringBuilder()
+					.append(txtMeetTitle.getText().toString().trim())
+					.append(System.getProperty("line.separator"))
+					.append(getActivity().getResources()
+							.getString(R.string.successfully_created_text))
+					.toString();
+
+			Toast.makeText(getActivity(), toastMessage, Toast.LENGTH_SHORT).show();
+		} else {
+			Toast.makeText(
+					getActivity(),
+					getActivity().getResources().getString(
+							R.string.btnCreateMeetTitle_failed_to_create_meet_title),
+					Toast.LENGTH_SHORT).show();
+		}
+		txtMeetTitle.setText("");
+
+	}
+
+	private void ShowErrorDialog(String message) {
+		AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+
+		alert.setTitle(getActivity().getResources()
+				.getString(R.string.btnCreateMeetTitle_unable_to_create_meet));
+		alert.setMessage(message);
+		alert.setIcon(R.drawable.ic_action_error);
+		String ok = getActivity().getResources().getString(R.string.btnOK_text);
+		alert.setPositiveButton(ok, new DialogInterface.OnClickListener() {
+
+			public void onClick(DialogInterface dialog, int whichButton) {
+
+			}
+		});
+
+		alert.show();
 	}
 
 	@Override
@@ -289,6 +300,12 @@ public class Meets_Fragment extends Fragment implements LoaderCallbacks<Cursor> 
 	@Override
 	public void onPause() {
 		MyLog.i("Meets_Fragment", "onPause()");
+
+		// close the keyboard
+		InputMethodManager imm = (InputMethodManager) getActivity()
+				.getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(txtMeetTitle.getWindowToken(), 0);
+
 		super.onPause();
 	}
 

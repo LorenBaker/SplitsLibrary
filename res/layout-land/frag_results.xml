@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	android:paddingBottom="4dp"
+	android:paddingLeft="24dp"
+	android:paddingRight="24dp"
+	android:paddingTop="4dp" >
+
+	<Spinner
+		android:id="@+id/spinResultsAthletes"
+		android:layout_width="match_parent"
+		android:layout_height="52dp"
+		android:paddingBottom="3dp" />
+
+	<RadioGroup
+		android:layout_width="match_parent"
+		android:layout_height="52dp"
+		android:gravity="center"
+		android:orientation="horizontal"
+		android:paddingLeft="4dp"
+		android:paddingRight="4dp" >
+
+		<RadioButton
+			android:id="@+id/rbIndividualEvents"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="left|center_vertical"
+			android:layout_weight="1"
+			android:checked="true"
+			android:text="@string/rbIndividualEvents_individual_events_text" />
+
+		<RadioButton
+			android:id="@+id/rbInRelays"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="right|center_vertical"
+			android:layout_weight="1"
+			android:text="@string/rbInRelays_in_relays_text" />
+	</RadioGroup>
+
+	<include layout="@layout/row_best_time_header" />
+
+	<ListView
+		android:id="@+id/lvResultsTimes"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:divider="#4c898e"
+		android:dividerHeight="1dp" >
+	</ListView>
+
+</LinearLayout>

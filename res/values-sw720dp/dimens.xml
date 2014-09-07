@@ -1,0 +1,9 @@
+<resources>
+
+	<!-- Default screen margins, per the Android Design guidelines. -->
+	<dimen name="activity_horizontal_margin">32dp</dimen>
+	<dimen name="activity_vertical_margin">10dp</dimen>
+	<dimen name="btnStartSplitStopHeight">128dp</dimen>
+	<dimen name="btnStartSplitStopWidth">128dp</dimen>
+
+</resources>

@@ -29,7 +29,7 @@ public class Race {
 	public static final String STATE_ELAPSED_TIME = "mElapsedTime";
 	public static final String STATE_PREVIOUS_ELAPSED_TIME = "mPreviousElapsedTime";
 
-	public static final String STATE_MEET_ID = "mMeetID";
+	// public static final String STATE_MEET_ID = "mMeetID";
 	public static final String STATE_EVENT_ID = "mEventID";
 	public static final String STATE_ATHLETE_ID = "mAthleteID";
 
@@ -219,7 +219,7 @@ public class Race {
 		outState.putLong(STATE_ELAPSED_TIME, mElapsedTime);
 		outState.putLong(STATE_PREVIOUS_ELAPSED_TIME, mPreviousElapsedTime);
 
-		outState.putLong(STATE_MEET_ID, mMeetID);
+		// outState.putLong(STATE_MEET_ID, mMeetID);
 		outState.putLong(STATE_EVENT_ID, mEventID);
 		outState.putLong(STATE_ATHLETE_ID, mAthleteID);
 
@@ -256,8 +256,8 @@ public class Race {
 				mElapsedTime = pairs.getValue();
 			} else if (pairs.getKey().toString().equals(STATE_PREVIOUS_ELAPSED_TIME)) {
 				mPreviousElapsedTime = pairs.getValue();
-			} else if (pairs.getKey().toString().equals(STATE_MEET_ID)) {
-				mMeetID = pairs.getValue();
+				/*			} else if (pairs.getKey().toString().equals(STATE_MEET_ID)) {
+								mMeetID = pairs.getValue();*/
 			} else if (pairs.getKey().toString().equals(STATE_EVENT_ID)) {
 				mEventID = pairs.getValue();
 				mEventShortTitle = EventsTable.getEventShortTitle(mContext, mEventID);

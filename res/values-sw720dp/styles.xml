@@ -1,0 +1,261 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<style name="AppBaseTheme" parent="android:Theme.Light"></style>
+
+	<!-- Application theme. -->
+	<style name="AppTheme" parent="AppBaseTheme">
+
+		<!-- All customizations that are NOT specific to a particular API-level can go here. -->
+		<item name="android:windowActionBar">true</item>
+		<item name="android:windowNoTitle">false</item>
+	</style>
+
+	<style name="btnStartSplitStop" parent="@android:style/Widget.Button">
+		<item name="android:textSize">28sp</item>
+		<item name="android:height">104dp</item>
+		<item name="android:width">104dp</item>
+		<item name="android:gravity">center</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textColor">@color/white</item>
+		<item name="android:shadowColor">@color/black</item>
+		<item name="android:shadowDx">1</item>
+		<item name="android:shadowDy">1</item>
+		<item name="android:shadowRadius">0.6</item>
+		<item name="android:padding">8dp</item>
+	</style>
+
+	<style name="btnStartSplitStop.Start">
+		<item name="android:background">@drawable/btn_start</item>
+	</style>
+
+	<style name="btnStartSplitStop.Split">
+		<item name="android:background">@drawable/btn_split</item>
+	</style>
+
+	<style name="btnStartSplitStop.Stop">
+		<item name="android:background">@drawable/btn_stop</item>
+	</style>
+
+	<style name="btnStyleGenoa" parent="@android:style/Widget.Button">
+		<item name="android:textSize">20sp</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textColor">#FFFFFF</item>
+		<item name="android:gravity">center</item>
+		<item name="android:shadowColor">#000000</item>
+		<item name="android:shadowDx">1</item>
+		<item name="android:shadowDy">1</item>
+		<item name="android:shadowRadius">0.6</item>
+		<item name="android:background">@drawable/btn_genoa</item>
+		<item name="android:padding">8sp</item>
+	</style>
+
+	<style name="btnStyleBeige" parent="@android:style/Widget.Button">
+		<item name="android:textSize">22sp</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textColor">#5d6153</item>
+		<item name="android:gravity">center</item>
+		<item name="android:shadowColor">#000000</item>
+		<item name="android:shadowDx">1</item>
+		<item name="android:shadowDy">1</item>
+		<item name="android:shadowRadius">0.6</item>
+		<item name="android:background">@drawable/btn_beige</item>
+		<item name="android:padding">10dip</item>
+	</style>
+
+	<style name="tvStyleSmokewhite" parent="@android:style/Widget.TextView">
+		<item name="android:textSize">20sp</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textColor">#000000</item>
+		<item name="android:gravity">center</item>
+		<item name="android:shadowColor">#FFFFFF</item>
+		<item name="android:shadowDx">1</item>
+		<item name="android:shadowDy">1</item>
+		<item name="android:shadowRadius">0.6</item>
+		<item name="android:background">@drawable/rec_bkgrd_smoke_white_stroke_black</item>
+		<item name="android:padding">8dp</item>
+	</style>
+
+	<style name="tvStyleRaceTimer" parent="@android:style/Widget.TextView">
+		<item name="android:textSize">50sp</item>
+		<item name="android:textColor">#004254</item>
+		<item name="android:gravity">center|center_vertical</item>
+		<item name="android:background">@drawable/rec_bkgrd_smoke_white_stroke_black</item>
+	</style>
+
+	<style name="tvStyleListViewRow" parent="@android:style/Widget.TextView">
+		<item name="android:textSize">20sp</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:textColor">#000000</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:shadowColor">#FFFFFF</item>
+		<item name="android:background">@drawable/rec_bkgrd_smoke_white_no_stroke</item>
+		<item name="android:padding">8dp</item>
+	</style>
+
+	<style name="tvStyleGenoaListViewRow" parent="@android:style/Widget.TextView">
+		<item name="android:textStyle">bold</item>
+		<item name="android:textColor">#FFFFFF</item>
+		<item name="android:gravity">center</item>
+		<item name="android:shadowColor">#000000</item>
+		<item name="android:shadowDx">1</item>
+		<item name="android:shadowDy">1</item>
+		<item name="android:shadowRadius">0.6</item>
+		<item name="android:background">@drawable/btn_genoa</item>
+		<item name="android:textSize">20sp</item>
+		<item name="android:padding">8sp</item>
+	</style>
+
+	<style name="tvStyleAllRaceTimeRow" parent="@android:style/Widget.TextView">
+		<item name="android:textSize">20sp</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textColor">#000000</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:background">@drawable/rec_bkgrd_smoke_white_no_stroke</item>
+		<item name="android:paddingLeft">8sp</item>
+		<item name="android:paddingRight">8sp</item>
+		<item name="android:paddingTop">8sp</item>
+		<item name="android:paddingBottom">0dp</item>
+	</style>
+
+	<style name="tvStyleAllRaceDateRow" parent="@android:style/Widget.TextView">
+		<item name="android:textSize">20sp</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:textColor">#000000</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:background">@drawable/rec_bkgrd_smoke_white_no_stroke</item>
+		<item name="android:paddingLeft">8sp</item>
+		<item name="android:paddingRight">8sp</item>
+		<item name="android:paddingTop">8sp</item>
+		<item name="android:paddingBottom">0dp</item>
+	</style>
+
+	<style name="tvStyleAllRaceMeetTitleRow" parent="@android:style/Widget.TextView">
+		<item name="android:textSize">20sp</item>
+		<item name="android:textStyle">italic</item>
+		<item name="android:textColor">#000000</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:background">@drawable/rec_bkgrd_smoke_white_no_stroke</item>
+		<item name="android:paddingLeft">8sp</item>
+		<item name="android:paddingRight">8sp</item>
+		<item name="android:paddingTop">0dp</item>
+		<item name="android:paddingBottom">2dp</item>
+	</style>
+
+	<style name="tvStyleGenoaListViewSeperatorRow" parent="@android:style/Widget.TextView">
+		<item name="android:textStyle">bold</item>
+		<item name="android:textColor">#FFFFFF</item>
+		<item name="android:gravity">center</item>
+		<item name="android:shadowColor">#000000</item>
+		<item name="android:shadowDx">1</item>
+		<item name="android:shadowDy">1</item>
+		<item name="android:shadowRadius">0.6</item>
+		<item name="android:background">@drawable/btn_genoa</item>
+		<item name="android:textSize">20sp</item>
+		<item name="android:padding">2dp</item>
+	</style>
+
+	<style name="tvStyleTitle" parent="@android:style/Widget.TextView">
+		<item name="android:textSize">22sp</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:background">@drawable/rec_bkgrd_smoke_white_no_stroke</item>
+		<item name="android:textColor">@color/black</item>
+		<item name="android:paddingLeft">12dp</item>
+		<item name="android:paddingTop">2dp</item>
+		<item name="android:paddingBottom">2dp</item>
+	</style>
+
+	<style name="tvStyleAthleteDisplayName" parent="@android:style/Widget.TextView">
+		<item name="android:textSize">22sp</item>
+		<item name="android:textStyle">italic</item>
+		<item name="android:textColor">#000000</item>
+		<item name="android:padding">0dp</item>
+	</style>
+
+	<style name="tvStyleSplitTableHeader" parent="@android:style/Widget.TextView">
+		<item name="android:textSize">20sp</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:gravity">right|center_vertical</item>
+		<item name="android:textColor">@color/whiteSmoke</item>
+		<item name="android:background">@drawable/table_split_times_header_genoa</item>
+		<item name="android:shadowColor">#000000</item>
+		<item name="android:shadowDx">1</item>
+		<item name="android:shadowDy">1</item>
+		<item name="android:layout_marginLeft">0dp</item>
+		<item name="android:layout_marginRight">0dp</item>
+		<item name="android:paddingLeft">2dp</item>
+		<item name="android:paddingRight">6dp</item>
+	</style>
+
+	<style name="tvStyle_BTResultsRow" parent="@android:style/Widget.TextView">
+		<item name="android:textSize">20sp</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:textColor">#000000</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:shadowColor">#FFFFFF</item>
+		<item name="android:background">@drawable/rec_bkgrd_smoke_white_no_stroke</item>
+		<item name="android:padding">8sp</item>
+	</style>
+
+	<style name="tvStyleBTResultsHeader" parent="@android:style/Widget.TextView">
+		<item name="android:textSize">20sp</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:gravity">center</item>
+		<item name="android:textColor">@color/whiteSmoke</item>
+		<item name="android:background">@drawable/table_split_times_header_genoa</item>
+		<item name="android:shadowColor">#000000</item>
+		<item name="android:shadowDx">1</item>
+		<item name="android:shadowDy">1</item>
+		<item name="android:layout_marginLeft">0dp</item>
+		<item name="android:layout_marginRight">0dp</item>
+		<item name="android:paddingLeft">2dp</item>
+		<item name="android:paddingRight">2dp</item>
+	</style>
+
+	<style name="tvStyleBestTimesDivider" parent="@android:style/Widget.TextView">
+		<item name="android:textSize">20sp</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:gravity">center</item>
+		<item name="android:textColor">@color/black</item>
+		<item name="android:background">@drawable/btn_beige</item>
+		<item name="android:shadowColor">@color/white</item>
+		<item name="android:shadowDx">1</item>
+		<item name="android:shadowDy">1</item>
+		<item name="android:layout_marginLeft">0dp</item>
+		<item name="android:layout_marginRight">0dp</item>
+		<item name="android:paddingLeft">2dp</item>
+		<item name="android:paddingRight">2dp</item>
+	</style>
+
+	<style name="tvStyleSplitTable" parent="@android:style/Widget.TextView">
+		<item name="android:textSize">20sp</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:gravity">right|center_vertical</item>
+		<item name="android:textColor">@color/black</item>
+		<item name="android:layout_marginLeft">0dp</item>
+		<item name="android:layout_marginRight">0dp</item>
+		<item name="android:paddingLeft">2dp</item>
+		<item name="android:paddingRight">6dp</item>
+	</style>
+
+	<style name="txtStyleLinen" parent="@android:style/Widget.EditText">
+		<item name="android:textSize">20sp</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textColor">#000000</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:shadowColor">#FFFFFF</item>
+		<item name="android:shadowDx">1</item>
+		<item name="android:shadowDy">1</item>
+		<item name="android:shadowRadius">0.6</item>
+		<item name="android:background">@drawable/rec_bkgrd_linen_stroke_black</item>
+		<item name="android:padding">8sp</item>
+	</style>
+
+	<style name="tvStyleDialogMessage" parent="@android:style/Widget.TextView">
+		<item name="android:textSize">22sp</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:gravity">left</item>
+		<item name="android:textColor">@color/black</item>
+		<item name="android:padding">10dp</item>
+	</style>
+
+</resources>

@@ -3,15 +3,13 @@
 	android:id="@+id/tblSplitTimesHheader"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:layout_marginLeft="2dp"
-	android:layout_marginRight="2dp"
 	android:background="@drawable/table_split_times_header_genoa"
 	android:orientation="horizontal" >
 
 	<TextView
 		style="@style/tvStyleSplitTableHeader"
 		android:layout_width="0dp"
-		android:layout_height="20dp"
+		android:layout_height="wrap_content"
 		android:layout_weight="1"
 		android:gravity="center"
 		android:text="@string/lap_text" />
@@ -19,22 +17,25 @@
 	<TextView
 		style="@style/tvStyleSplitTableHeader"
 		android:layout_width="0dp"
-		android:layout_height="20dp"
-		android:layout_weight="2"
-		android:text="@string/distance_text" />
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:gravity="center"
+		android:text="@string/dist_text" />
 
 	<TextView
 		style="@style/tvStyleSplitTableHeader"
 		android:layout_width="0dp"
-		android:layout_height="20dp"
-		android:layout_weight="2"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:gravity="center"
 		android:text="@string/splits_text" />
 
 	<TextView
 		style="@style/tvStyleSplitTableHeader"
 		android:layout_width="0dp"
-		android:layout_height="20dp"
-		android:layout_weight="2"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:gravity="center"
 		android:text="@string/time_text" />
 
 </LinearLayout>

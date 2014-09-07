@@ -26,7 +26,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -120,7 +119,7 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 
 	private TextView tvRelaytime;
 
-	private LinearLayout llRelayTable;
+	// private LinearLayout llRelayTable;
 	private ListView lvRelaySplits;
 	private Button btnStart;
 	private Button btnStop;
@@ -169,9 +168,8 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 			spinRelayEvents.setOnLongClickListener(this);
 		}
 
-		llRelayTable = (LinearLayout) view.findViewById(R.id.llRelayTable);
-		if (llRelayTable != null) {
-			lvRelaySplits = (ListView) view.findViewById(R.id.lvRaceSplits);
+		lvRelaySplits = (ListView) view.findViewById(R.id.lvRaceSplits);
+		if (lvRelaySplits != null) {
 			mRelaySplitsCursorAdapter = new RaceSplitsCursorAdapter(getActivity(), null, 0, mNumberFormat);
 			lvRelaySplits.setAdapter(mRelaySplitsCursorAdapter);
 		}
@@ -285,6 +283,9 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 				MySettings.getRelayIntValues("Relay"),
 				MySettings.isRelayRunning("Relay"));
 
+		// long meetID = MySettings.getMeetID();
+		mRelay.setRelayMeetID(MySettings.getMeetID());
+
 		mRelaySplitsCursorAdapter.setNumberFormat(mNumberFormat);
 
 		mLoaderManager.restartLoader(MySettings.LOADER_FRAG_RELAY_TIMER_MEETS, null, mRelayTimerCallbacks);
@@ -302,12 +303,12 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 			}
 		}
 
-		long relayMeetID = spinRelayMeets.getSelectedItemId();
-		if (mRelay.getRelayMeetID() != relayMeetID) {
-			if (relayMeetID > 0) {
-				mRelay.setRelayMeetID(relayMeetID);
-			}
-		}
+		/*		long relayMeetID = spinRelayMeets.getSelectedItemId();
+				if (mRelay.getRelayMeetID() != relayMeetID) {
+					if (relayMeetID > 0) {
+						mRelay.setRelayMeetID(relayMeetID);
+					}
+				}*/
 
 		mLoaderManager.restartLoader(MySettings.LOADER_FRAG_RELAY_TIMER_ATHLETE0, null, mRelayTimerCallbacks);
 		mLoaderManager.restartLoader(MySettings.LOADER_FRAG_RELAY_TIMER_ATHLETE1, null, mRelayTimerCallbacks);
@@ -894,6 +895,7 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 	}
 
 	private void EnableSpinners() {
+		tvRelaytime.setVisibility(View.GONE);
 		spinRelayMeets.setVisibility(View.VISIBLE);
 		spinRelayEvents.setVisibility(View.VISIBLE);
 		spinAthlete0.setEnabled(true);
@@ -904,6 +906,7 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 	}
 
 	private void DisableSpinners() {
+		tvRelaytime.setVisibility(View.VISIBLE);
 		spinRelayMeets.setVisibility(View.GONE);
 		spinRelayEvents.setVisibility(View.GONE);
 		spinAthlete0.setEnabled(false);
@@ -974,7 +977,7 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 			case MySettings.LOADER_FRAG_RELAY_TIMER_MEETS:
 				mMeetsSpinnerAdapter.swapCursor(newCursor);
 				if (mFirstTimeLoadingMeetID) {
-					spinRelayMeets.setSelection(MySettings.getMeetPosition(spinRelayMeets));
+					spinRelayMeets.setSelection(MySettings.getIndexFromCursor(spinRelayMeets, mRelay.getRelayMeetID()));
 					mFirstTimeLoadingMeetID = false;
 				}
 				break;

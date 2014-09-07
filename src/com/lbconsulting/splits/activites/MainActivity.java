@@ -37,13 +37,17 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.text.format.DateFormat;
+import android.util.DisplayMetrics;
 import android.util.LruCache;
+import android.util.TypedValue;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.flurry.android.FlurryAgent;
@@ -93,7 +97,7 @@ import de.greenrobot.event.EventBus;
 public class MainActivity extends Activity {
 
 	private int mActiveFragment = 0;
-	private int mPreviousFragment = 0;
+	private int mPreviousRaceFragment = 0;
 	public static final int FRAG_INDIVIDUAL_RACES = 0;
 	public static final int FRAG_RELAY_RACES = 1;
 	public static final int FRAG_RESULTS_BEST_TIMES = 2;
@@ -118,7 +122,7 @@ public class MainActivity extends Activity {
 	private int mMeetType;
 	private long mSelectedRaceID;
 	private boolean mIsRelay = false;
-	// private boolean mIsFAQ = false;
+	private boolean mIsDualPaneView = false;
 
 	private static final int CONTACTS_URI_REQUEST = 333;
 	private static LruCache<String, Bitmap> mMemoryCache;
@@ -128,6 +132,11 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		MyLog.i("MainActivity", "onCreate()");
 		setContentView(R.layout.activity_main);
+
+		LinearLayout bestTimesContainer = (LinearLayout) findViewById(R.id.bestTimesContainer);
+		if (bestTimesContainer != null) {
+			mIsDualPaneView = true;
+		}
 
 		MySettings.setContext(this);
 
@@ -155,8 +164,24 @@ public class MainActivity extends Activity {
 		mDrawerTitle = getResources().getString(R.string.app_name);
 		mTitle = mDrawerTitle;
 		mFragmentTitles = getResources().getStringArray(R.array.navDrawerTitles);
+
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
+
+		// set mDrawerList width to 2/3 the minimum dimension of the screen
+		Display display = getWindowManager().getDefaultDisplay();
+		DisplayMetrics outMetrics = new DisplayMetrics();
+		display.getMetrics(outMetrics);
+		float density = getResources().getDisplayMetrics().density;
+		float drawerWidth = Math.min(outMetrics.heightPixels / density, outMetrics.widthPixels / density) * 2 / 3;
+
+		// set mDrawerList width
+		Resources resources = getResources();
+		float width = TypedValue
+				.applyDimension(TypedValue.COMPLEX_UNIT_DIP, drawerWidth, resources.getDisplayMetrics());
+		DrawerLayout.LayoutParams params = (DrawerLayout.LayoutParams) mDrawerList.getLayoutParams();
+		params.width = (int) (width);
+		mDrawerList.setLayoutParams(params);
 
 		// set a custom shadow that overlays the main content when the drawer opens
 		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
@@ -1034,7 +1059,7 @@ public class MainActivity extends Activity {
 	}
 
 	public void onEvent(ShowPreviousFragment event) {
-		SelectFragment(mPreviousFragment);
+		SelectFragment(mPreviousRaceFragment);
 		invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
 	}
 
@@ -1164,9 +1189,6 @@ public class MainActivity extends Activity {
 
 		Fragment fragment = null;
 
-		mPreviousFragment = mActiveFragment;
-		mActiveFragment = position;
-
 		// start getting new title
 		String fragmentTitle = "";
 		if (position < mFragmentTitles.length) {
@@ -1184,6 +1206,9 @@ public class MainActivity extends Activity {
 				fragment = Relay_Timer_Fragment.newInstance();
 				break;
 			case FRAG_RESULTS_BEST_TIMES:
+				if (mIsDualPaneView) {
+					return;
+				}
 				fragmentTitle = ": " + getString(R.string.best_times_text);
 				fragment = Results_BestTimes_Fragment.newInstance();
 				break;
@@ -1245,6 +1270,21 @@ public class MainActivity extends Activity {
 		}
 		setTitle(fragmentTitle);
 
+		if (mActiveFragment < FRAG_ATHLETES || mActiveFragment > FRAG_CREATE_EVENTS) {
+			mPreviousRaceFragment = mActiveFragment;
+		}
+		mActiveFragment = position;
+
+		if (mIsDualPaneView) {
+			Fragment bestTimesFragment = Results_BestTimes_Fragment.newInstance();
+			if (bestTimesFragment != null) {
+				FragmentTransaction ft = getFragmentManager().beginTransaction();
+				ft.setCustomAnimations(R.anim.fade_in, R.anim.fade_out, R.anim.fade_in, R.anim.fade_out);
+				ft.replace(R.id.bestTimesContainer, bestTimesFragment);
+				ft.commit();
+			}
+		}
+
 	}
 
 	@Override
@@ -1303,7 +1343,7 @@ public class MainActivity extends Activity {
 		// save activity state
 		Bundle MainActivityBundle = new Bundle();
 		MainActivityBundle.putInt(MySettings.STATE_MAIN_ACTIVITY_ACTIVE_FRAGMENT, mActiveFragment);
-		MainActivityBundle.putInt(MySettings.STATE_MAIN_ACTIVITY_PREVIOUS_FRAGMENT, mPreviousFragment);
+		MainActivityBundle.putInt(MySettings.STATE_MAIN_ACTIVITY_PREVIOUS_FRAGMENT, mPreviousRaceFragment);
 		MainActivityBundle.putCharSequence(MySettings.STATE_MAIN_ACTIVITY_DRAWER_TITLE, mDrawerTitle);
 		MainActivityBundle.putCharSequence(MySettings.STATE_MAIN_ACTIVITY_TITLE, mTitle);
 		MainActivityBundle.putCharSequence(MySettings.STATE_MAIN_ACTIVITY_PREVIOUS_TITLE, mPreviousTitle);

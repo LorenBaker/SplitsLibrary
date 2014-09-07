@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/llAthlete1RaceTable"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical" >
+
+	<Spinner
+		android:id="@+id/spinAthlete1"
+		android:layout_width="match_parent"
+		android:layout_height="52dp" />
+
+	<TextView
+		android:id="@+id/tvAthlete1BestTime"
+		style="@style/tvStyleTitle"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="left|center_vertical"
+		android:text="Athlete1 Event Best Time"
+		android:visibility="visible" />
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="140dp"
+		android:orientation="horizontal" >
+
+		<RelativeLayout
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1" >
+
+			<include layout="@layout/row_race_split_times_header" />
+
+			<ListView
+				android:id="@+id/lvAthlete1RaceSplits"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/tblSplitTimesHheader" >
+			</ListView>
+		</RelativeLayout>
+
+		<Button
+			android:id="@+id/btnAthlete1Start"
+			style="@style/btnStartSplitStop.Start"
+			android:layout_width="104dp"
+			android:layout_height="104dp"
+			android:gravity="center"
+			android:text="@string/btnStart_text"
+			android:visibility="visible" />
+
+		<Button
+			android:id="@+id/btnAthlete1Stop"
+			style="@style/btnStartSplitStop.Stop"
+			android:layout_width="104dp"
+			android:layout_height="104dp"
+			android:gravity="center"
+			android:text="@string/btnStop_text"
+			android:visibility="gone" />
+
+		<Button
+			android:id="@+id/btnAthlete1Split"
+			style="@style/btnStartSplitStop.Split"
+			android:layout_width="104dp"
+			android:layout_height="104dp"
+			android:gravity="center"
+			android:text="@string/btnSplit_text"
+			android:visibility="gone" />
+	</LinearLayout>
+
+</LinearLayout>

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/llRelayTable"
 	android:layout_width="match_parent"
-	android:layout_height="wrap_content"
+	android:layout_height="match_parent"
 	android:orientation="vertical" >
 
 	<Spinner
@@ -27,7 +27,7 @@
 
 	<Button
 		android:id="@+id/btnActiveAthlete"
-		style="@style/btnStyleSplit"
+		style="@style/btnStartSplitStop.Split"
 		android:layout_width="match_parent"
 		android:layout_height="104dp"
 		android:layout_marginBottom="10dp"
@@ -45,39 +45,34 @@
 			android:layout_weight="1"
 			android:orientation="vertical" >
 
-			<include layout="@layout/row_race_split_times_header" />
+			<include
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				layout="@layout/row_race_split_times_header" />
 
 			<ListView
 				android:id="@+id/lvRaceSplits"
 				android:layout_width="match_parent"
-				android:layout_height="83dp" >
+				android:layout_height="0dp"
+				android:layout_weight="1" >
 			</ListView>
 		</LinearLayout>
 
 		<Button
 			android:id="@+id/btnStart"
-			style="@style/btnStyleStart"
-			android:layout_width="104dp"
-			android:layout_height="104dp"
-			android:gravity="center"
+			style="@style/btnStartSplitStop.Start"
 			android:text="@string/btnStart_text"
 			android:visibility="visible" />
 
 		<Button
 			android:id="@+id/btnStop"
-			style="@style/btnStyleStop"
-			android:layout_width="104dp"
-			android:layout_height="104dp"
-			android:gravity="center"
+			style="@style/btnStartSplitStop.Stop"
 			android:text="@string/btnStop_text"
 			android:visibility="gone" />
 
 		<Button
 			android:id="@+id/btnSplit"
-			style="@style/btnStyleSplit"
-			android:layout_width="104dp"
-			android:layout_height="104dp"
-			android:gravity="center"
+			style="@style/btnStartSplitStop.Split"
 			android:text="@string/btnSplit_text"
 			android:visibility="gone" />
 	</LinearLayout>

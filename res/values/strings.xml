@@ -124,5 +124,6 @@
 	<string name="times_text">Times</string>
 	<string name="track_dash_text">Dash</string>
 	<string name="track_run_text">Run</string>
+	<string name="ok_got_it_text">OK, got it</string>
 
 </resources>

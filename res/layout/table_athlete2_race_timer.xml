@@ -21,50 +21,43 @@
 
 	<LinearLayout
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
 		android:orientation="horizontal" >
 
 		<Button
 			android:id="@+id/btnAthlete2Start"
-			style="@style/btnStyleStart"
-			android:layout_width="104dp"
-			android:layout_height="104dp"
-			android:gravity="center"
+			style="@style/btnStartSplitStop.Start"
 			android:text="@string/btnStart_text"
 			android:visibility="visible" />
 
 		<Button
 			android:id="@+id/btnAthlete2Stop"
-			style="@style/btnStyleStop"
-			android:layout_width="104dp"
-			android:layout_height="104dp"
-			android:gravity="center"
+			style="@style/btnStartSplitStop.Stop"
 			android:text="@string/btnStop_text"
 			android:visibility="gone" />
 
 		<Button
 			android:id="@+id/btnAthlete2Split"
-			style="@style/btnStyleSplit"
-			android:layout_width="104dp"
-			android:layout_height="104dp"
-			android:gravity="center"
+			style="@style/btnStartSplitStop.Split"
 			android:text="@string/btnSplit_text"
 			android:visibility="gone" />
 
-		<RelativeLayout
+		<LinearLayout
 			android:layout_width="0dp"
 			android:layout_height="match_parent"
-			android:layout_weight="1" >
+			android:layout_weight="1"
+			android:orientation="vertical" >
 
 			<include layout="@layout/row_race_split_times_header" />
 
 			<ListView
 				android:id="@+id/lvAthlete2RaceSplits"
 				android:layout_width="match_parent"
-				android:layout_height="140dp"
-				android:layout_below="@id/tblSplitTimesHheader" >
+				android:layout_height="0dp"
+				android:layout_weight="1" >
 			</ListView>
-		</RelativeLayout>
+		</LinearLayout>
 	</LinearLayout>
 
 </LinearLayout>

@@ -38,6 +38,7 @@ public class SplitsBuild {
 
 		} catch (ClassNotFoundException e) {
 			// Class not found ... must be free app
+			// return the default false value
 
 		} catch (Exception e) {
 			// Unknown exception

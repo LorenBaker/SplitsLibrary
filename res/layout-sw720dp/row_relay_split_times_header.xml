@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/tblSplitTimesHheader"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_marginLeft="2dp"
+	android:layout_marginRight="2dp"
+	android:background="@drawable/table_split_times_header_genoa"
+	android:orientation="horizontal" >
+
+	<TextView
+		style="@style/tvStyleSplitTableHeader"
+		android:layout_width="0dp"
+		android:layout_height="30dp"
+		android:layout_weight="11"
+		android:gravity="center"
+		android:text="@string/relay_leg_text" />
+
+	<TextView
+		style="@style/tvStyleSplitTableHeader"
+		android:layout_width="0dp"
+		android:layout_height="30dp"
+		android:layout_weight="30"
+		android:gravity="center"
+		android:text="@string/athlete_text" />
+
+	<TextView
+		style="@style/tvStyleSplitTableHeader"
+		android:layout_width="0dp"
+		android:layout_height="30dp"
+		android:layout_weight="25"
+		android:gravity="center"
+		android:text="@string/event_text" />
+
+	<TextView
+		style="@style/tvStyleSplitTableHeader"
+		android:layout_width="0dp"
+		android:layout_height="30dp"
+		android:layout_weight="20"
+		android:gravity="center"
+		android:text="@string/splits_text" />
+
+</LinearLayout>

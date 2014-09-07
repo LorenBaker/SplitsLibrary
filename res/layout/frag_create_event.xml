@@ -77,9 +77,9 @@
 
 	<Button
 		android:id="@+id/btnOkFinished"
-		style="@style/btnStyleStart"
+		style="@style/btnStyleGenoa"
 		android:layout_width="match_parent"
-		android:layout_height="52dp"
+		android:layout_height="wrap_content"
 		android:text="@string/btnOK_text" />
 
 </LinearLayout>

@@ -19,20 +19,26 @@
 		style="@style/tvStyleSplitTable"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:layout_weight="2" />
+		android:layout_weight="1"
+		android:gravity="right"
+		android:paddingRight="6dp" />
 
 	<TextView
 		android:id="@+id/tvSplitTime"
 		style="@style/tvStyleSplitTable"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:layout_weight="2" />
+		android:layout_weight="1"
+		android:gravity="right"
+		android:paddingRight="6dp" />
 
 	<TextView
 		android:id="@+id/tvCumulativeTime"
 		style="@style/tvStyleSplitTable"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:layout_weight="2" />
+		android:layout_weight="1"
+		android:gravity="right"
+		android:paddingRight="6dp" />
 
 </LinearLayout>

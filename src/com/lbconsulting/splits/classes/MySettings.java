@@ -297,7 +297,7 @@ public class MySettings {
 		long StartTime = storedStates.getLong(athlete + Race.STATE_START_TIME, -1);
 		long ElapsedTime = storedStates.getLong(athlete + Race.STATE_ELAPSED_TIME, -1);
 		long PreviousElapsedTime = storedStates.getLong(athlete + Race.STATE_PREVIOUS_ELAPSED_TIME, -1);
-		long MeetID = storedStates.getLong(athlete + Race.STATE_MEET_ID, -1);
+		// long MeetID = storedStates.getLong(athlete + Race.STATE_MEET_ID, -1);
 		long EventID = storedStates.getLong(athlete + Race.STATE_EVENT_ID, -1);
 		long AthleteID = storedStates.getLong(athlete + Race.STATE_ATHLETE_ID, -1);
 		long AthleteRaceID = storedStates.getLong(athlete + Race.STATE_ATHLETE_RACE_ID, -1);
@@ -305,7 +305,7 @@ public class MySettings {
 		longValues.put(Race.STATE_START_TIME, StartTime);
 		longValues.put(Race.STATE_ELAPSED_TIME, ElapsedTime);
 		longValues.put(Race.STATE_PREVIOUS_ELAPSED_TIME, PreviousElapsedTime);
-		longValues.put(Race.STATE_MEET_ID, MeetID);
+		// longValues.put(Race.STATE_MEET_ID, MeetID);
 		longValues.put(Race.STATE_EVENT_ID, EventID);
 		longValues.put(Race.STATE_ATHLETE_ID, AthleteID);
 		longValues.put(Race.STATE_ATHLETE_RACE_ID, AthleteRaceID);
@@ -334,11 +334,17 @@ public class MySettings {
 		return storedStates.getInt(STATE_RT_RACE_COUNT, 0);
 	}
 
-	public static int getMeetPosition(Spinner spinner) {
+	/*	public static int getMeetPosition(Spinner spinner) {
+			SharedPreferences storedStates = mContext.getSharedPreferences(SPLITS_SHARED_PREFERENCES,
+					Context.MODE_PRIVATE);
+			long itemID = storedStates.getLong(STATE_MEET_ID, -1);
+			return getIndexFromCursor(spinner, itemID);
+		}*/
+
+	public static long getMeetID() {
 		SharedPreferences storedStates = mContext.getSharedPreferences(SPLITS_SHARED_PREFERENCES,
 				Context.MODE_PRIVATE);
-		long itemID = storedStates.getLong(STATE_MEET_ID, -1);
-		return getIndexFromCursor(spinner, itemID);
+		return storedStates.getLong(STATE_MEET_ID, -1);
 	}
 
 	public static boolean isAthlete1StartButtonVisible() {
@@ -528,7 +534,7 @@ public class MySettings {
 		long ElapsedTime = storedStates.getLong(header + Relay.STATE_RELAY_ELAPSED_TIME, -1);
 		long PreviousElapsedTime = storedStates.getLong(header + Relay.STATE_RELAY_PREVIOUS_ELAPSED_TIME, -1);
 
-		long MeetID = storedStates.getLong(header + Relay.STATE_RELAY_MEET_ID, -1);
+		// long MeetID = storedStates.getLong(header + Relay.STATE_RELAY_MEET_ID, -1);
 		long EventID = storedStates.getLong(header + Relay.STATE_RELAY_EVENT_ID, -1);
 		long RelayRaceID = storedStates.getLong(header + Relay.STATE_RELAY_RACE_ID, -1);
 
@@ -541,7 +547,7 @@ public class MySettings {
 		longValues.put(Relay.STATE_RELAY_ELAPSED_TIME, ElapsedTime);
 		longValues.put(Relay.STATE_RELAY_PREVIOUS_ELAPSED_TIME, PreviousElapsedTime);
 
-		longValues.put(Relay.STATE_RELAY_MEET_ID, MeetID);
+		// longValues.put(Relay.STATE_RELAY_MEET_ID, MeetID);
 		longValues.put(Relay.STATE_RELAY_EVENT_ID, EventID);
 		longValues.put(Relay.STATE_RELAY_RACE_ID, RelayRaceID);
 

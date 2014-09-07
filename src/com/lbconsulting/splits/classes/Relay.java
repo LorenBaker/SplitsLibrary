@@ -33,7 +33,7 @@ public class Relay {
 	public static final String STATE_RELAY_ELAPSED_TIME = "mRelayElapsedTime";
 	public static final String STATE_RELAY_PREVIOUS_ELAPSED_TIME = "mRelayPreviousElapsedTime";
 
-	public static final String STATE_RELAY_MEET_ID = "mRelayMeetID";
+	// public static final String STATE_RELAY_MEET_ID = "mRelayMeetID";
 	public static final String STATE_RELAY_EVENT_ID = "mRelayEventID";
 	public static final String STATE_RELAY_RACE_ID = "mRelayRaceID";
 
@@ -320,7 +320,7 @@ public class Relay {
 		outState.putLong(STATE_RELAY_ELAPSED_TIME, mRelayElapsedTime);
 		outState.putLong(STATE_RELAY_PREVIOUS_ELAPSED_TIME, mRelayPreviousElapsedTime);
 
-		outState.putLong(STATE_RELAY_MEET_ID, mRelayMeetID);
+		// outState.putLong(STATE_RELAY_MEET_ID, mRelayMeetID);
 		outState.putLong(STATE_RELAY_EVENT_ID, mRelayEventID);
 		outState.putLong(STATE_RELAY_RACE_ID, mRelayRaceID);
 
@@ -352,8 +352,8 @@ public class Relay {
 				mRelayElapsedTime = pairs.getValue();
 			} else if (pairs.getKey().toString().equals(STATE_RELAY_PREVIOUS_ELAPSED_TIME)) {
 				mRelayPreviousElapsedTime = pairs.getValue();
-			} else if (pairs.getKey().toString().equals(STATE_RELAY_MEET_ID)) {
-				mRelayMeetID = pairs.getValue();
+				/*} else if (pairs.getKey().toString().equals(STATE_RELAY_MEET_ID)) {
+					mRelayMeetID = pairs.getValue();*/
 			} else if (pairs.getKey().toString().equals(STATE_RELAY_EVENT_ID)) {
 				mRelayEventID = pairs.getValue();
 			} else if (pairs.getKey().toString().equals(STATE_RELAY_RACE_ID)) {

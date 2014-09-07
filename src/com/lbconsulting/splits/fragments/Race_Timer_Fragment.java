@@ -252,6 +252,10 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 				MySettings.getAthleteBestTimeText("Athlete2"));
 		mAthlete2Race.setSplitTablePosition(2);
 
+		long meetID = MySettings.getMeetID();
+		mAthlete1Race.setMeetID(meetID);
+		mAthlete2Race.setMeetID(meetID);
+
 		if (mAthlete1Race.getStartTime() > 0) {
 			mRaceStartTime = mAthlete1Race.getStartTime();
 		} else {
@@ -337,21 +341,21 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 		}
 
 		// check if spinRaceEvents and spinRaceMeets have a selected items
-		long raceEventID = spinRaceEvents.getSelectedItemId();
-		if (mAthlete1Race.getEventID() != raceEventID || mAthlete2Race.getEventID() != raceEventID) {
-			if (raceEventID > 0) {
-				mAthlete1Race.setEventID(raceEventID);
-				mAthlete2Race.setEventID(raceEventID);
-			}
-		}
+		/*		long raceEventID = spinRaceEvents.getSelectedItemId();
+				if (mAthlete1Race.getEventID() != raceEventID || mAthlete2Race.getEventID() != raceEventID) {
+					if (raceEventID > 0) {
+						mAthlete1Race.setEventID(raceEventID);
+						mAthlete2Race.setEventID(raceEventID);
+					}
+				}
 
-		long meetID = spinRaceMeets.getSelectedItemId();
-		if (mAthlete1Race.getMeetID() != meetID || mAthlete2Race.getMeetID() != meetID) {
-			if (meetID > 0) {
-				mAthlete1Race.setMeetID(meetID);
-				mAthlete2Race.setMeetID(meetID);
-			}
-		}
+				long meetID = spinRaceMeets.getSelectedItemId();
+				if (mAthlete1Race.getMeetID() != meetID || mAthlete2Race.getMeetID() != meetID) {
+					if (meetID > 0) {
+						mAthlete1Race.setMeetID(meetID);
+						mAthlete2Race.setMeetID(meetID);
+					}
+				}*/
 
 		mAthlete1SplitsCursorAdapter.setNumberFormat(mNumberFormat);
 		mAthlete2SplitsCursorAdapter.setNumberFormat(mNumberFormat);
@@ -386,6 +390,8 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 		raceTimerBundle.putBundle("Athlete1", mAthlete1Race.getState());
 		raceTimerBundle.putBundle("Athlete2", mAthlete2Race.getState());
 
+		raceTimerBundle.putLong(MySettings.STATE_MEET_ID, mAthlete1Race.getMeetID());
+
 		raceTimerBundle.putBoolean(MySettings.STATE_RT_ARE_SPINNERS_ENABLED, areSpinnersEnabled);
 		raceTimerBundle.putInt(MySettings.STATE_RT_RACE_COUNT, mRaceCount);
 
@@ -406,6 +412,8 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 				btnAthlete2Stop.getVisibility() == View.VISIBLE);
 		raceTimerBundle.putBoolean(MySettings.STATE_RT_ATHLETE2_RACE_TABLE_VISIBLE,
 				llAthlete2RaceTable.getVisibility() == View.VISIBLE);
+
+		// RelayTimerBundle.putLong(MySettings.STATE_MEET_ID, mRelay.getRelayMeetID());
 
 		MySettings.set("", raceTimerBundle);
 
@@ -898,6 +906,7 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 	}
 
 	private void EnableSpinners() {
+		tvRacetime.setVisibility(View.GONE);
 		spinRaceMeets.setVisibility(View.VISIBLE);
 		spinRaceEvents.setVisibility(View.VISIBLE);
 		spinAthlete1.setEnabled(true);
@@ -908,6 +917,7 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 	}
 
 	private void DisableSpinners() {
+		tvRacetime.setVisibility(View.VISIBLE);
 		spinRaceMeets.setVisibility(View.GONE);
 		spinRaceEvents.setVisibility(View.GONE);
 		spinAthlete1.setEnabled(false);
@@ -1035,7 +1045,7 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 			case MySettings.LOADER_FRAG_RACE_TIMER_MEETS:
 				mMeetsSpinnerAdapter.swapCursor(newCursor);
 				if (mFirstTimeLoadingMeetID) {
-					spinRaceMeets.setSelection(MySettings.getMeetPosition(spinRaceMeets));
+					spinRaceMeets.setSelection(MySettings.getIndexFromCursor(spinRaceMeets, mAthlete1Race.getMeetID()));
 					mFirstTimeLoadingMeetID = false;
 				}
 				break;
