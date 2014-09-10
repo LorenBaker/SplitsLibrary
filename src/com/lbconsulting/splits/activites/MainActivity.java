@@ -114,8 +114,8 @@ public class MainActivity extends Activity {
 	private ActionBarDrawerToggle mDrawerToggle;
 
 	private CharSequence mDrawerTitle;
-	private CharSequence mTitle;
-	private CharSequence mPreviousTitle;
+	private CharSequence mActiveFragmentTitle;
+	private CharSequence mRaceTitle;
 	private String[] mFragmentTitles;
 
 	private int mAthleteCount = 0;
@@ -162,7 +162,7 @@ public class MainActivity extends Activity {
 
 		mMemoryCache = Splits_ContentProvider.getAthleteThumbnailMemoryCache();
 		mDrawerTitle = getResources().getString(R.string.app_name);
-		mTitle = mDrawerTitle;
+
 		mFragmentTitles = getResources().getStringArray(R.array.navDrawerTitles);
 
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -205,7 +205,7 @@ public class MainActivity extends Activity {
 				) {
 
 					public void onDrawerClosed(View view) {
-						getActionBar().setTitle(mTitle);
+						getActionBar().setTitle(mActiveFragmentTitle);
 						invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
 					}
 
@@ -1098,10 +1098,10 @@ public class MainActivity extends Activity {
 
 	public void onEvent(ChangeActionBarTitle event) {
 		if (event.getEventShortTitle().isEmpty()) {
-			getActionBar().setTitle(mPreviousTitle);
+			getActionBar().setTitle(mActiveFragmentTitle);
 		} else {
-			mPreviousTitle = getActionBar().getTitle();
-			getActionBar().setTitle(event.getEventShortTitle());
+			mRaceTitle = event.getEventShortTitle();
+			getActionBar().setTitle(mRaceTitle);
 		}
 	}
 
@@ -1190,30 +1190,29 @@ public class MainActivity extends Activity {
 		Fragment fragment = null;
 
 		// start getting new title
-		String fragmentTitle = "";
 		if (position < mFragmentTitles.length) {
-			fragmentTitle = mFragmentTitles[position];
+			mActiveFragmentTitle = mFragmentTitles[position];
 		}
 
 		// create the new fragment
 		switch (position) {
 			case FRAG_INDIVIDUAL_RACES:
-				fragmentTitle = getString(R.string.race_text);
+				mActiveFragmentTitle = getString(R.string.race_text);
 				fragment = Race_Timer_Fragment.newInstance();
 				break;
 			case FRAG_RELAY_RACES:
-				fragmentTitle = getString(R.string.relay_text);
+				mActiveFragmentTitle = getString(R.string.relay_text);
 				fragment = Relay_Timer_Fragment.newInstance();
 				break;
 			case FRAG_RESULTS_BEST_TIMES:
 				if (mIsDualPaneView) {
 					return;
 				}
-				fragmentTitle = ": " + getString(R.string.best_times_text);
+				mActiveFragmentTitle = ": " + getString(R.string.best_times_text);
 				fragment = Results_BestTimes_Fragment.newInstance();
 				break;
 			case FRAG_RESULTS_ALL_RACES:
-				fragmentTitle = ": " + getString(R.string.all_races_text);
+				mActiveFragmentTitle = ": " + getString(R.string.all_races_text);
 				fragment = Results_AllRaces_Fragment.newInstance();
 				break;
 			case FRAG_ATHLETES:
@@ -1229,11 +1228,11 @@ public class MainActivity extends Activity {
 				fragment = Create_Event_Fragment.newInstance();
 				break;
 			case FRAG_RESULTS_RACE_SPLITS:
-				fragmentTitle = getString(R.string.race_splits_text);
+				mActiveFragmentTitle = getString(R.string.race_splits_text);
 				fragment = Results_RaceSplitsFragment.newInstance(mSelectedRaceID);
 				break;
 			case FRAG_RESULTS_RELAY_SPLITS:
-				fragmentTitle = getString(R.string.relay_splits_text);
+				mActiveFragmentTitle = getString(R.string.relay_splits_text);
 				fragment = Results_RelaySplitsFragment.newInstance(mSelectedRaceID);
 				break;
 
@@ -1266,9 +1265,8 @@ public class MainActivity extends Activity {
 		}
 
 		if (position != FRAG_ATHLETES) {
-			fragmentTitle = meetTypeString + " " + fragmentTitle;
+			mActiveFragmentTitle = meetTypeString + " " + mActiveFragmentTitle;
 		}
-		setTitle(fragmentTitle);
 
 		if (mActiveFragment < FRAG_ATHLETES || mActiveFragment > FRAG_CREATE_EVENTS) {
 			mPreviousRaceFragment = mActiveFragment;
@@ -1285,12 +1283,6 @@ public class MainActivity extends Activity {
 			}
 		}
 
-	}
-
-	@Override
-	public void setTitle(CharSequence title) {
-		mTitle = title;
-		getActionBar().setTitle(mTitle);
 	}
 
 	/**
@@ -1326,8 +1318,8 @@ public class MainActivity extends Activity {
 		// The mActiveFragment will be replaced as part of the SelectFragment() method called below;
 		mActiveFragment = MySettings.getMainActivityPreviousFragment();
 		mDrawerTitle = MySettings.getMainActivityDrawerTitle();
-		mTitle = MySettings.getMainActivityTitle();
-		mPreviousTitle = MySettings.getMainActivityPreviousTitle();
+		mActiveFragmentTitle = MySettings.getActiveFragmentTitle();
+		mRaceTitle = MySettings.getMainActivityRaceTitle();
 		mSelectedRaceID = MySettings.getMainActivitySelectedRaceID();
 
 		SelectFragment(MySettings.getMainActivityActiveFragment());
@@ -1345,8 +1337,8 @@ public class MainActivity extends Activity {
 		MainActivityBundle.putInt(MySettings.STATE_MAIN_ACTIVITY_ACTIVE_FRAGMENT, mActiveFragment);
 		MainActivityBundle.putInt(MySettings.STATE_MAIN_ACTIVITY_PREVIOUS_FRAGMENT, mPreviousRaceFragment);
 		MainActivityBundle.putCharSequence(MySettings.STATE_MAIN_ACTIVITY_DRAWER_TITLE, mDrawerTitle);
-		MainActivityBundle.putCharSequence(MySettings.STATE_MAIN_ACTIVITY_TITLE, mTitle);
-		MainActivityBundle.putCharSequence(MySettings.STATE_MAIN_ACTIVITY_PREVIOUS_TITLE, mPreviousTitle);
+		MainActivityBundle.putCharSequence(MySettings.STATE_MAIN_ACTIVITY_ACTIVE_FRAG_TITLE, mActiveFragmentTitle);
+		MainActivityBundle.putCharSequence(MySettings.STATE_MAIN_ACTIVITY_RACE_TITLE, mRaceTitle);
 		MainActivityBundle.putLong(MySettings.STATE_MAIN_ACTIVITY_SELECTED_RACE_ID, mSelectedRaceID);
 		MySettings.set("", MainActivityBundle);
 

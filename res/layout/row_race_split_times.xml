@@ -8,37 +8,38 @@
 
 	<TextView
 		android:id="@+id/tvLapNumber"
-		style="@style/tvStyleSplitTable"
+		style="@style/tvSplitTable.BlackText"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:layout_weight="1"
-		android:gravity="center" />
+		android:layout_weight="7"
+		android:gravity="center"
+		android:text="10" />
 
 	<TextView
 		android:id="@+id/tvDistance"
-		style="@style/tvStyleSplitTable"
+		style="@style/tvSplitTable.BlackText"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:layout_weight="1"
-		android:gravity="right"
-		android:paddingRight="6dp" />
+		android:layout_weight="10"
+		android:gravity="center"
+		android:paddingRight="@dimen/splitsTableRightPadding" />
 
 	<TextView
 		android:id="@+id/tvSplitTime"
-		style="@style/tvStyleSplitTable"
+		style="@style/tvSplitTable.BlackText"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:layout_weight="1"
-		android:gravity="right"
-		android:paddingRight="6dp" />
+		android:layout_weight="10"
+		android:gravity="center"
+		android:paddingRight="@dimen/splitsTableRightPadding" />
 
 	<TextView
 		android:id="@+id/tvCumulativeTime"
-		style="@style/tvStyleSplitTable"
+		style="@style/tvSplitTable.BlackText"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:layout_weight="1"
-		android:gravity="right"
-		android:paddingRight="6dp" />
+		android:layout_weight="10"
+		android:gravity="center"
+		android:paddingRight="@dimen/splitsTableRightPadding" />
 
 </LinearLayout>

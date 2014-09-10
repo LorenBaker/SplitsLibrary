@@ -20,21 +20,21 @@
 
 	<QuickContactBadge
 		android:id="@+id/qcbAthlete"
-		android:layout_width="65dp"
-		android:layout_height="65dp"
+		android:layout_width="@dimen/quickContactBadgeDim"
+		android:layout_height="@dimen/quickContactBadgeDim"
 		android:layout_gravity="center" />
 
 	<Button
 		android:id="@+id/btnAddAthleteToContacts"
-		android:layout_width="65dp"
-		android:layout_height="65dp"
+		android:layout_width="@dimen/quickContactBadgeDim"
+		android:layout_height="@dimen/quickContactBadgeDim"
 		android:layout_gravity="center"
 		android:background="@drawable/ic_action_add_person_dark"
 		android:visibility="gone" />
 
 	<TextView
 		android:id="@+id/tvDisplayName"
-		style="@style/tvStyleTitle"
+		style="@style/tvCenterVerticalRow.BlackText.Normal.Title"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:layout_gravity="center"

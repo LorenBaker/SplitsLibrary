@@ -3,18 +3,16 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
-	android:paddingBottom="10dp"
-	android:paddingLeft="24dp"
-	android:paddingRight="24dp"
-	android:paddingTop="10dp" >
+	android:paddingBottom="@dimen/fragment_land_vertical_padding"
+	android:paddingLeft="@dimen/fragment_land_horizontal_padding"
+	android:paddingRight="@dimen/fragment_land_horizontal_padding"
+	android:paddingTop="@dimen/fragment_land_vertical_padding" >
 
 	<TextView
 		android:id="@+id/tvRacetime"
 		style="@style/tvStyleRaceTimer"
 		android:layout_width="match_parent"
-		android:layout_height="52dp"
-		android:layout_marginBottom="5dp"
-		android:paddingBottom="5dp"
+		android:layout_height="wrap_content"
 		android:visibility="gone" >
 	</TextView>
 
@@ -32,18 +30,18 @@
 			<Spinner
 				android:id="@+id/spinRaceMeets"
 				android:layout_width="match_parent"
-				android:layout_height="52dp"
+				android:layout_height="@dimen/spinnerHeight"
 				android:visibility="visible" />
 
 			<Spinner
 				android:id="@+id/spinAthlete0"
 				android:layout_width="match_parent"
-				android:layout_height="52dp" />
+				android:layout_height="@dimen/spinnerHeight" />
 
 			<Spinner
 				android:id="@+id/spinAthlete2"
 				android:layout_width="match_parent"
-				android:layout_height="52dp" />
+				android:layout_height="@dimen/spinnerHeight" />
 		</LinearLayout>
 
 		<LinearLayout
@@ -55,18 +53,18 @@
 			<Spinner
 				android:id="@+id/spinRaceEvents"
 				android:layout_width="match_parent"
-				android:layout_height="52dp"
+				android:layout_height="@dimen/spinnerHeight"
 				android:visibility="visible" />
 
 			<Spinner
 				android:id="@+id/spinAthlete1"
 				android:layout_width="match_parent"
-				android:layout_height="52dp" />
+				android:layout_height="@dimen/spinnerHeight" />
 
 			<Spinner
 				android:id="@+id/spinAthlete3"
 				android:layout_width="match_parent"
-				android:layout_height="52dp" />
+				android:layout_height="@dimen/spinnerHeight" />
 		</LinearLayout>
 	</LinearLayout>
 
@@ -74,17 +72,16 @@
 		android:id="@+id/btnActiveAthlete"
 		style="@style/btnStartSplitStop.Split"
 		android:layout_width="match_parent"
-		android:layout_height="104dp"
-		android:layout_marginBottom="6dp"
-		android:layout_marginTop="6dp"
+		android:layout_height="@dimen/btnStartSplitStopHeight"
+		android:layout_marginBottom="@dimen/raceTimer_vertical_margin"
 		android:visibility="gone" />
 
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:orientation="horizontal"
-		android:paddingLeft="24dp"
-		android:paddingRight="24dp" >
+		android:paddingLeft="@dimen/fragment_land_horizontal_padding"
+		android:paddingRight="@dimen/fragment_land_horizontal_padding" >
 
 		<LinearLayout
 			android:layout_width="0dp"
@@ -108,27 +105,24 @@
 		<Button
 			android:id="@+id/btnStart"
 			style="@style/btnStartSplitStop.Start"
-			android:layout_width="104dp"
-			android:layout_height="104dp"
-			android:gravity="center"
+			android:layout_width="@dimen/btnStartSplitStopWidth"
+			android:layout_height="@dimen/btnStartSplitStopHeight"
 			android:text="@string/btnStart_text"
 			android:visibility="visible" />
 
 		<Button
 			android:id="@+id/btnStop"
 			style="@style/btnStartSplitStop.Stop"
-			android:layout_width="104dp"
-			android:layout_height="104dp"
-			android:gravity="center"
+			android:layout_width="@dimen/btnStartSplitStopWidth"
+			android:layout_height="@dimen/btnStartSplitStopHeight"
 			android:text="@string/btnStop_text"
 			android:visibility="gone" />
 
 		<Button
 			android:id="@+id/btnSplit"
 			style="@style/btnStartSplitStop.Split"
-			android:layout_width="104dp"
-			android:layout_height="104dp"
-			android:gravity="center"
+			android:layout_width="@dimen/btnStartSplitStopWidth"
+			android:layout_height="@dimen/btnStartSplitStopHeight"
 			android:text="@string/btnSplit_text"
 			android:visibility="gone" />
 	</LinearLayout>

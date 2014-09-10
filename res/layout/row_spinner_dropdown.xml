@@ -10,7 +10,7 @@
 		android:id="@+id/tvDropdownRow"
 		style="@style/tvStyleListViewRow"
 		android:layout_width="match_parent"
-		android:layout_height="46dp"
+		android:layout_height="@dimen/spinnerDropdownHeight"
 		android:gravity="center_vertical"
 		android:singleLine="true" />
 

@@ -22,9 +22,12 @@ import com.flurry.android.FlurryAgent;
 import com.lbconsulting.splits.R;
 import com.lbconsulting.splits.classes.DateTimeUtils;
 import com.lbconsulting.splits.classes.MyLog;
+import com.lbconsulting.splits.classes.SplitsEvents.UpdateRaceTime;
 import com.lbconsulting.splits.database.RacesTable;
 import com.lbconsulting.splits.database.RelaysTable;
 import com.lbconsulting.splits.database.SplitsTable;
+
+import de.greenrobot.event.EventBus;
 
 public class Number_Picker_DialogFragment extends DialogFragment {
 
@@ -253,6 +256,8 @@ public class Number_Picker_DialogFragment extends DialogFragment {
 						RacesTable.UpdateRaceFieldValues(getActivity(), mRaceID, newFieldValues);
 						RacesTable.setAthleteEventBestTime(getActivity(), mEventShortTitle, mRaceAthleteID, false, 0);
 					}
+
+					EventBus.getDefault().post(new UpdateRaceTime(finalTime));
 
 					FlurryAgent.logEvent("RaceTimeChanged", timeAdjustmentParams);
 					getDialog().dismiss();

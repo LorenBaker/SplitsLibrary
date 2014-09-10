@@ -8,30 +8,29 @@
 	<Spinner
 		android:id="@+id/spinAthlete0"
 		android:layout_width="match_parent"
-		android:layout_height="52dp" />
+		android:layout_height="@dimen/spinnerHeight" />
 
 	<Spinner
 		android:id="@+id/spinAthlete1"
 		android:layout_width="match_parent"
-		android:layout_height="52dp" />
+		android:layout_height="@dimen/spinnerHeight" />
 
 	<Spinner
 		android:id="@+id/spinAthlete2"
 		android:layout_width="match_parent"
-		android:layout_height="52dp" />
+		android:layout_height="@dimen/spinnerHeight" />
 
 	<Spinner
 		android:id="@+id/spinAthlete3"
 		android:layout_width="match_parent"
-		android:layout_height="52dp" />
+		android:layout_height="@dimen/spinnerHeight" />
 
 	<Button
 		android:id="@+id/btnActiveAthlete"
 		style="@style/btnStartSplitStop.Split"
 		android:layout_width="match_parent"
-		android:layout_height="104dp"
-		android:layout_marginBottom="10dp"
-		android:layout_marginTop="10dp"
+		android:layout_height="@dimen/btnStartSplitStopHeight"
+		android:layout_marginBottom="@dimen/raceTimer_vertical_margin"
 		android:visibility="gone" />
 
 	<LinearLayout
@@ -61,18 +60,24 @@
 		<Button
 			android:id="@+id/btnStart"
 			style="@style/btnStartSplitStop.Start"
+			android:layout_width="@dimen/btnStartSplitStopWidth"
+			android:layout_height="@dimen/btnStartSplitStopHeight"
 			android:text="@string/btnStart_text"
 			android:visibility="visible" />
 
 		<Button
 			android:id="@+id/btnStop"
 			style="@style/btnStartSplitStop.Stop"
+			android:layout_width="@dimen/btnStartSplitStopWidth"
+			android:layout_height="@dimen/btnStartSplitStopHeight"
 			android:text="@string/btnStop_text"
 			android:visibility="gone" />
 
 		<Button
 			android:id="@+id/btnSplit"
 			style="@style/btnStartSplitStop.Split"
+			android:layout_width="@dimen/btnStartSplitStopWidth"
+			android:layout_height="@dimen/btnStartSplitStopHeight"
 			android:text="@string/btnSplit_text"
 			android:visibility="gone" />
 	</LinearLayout>

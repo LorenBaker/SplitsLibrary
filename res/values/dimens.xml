@@ -1,9 +1,46 @@
 <resources>
 
-	<!-- Default screen margins, per the Android Design guidelines. -->
-	<dimen name="activity_horizontal_margin">4dp</dimen>
-	<dimen name="activity_vertical_margin">4dp</dimen>
+	<dimen name="activity_horizontal_margin">0dp</dimen>
+	<dimen name="activity_vertical_margin">0dp</dimen>
+	<dimen name="fragment_horizontal_padding">4dp</dimen>
+	<dimen name="fragment_vertical_padding">4dp</dimen>
+	<dimen name="fragment_land_horizontal_padding">24dp</dimen>
+	<dimen name="fragment_land_vertical_padding">4dp</dimen>
+	<dimen name="btnPadding">8dp</dimen>
 	<dimen name="btnStartSplitStopHeight">104dp</dimen>
+	<dimen name="btnStartSplitStopPadding">8dp</dimen>
+	<dimen name="btnStartSplitStopTextSize">28sp</dimen>
 	<dimen name="btnStartSplitStopWidth">104dp</dimen>
+	<dimen name="create_event_horizontal_margin">52dp</dimen>
+	<dimen name="dialogEntryBottomPadding">2dp</dimen>
+	<dimen name="dialogEntryLeftPadding">8dp</dimen>
+	<dimen name="dialogEntryRightPadding">2dp</dimen>
+	<dimen name="dialogEntryTopPadding">2dp</dimen>
+	<dimen name="dialogMessagePadding">7dp</dimen>
+	<dimen name="frag_create_event_textview_vertical_spacing">5dp</dimen>
+	<dimen name="frag_meets_listview_vertical_margin">4dp</dimen>
+	<dimen name="frag_races_textview_vertical_spacing">5dp</dimen>
+	<dimen name="frag_splits_textview_vertical_spacing">2dp</dimen>
+	<dimen name="helpTextPadding">3dp</dimen>
+	<dimen name="land_frag_horizontal_margin">20dp</dimen>
+	<dimen name="listViewRowPadding">5dp</dimen>
+	<dimen name="quickContactBadgeDim">65dp</dimen>
+	<dimen name="raceTimer_vertical_margin">4dp</dimen>
+	<dimen name="separatorRowPadding">1dp</dimen>
+	<dimen name="spinnerDropdownHeight">52dp</dimen>
+	<dimen name="spinnerHeight">52dp</dimen>
+	<dimen name="splitsTableLeftMargin">0dp</dimen>
+	<dimen name="splitsTableLeftPadding">1dp</dimen>
+	<dimen name="splitsTableRightMargin">-1dp</dimen>
+	<dimen name="splitsTableRightPadding">7dp</dimen>
+	<dimen name="splitsTimesHorizontalPadding">12dp</dimen>
+	<dimen name="TextSizeDialog">15sp</dimen>
+	<dimen name="TextSizeHelp">17sp</dimen>
+	<dimen name="TextSizeNormal">17sp</dimen>
+	<dimen name="TextSizeRaceTimer">40sp</dimen>
+	<dimen name="TextSizeSplitTable">13sp</dimen>
+	<dimen name="titleRowHorizonalPadding">8dp</dimen>
+	<dimen name="titleRowVerticalPadding">1dp</dimen>
+	<dimen name="tvBestTimesDividerPadding">8dp</dimen>
 
 </resources>

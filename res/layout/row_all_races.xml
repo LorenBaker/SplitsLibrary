@@ -16,21 +16,21 @@
 
 		<TextView
 			android:id="@+id/tvRaceTime"
-			style="@style/tvStyleAllRaceTimeRow"
+			style="@style/tvCenterVerticalRow.BlackText.Bold"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:singleLine="true" />
 
 		<TextView
 			android:id="@+id/tvRaceLeg"
-			style="@style/tvStyleAllRaceDateRow"
+			style="@style/tvCenterVerticalRow.BlackText.Normal"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:singleLine="true" />
 
 		<TextView
 			android:id="@+id/tvRaceDate"
-			style="@style/tvStyleAllRaceDateRow"
+			style="@style/tvCenterVerticalRow.BlackText.Normal"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_weight="2"
@@ -39,7 +39,7 @@
 
 	<TextView
 		android:id="@+id/tvMeetTitle"
-		style="@style/tvStyleAllRaceMeetTitleRow"
+		style="@style/tvCenterVerticalRow.BlackText.Italic"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:singleLine="true" />

@@ -2,32 +2,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:orientation="vertical" >
+	android:orientation="vertical"
+	android:paddingBottom="@dimen/fragment_vertical_padding"
+	android:paddingLeft="@dimen/fragment_horizontal_padding"
+	android:paddingRight="@dimen/fragment_horizontal_padding"
+	android:paddingTop="@dimen/fragment_vertical_padding" >
 
 	<Spinner
 		android:id="@+id/spinRaceMeets"
 		android:layout_width="match_parent"
-		android:layout_height="52dp" />
+		android:layout_height="@dimen/spinnerHeight" />
 
 	<Spinner
 		android:id="@+id/spinRaceEvents"
 		android:layout_width="match_parent"
-		android:layout_height="52dp" />
+		android:layout_height="@dimen/spinnerHeight" />
 
 	<TextView
 		android:id="@+id/tvRacetime"
 		style="@style/tvStyleRaceTimer"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_marginBottom="5dp"
-		android:paddingBottom="5dp"
 		android:visibility="gone" >
 	</TextView>
 
 	<include
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
-		android:layout_marginTop="4dp"
+		android:layout_marginTop="@dimen/frag_races_textview_vertical_spacing"
 		android:layout_weight="1"
 		layout="@layout/table_athlete1_race_timer"
 		android:visibility="visible" />
@@ -35,7 +37,7 @@
 	<include
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
-		android:layout_marginTop="4dp"
+		android:layout_marginTop="@dimen/frag_races_textview_vertical_spacing"
 		android:layout_weight="1"
 		layout="@layout/table_athlete2_race_timer"
 		android:visibility="visible" />

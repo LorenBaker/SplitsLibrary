@@ -283,7 +283,6 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 				MySettings.getRelayIntValues("Relay"),
 				MySettings.isRelayRunning("Relay"));
 
-		// long meetID = MySettings.getMeetID();
 		mRelay.setRelayMeetID(MySettings.getMeetID());
 
 		mRelaySplitsCursorAdapter.setNumberFormat(mNumberFormat);
@@ -303,23 +302,19 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 			}
 		}
 
-		/*		long relayMeetID = spinRelayMeets.getSelectedItemId();
-				if (mRelay.getRelayMeetID() != relayMeetID) {
-					if (relayMeetID > 0) {
-						mRelay.setRelayMeetID(relayMeetID);
-					}
-				}*/
-
 		mLoaderManager.restartLoader(MySettings.LOADER_FRAG_RELAY_TIMER_ATHLETE0, null, mRelayTimerCallbacks);
 		mLoaderManager.restartLoader(MySettings.LOADER_FRAG_RELAY_TIMER_ATHLETE1, null, mRelayTimerCallbacks);
 		mLoaderManager.restartLoader(MySettings.LOADER_FRAG_RELAY_TIMER_ATHLETE2, null, mRelayTimerCallbacks);
 		mLoaderManager.restartLoader(MySettings.LOADER_FRAG_RELAY_TIMER_ATHLETE3, null, mRelayTimerCallbacks);
 
+		mRelayEventShortTitle = EventsTable.getEventShortTitle(getActivity(), mRelay.getRelayEventID());
 		if (MySettings.isRelayStartButtonVisible()) {
-			btnStart.setVisibility(View.VISIBLE);
 			mRelaySplitsCursorAdapter.swapCursor(null);
+			ShowStartButton();
+			EventBus.getDefault().post(new ChangeActionBarTitle(""));
 		} else {
 			btnStart.setVisibility(View.GONE);
+			EventBus.getDefault().post(new ChangeActionBarTitle(mRelayEventShortTitle));
 		}
 		if (MySettings.isRelaySplitButtonVisible()) {
 			btnSplit.setVisibility(View.VISIBLE);
@@ -332,12 +327,6 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 			btnStop.setVisibility(View.GONE);
 		}
 
-		if (MySettings.isRelayActiveAthleteButtonVisible()) {
-			btnActiveAthlete.setVisibility(View.VISIBLE);
-		} else {
-			btnActiveAthlete.setVisibility(View.GONE);
-		}
-
 		if (MySettings.areRelaySpinnersEnabled()) {
 			EnableSpinners();
 		} else {
@@ -348,9 +337,11 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 			// start clock
 			mHandler.removeCallbacks(startTimer);
 			mHandler.postDelayed(startTimer, 0);
-
+			btnActiveAthlete.setText(MySettings.getActiveAthleteButtonText());
+			btnActiveAthlete.setVisibility(View.VISIBLE);
 		} else {
 			ShowTime(mRelay.getRelayElapsedTime());
+			btnActiveAthlete.setVisibility(View.GONE);
 		}
 
 		mVibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
@@ -379,6 +370,9 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 				btnStop.getVisibility() == View.VISIBLE);
 		RelayTimerBundle.putBoolean(MySettings.STATE_RELAY_RACE_ACTIVE_ATHLETE_BUTTTON_VISIBLE,
 				btnActiveAthlete.getVisibility() == View.VISIBLE);
+
+		RelayTimerBundle.putString(MySettings.STATE_RELAY_RACE_ACTIVE_ATHLETE_TEXT, btnActiveAthlete.getText()
+				.toString());
 
 		MySettings.set("", RelayTimerBundle);
 
@@ -412,8 +406,8 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 		// stop clock
 		mHandler.removeCallbacks(startTimer);
 		btnStop.setVisibility(View.GONE);
+		btnActiveAthlete.setVisibility(View.GONE);
 		ShowTime(event.getRaceElapsedTime());
-		ShowAthleteSpinners();
 	}
 
 	private final int mNumberOfAthleteLoaders = 4;
@@ -626,21 +620,8 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 		return true;
 	}
 
-	private void ShowAthleteSpinners() {
-		spinAthlete0.setVisibility(View.VISIBLE);
-		spinAthlete1.setVisibility(View.VISIBLE);
-		spinAthlete2.setVisibility(View.VISIBLE);
-		spinAthlete3.setVisibility(View.VISIBLE);
-		btnActiveAthlete.setVisibility(View.GONE);
-	}
-
 	@SuppressWarnings("resource")
 	private void ShowActiveAthlete(int activeAthlete) {
-		spinAthlete0.setVisibility(View.GONE);
-		spinAthlete1.setVisibility(View.GONE);
-		spinAthlete2.setVisibility(View.GONE);
-		spinAthlete3.setVisibility(View.GONE);
-		btnActiveAthlete.setVisibility(View.VISIBLE);
 
 		Cursor athleteCursor = null;
 		switch (activeAthlete) {
@@ -795,8 +776,9 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 		if (isFree) {
 			mRelayRaceCount += 1;
 		}
-
+		DisableSpinners();
 		ShowActiveAthlete(1);
+		btnActiveAthlete.setVisibility(View.VISIBLE);
 		mRelay.CreateNewRelayRace();
 		if (mRelay.getRelayRaceID() < 1) {
 			MyLog.e("Relay_Timer_Fragment",
@@ -896,23 +878,37 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 
 	private void EnableSpinners() {
 		tvRelaytime.setVisibility(View.GONE);
+		btnActiveAthlete.setVisibility(View.GONE);
 		spinRelayMeets.setVisibility(View.VISIBLE);
 		spinRelayEvents.setVisibility(View.VISIBLE);
-		spinAthlete0.setEnabled(true);
-		spinAthlete1.setEnabled(true);
-		spinAthlete2.setEnabled(true);
-		spinAthlete3.setEnabled(true);
+
+		spinAthlete0.setVisibility(View.VISIBLE);
+		spinAthlete1.setVisibility(View.VISIBLE);
+		spinAthlete2.setVisibility(View.VISIBLE);
+		spinAthlete3.setVisibility(View.VISIBLE);
+
+		/*		spinAthlete0.setEnabled(true);
+				spinAthlete1.setEnabled(true);
+				spinAthlete2.setEnabled(true);
+				spinAthlete3.setEnabled(true);*/
 		areRelaySpinnersEnabled = true;
 	}
 
 	private void DisableSpinners() {
 		tvRelaytime.setVisibility(View.VISIBLE);
+		// btnActiveAthlete.setVisibility(View.VISIBLE);
 		spinRelayMeets.setVisibility(View.GONE);
 		spinRelayEvents.setVisibility(View.GONE);
-		spinAthlete0.setEnabled(false);
-		spinAthlete1.setEnabled(false);
-		spinAthlete2.setEnabled(false);
-		spinAthlete3.setEnabled(false);
+
+		spinAthlete0.setVisibility(View.GONE);
+		spinAthlete1.setVisibility(View.GONE);
+		spinAthlete2.setVisibility(View.GONE);
+		spinAthlete3.setVisibility(View.GONE);
+
+		/*		spinAthlete0.setEnabled(false);
+				spinAthlete1.setEnabled(false);
+				spinAthlete2.setEnabled(false);
+				spinAthlete3.setEnabled(false);*/
 		areRelaySpinnersEnabled = false;
 	}
 
@@ -989,9 +985,9 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 					spinRelayEvents.setSelection(MySettings.getIndexFromCursor(spinRelayEvents,
 							mRelay.getRelayEventID()));
 
-					if (btnActiveAthlete.getVisibility() == View.VISIBLE) {
+					/*if (btnActiveAthlete.getVisibility() == View.VISIBLE) {
 						ShowActiveAthlete(mRelay.getActiveAthlete());
-					}
+					}*/
 					mFirstTimeLoadingEventID = false;
 				}
 				break;

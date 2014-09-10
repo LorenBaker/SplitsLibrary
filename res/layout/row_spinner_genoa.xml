@@ -8,7 +8,7 @@
 
 	<TextView
 		android:id="@+id/tvRow"
-		style="@style/tvStyleGenoaListViewRow"
+		style="@style/tvCenterBoldShadow.WhiteText.GenoaListViewRow"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:singleLine="true" />

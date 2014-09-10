@@ -20,7 +20,7 @@
 	<string name="athletes_item_delete_question_mark">\?</string>
 	<string name="athletes_item_edit_dialog_title">Edit Athlete Display Name</string>
 	<string name="best_time_text">Best Time:</string>
-	<string name="best_times_text">Best Times:</string>
+	<string name="best_times_text">Best Times</string>
 	<string name="btnCreateEvent_distance_must_be_greater_than_0">Distance must be greater than 0!</string>
 	<string name="btnCreateEvent_distance_not_provided">Event Distance not provided!</string>
 	<string name="btnCreateEvent_failed_to_create_event">FAILED to create event.</string>
@@ -33,6 +33,7 @@
 	<string name="btnCreateMeetTitle_meet_title_not_provided">Meet Title not provided!</string>
 	<string name="btnCreateMeetTitle_unable_to_create_meet">Unable To Create Meet</string>
 	<string name="btnOK_text">OK</string>
+	<string name="btnOK_Return_text">OK Return</string>
 	<string name="btnSplit_text">Split</string>
 	<string name="btnStart_text">Start</string>
 	<string name="btnStop_text">Stop</string>

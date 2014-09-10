@@ -3,18 +3,21 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
-	android:padding="64dp" >
+	android:paddingBottom="@dimen/fragment_land_vertical_padding"
+	android:paddingLeft="@dimen/fragment_land_horizontal_padding"
+	android:paddingRight="@dimen/fragment_land_horizontal_padding"
+	android:paddingTop="@dimen/fragment_land_vertical_padding" >
 
 	<TextView
 		android:id="@+id/tvMeetTitleAndDate"
-		style="@style/tvStyleGenoaListViewRow"
+		style="@style/tvCenterBoldShadow.WhiteText.GenoaListViewRow"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_marginBottom="2dp" />
+		android:layout_marginBottom="@dimen/frag_splits_textview_vertical_spacing" />
 
 	<TextView
 		android:id="@+id/tvRelayNameAndTime"
-		style="@style/tvStyleGenoaListViewRow"
+		style="@style/tvCenterBoldShadow.WhiteText.GenoaListViewRow"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content" />
 
@@ -26,5 +29,12 @@
 		android:layout_height="0dp"
 		android:layout_weight="1" >
 	</ListView>
+
+	<Button
+		android:id="@+id/btnOkFinished"
+		style="@style/btnStyle.OkFinished"
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/spinnerHeight"
+		android:text="@string/btnOK_Return_text" />
 
 </LinearLayout>

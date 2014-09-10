@@ -8,7 +8,7 @@
 
 	<TextView
 		android:id="@+id/tvLeg"
-		style="@style/tvStyleSplitTable"
+		style="@style/tvSplitTable.BlackText"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:layout_weight="11"
@@ -16,29 +16,29 @@
 
 	<TextView
 		android:id="@+id/tvAthleteDisplayName"
-		style="@style/tvStyleSplitTable"
+		style="@style/tvSplitTable.BlackText"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:layout_weight="30"
 		android:gravity="left"
-		android:paddingLeft="12dp" />
+		android:paddingLeft="@dimen/splitsTimesHorizontalPadding" />
 
 	<TextView
 		android:id="@+id/tvEventShortTitle"
-		style="@style/tvStyleSplitTable"
+		style="@style/tvSplitTable.BlackText"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:layout_weight="25"
 		android:gravity="left"
-		android:paddingLeft="12dp" />
+		android:paddingLeft="@dimen/splitsTimesHorizontalPadding" />
 
 	<TextView
 		android:id="@+id/tvSplit"
-		style="@style/tvStyleSplitTable"
+		style="@style/tvSplitTable.BlackText"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:layout_weight="22"
-		android:gravity="right"
-		android:paddingRight="12dp" />
+		android:gravity="center"
+		android:paddingRight="@dimen/splitsTimesHorizontalPadding" />
 
 </LinearLayout>

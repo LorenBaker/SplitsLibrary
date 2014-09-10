@@ -1,0 +1,47 @@
+<resources>
+
+	<dimen name="activity_horizontal_margin">0dp</dimen>
+	<dimen name="activity_vertical_margin">0dp</dimen>
+	<dimen name="fragment_horizontal_padding">10dp</dimen>
+	<dimen name="fragment_vertical_padding">10dp</dimen>
+	<dimen name="fragment_land_horizontal_padding">35dp</dimen>
+	<dimen name="fragment_land_vertical_padding">10dp</dimen>
+	<dimen name="btnPadding">12dp</dimen>
+	<dimen name="btnStartSplitStopHeight">116dp</dimen>
+	<dimen name="btnStartSplitStopPadding">12dp</dimen>
+	<dimen name="btnStartSplitStopTextSize">32sp</dimen>
+	<dimen name="btnStartSplitStopWidth">116dp</dimen>
+	<dimen name="create_event_horizontal_margin">59dp</dimen>
+	<dimen name="dialogEntryBottomPadding">3dp</dimen>
+	<dimen name="dialogEntryLeftPadding">12dp</dimen>
+	<dimen name="dialogEntryRightPadding">3dp</dimen>
+	<dimen name="dialogEntryTopPadding">3dp</dimen>
+	<dimen name="dialogMessagePadding">11dp</dimen>
+	<dimen name="frag_create_event_textview_vertical_spacing">7dp</dimen>
+	<dimen name="frag_meets_listview_vertical_margin">6dp</dimen>
+	<dimen name="frag_races_textview_vertical_spacing">7dp</dimen>
+	<dimen name="frag_splits_textview_vertical_spacing">3dp</dimen>
+	<dimen name="helpTextPadding">4dp</dimen>
+	<dimen name="land_frag_horizontal_margin">30dp</dimen>
+	<dimen name="listViewRowPadding">5dp</dimen>
+	<dimen name="quickContactBadgeDim">65dp</dimen>
+	<dimen name="raceTimer_vertical_margin">8dp</dimen>
+	<dimen name="separatorRowPadding">2dp</dimen>
+	<dimen name="spinnerDropdownHeight">59dp</dimen>
+	<dimen name="spinnerHeight">59dp</dimen>
+	<dimen name="splitsTableLeftMargin">0dp</dimen>
+	<dimen name="splitsTableLeftPadding">1dp</dimen>
+	<dimen name="splitsTableRightMargin">-1dp</dimen>
+	<dimen name="splitsTableRightPadding">14dp</dimen>
+	<dimen name="splitsTimesHorizontalPadding">18dp</dimen>
+	<dimen name="TextSizeDialog">16sp</dimen>
+	<dimen name="TextSizeHelp">18sp</dimen>
+	<dimen name="TextSizeNormal">19sp</dimen>
+	<dimen name="TextSizeRaceTimer">45sp</dimen>
+	<dimen name="TextSizeSplitTable">17sp</dimen>
+	<dimen name="titleRowHorizonalPadding">9dp</dimen>
+	<dimen name="titleRowVerticalPadding">1dp</dimen>
+	<dimen name="tvBestTimesDividerPadding">3dp</dimen>
+	<dimen name="bestTimeDividerHeight">25dp</dimen>
+
+</resources>

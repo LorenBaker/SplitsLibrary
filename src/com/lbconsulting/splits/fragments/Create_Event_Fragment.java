@@ -30,6 +30,7 @@ import com.flurry.android.FlurryAgent;
 import com.lbconsulting.splits.R;
 import com.lbconsulting.splits.classes.MyLog;
 import com.lbconsulting.splits.classes.MySettings;
+import com.lbconsulting.splits.classes.SplitsEvents.ChangeActionBarTitle;
 import com.lbconsulting.splits.classes.SplitsEvents.ShowPreviousFragment;
 import com.lbconsulting.splits.database.EventsTable;
 
@@ -286,7 +287,8 @@ public class Create_Event_Fragment extends Fragment implements OnClickListener, 
 				String.valueOf(MySettings.SWIM_MEET)));
 
 		spinUnits.setSelection(MySettings.getCreateEventUnitsPosition(spinUnits));
-
+		// show the Active Fragment Title
+		EventBus.getDefault().post(new ChangeActionBarTitle(""));
 		super.onResume();
 	}
 

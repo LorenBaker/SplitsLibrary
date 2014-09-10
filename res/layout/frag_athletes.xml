@@ -4,7 +4,10 @@
 	android:layout_height="match_parent"
 	android:baselineAligned="false"
 	android:orientation="vertical"
-	android:padding="4dp" >
+	android:paddingBottom="@dimen/fragment_vertical_padding"
+	android:paddingLeft="@dimen/fragment_horizontal_padding"
+	android:paddingRight="@dimen/fragment_horizontal_padding"
+	android:paddingTop="@dimen/fragment_vertical_padding" >
 
 	<ListView
 		android:id="@+id/lvAthletes"
@@ -15,9 +18,9 @@
 
 	<Button
 		android:id="@+id/btnOkFinished"
-		style="@style/btnStyleGenoa"
+		style="@style/btnStyle.OkFinished"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:text="@string/btnOK_text" />
+		android:text="@string/btnOK_Return_text" />
 
 </LinearLayout>

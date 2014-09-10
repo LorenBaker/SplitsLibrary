@@ -28,8 +28,10 @@ import com.lbconsulting.splits.adapters.BestTimesCursorAdapter;
 import com.lbconsulting.splits.classes.DateTimeUtils;
 import com.lbconsulting.splits.classes.MyLog;
 import com.lbconsulting.splits.classes.MySettings;
+import com.lbconsulting.splits.classes.SplitsEvents.ChangeActionBarTitle;
 import com.lbconsulting.splits.classes.SplitsEvents.ShowRaceSplits;
 import com.lbconsulting.splits.classes.SplitsEvents.UpdateBestTimes;
+import com.lbconsulting.splits.classes.SplitsEvents.UpdateRaceTime;
 import com.lbconsulting.splits.database.AthletesTable;
 import com.lbconsulting.splits.database.RacesTable;
 
@@ -157,6 +159,10 @@ public class Results_BestTimes_Fragment extends Fragment implements LoaderCallba
 		mLoaderManager.restartLoader(MySettings.LOADER_FRAG_RESULTS_BEST_TIMES, null, mBestTimesFragmentCallbacks);
 	}
 
+	public void onEvent(UpdateRaceTime event) {
+		mLoaderManager.restartLoader(MySettings.LOADER_FRAG_RESULTS_BEST_TIMES, null, mBestTimesFragmentCallbacks);
+	}
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		MyLog.i("Results_BestTimes_Fragment", "onActivityCreated()");
@@ -179,6 +185,8 @@ public class Results_BestTimes_Fragment extends Fragment implements LoaderCallba
 		mFirstTimeLoadingBestTimesAthletes = true;
 		mLoaderManager.restartLoader(MySettings.LOADER_FRAG_RESULTS_BEST_TIMES, null, mBestTimesFragmentCallbacks);
 		EventBus.getDefault().register(this);
+		// show the Active Fragment Title
+		EventBus.getDefault().post(new ChangeActionBarTitle(""));
 		super.onResume();
 	}
 

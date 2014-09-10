@@ -93,8 +93,8 @@ public class MySettings {
 	public static final String STATE_MAIN_ACTIVITY_ACTIVE_FRAGMENT = "MainActivityActiveFragment";
 	public static final String STATE_MAIN_ACTIVITY_PREVIOUS_FRAGMENT = "MainActivityPreviousFragment";
 	public static final String STATE_MAIN_ACTIVITY_DRAWER_TITLE = "MainActivityDrawerTitle";
-	public static final String STATE_MAIN_ACTIVITY_TITLE = "MainActivityTitle";
-	public static final String STATE_MAIN_ACTIVITY_PREVIOUS_TITLE = "MainActivityPreviousTitle";
+	public static final String STATE_MAIN_ACTIVITY_ACTIVE_FRAG_TITLE = "MainActivityActiveFragmentTitle";
+	public static final String STATE_MAIN_ACTIVITY_RACE_TITLE = "MainActivityRaceTitle";
 	public static final String STATE_MAIN_ACTIVITY_SELECTED_RACE_ID = "MainActivitySelectedRaceID";
 
 	public static final String STATE_MEET_ID = "stateMeetID";
@@ -124,6 +124,7 @@ public class MySettings {
 	public static final String STATE_RELAY_RACE_SPLIT_BUTTTON_VISIBLE = "relayRaceSplitButtonVisible";
 	public static final String STATE_RELAY_RACE_STOP_BUTTTON_VISIBLE = "relayRaceStopButtonVisible";
 	public static final String STATE_RELAY_RACE_ACTIVE_ATHLETE_BUTTTON_VISIBLE = "relayRaceActiveAthleteButtonVisible";
+	public static final String STATE_RELAY_RACE_ACTIVE_ATHLETE_TEXT = "relayRaceActiveAthleteButtonText";
 
 	public static final String STATE_RELAY_RACE_ELAPSED_TIME = "relayRaceElapsedTime";
 
@@ -223,14 +224,14 @@ public class MySettings {
 				mContext.getResources().getString(R.string.app_name));
 	}
 
-	public static CharSequence getMainActivityTitle() {
+	public static CharSequence getActiveFragmentTitle() {
 		SharedPreferences storedStates = mContext.getSharedPreferences(SPLITS_SHARED_PREFERENCES, Context.MODE_PRIVATE);
-		return storedStates.getString(STATE_MAIN_ACTIVITY_TITLE, "");
+		return storedStates.getString(STATE_MAIN_ACTIVITY_ACTIVE_FRAG_TITLE, "");
 	}
 
-	public static CharSequence getMainActivityPreviousTitle() {
+	public static CharSequence getMainActivityRaceTitle() {
 		SharedPreferences storedStates = mContext.getSharedPreferences(SPLITS_SHARED_PREFERENCES, Context.MODE_PRIVATE);
-		return storedStates.getString(STATE_MAIN_ACTIVITY_PREVIOUS_TITLE, "");
+		return storedStates.getString(STATE_MAIN_ACTIVITY_RACE_TITLE, "");
 	}
 
 	public static long getMainActivitySelectedRaceID() {
@@ -505,6 +506,12 @@ public class MySettings {
 		SharedPreferences storedStates = mContext.getSharedPreferences(SPLITS_SHARED_PREFERENCES,
 				Context.MODE_PRIVATE);
 		return storedStates.getBoolean(STATE_RELAY_RACE_ACTIVE_ATHLETE_BUTTTON_VISIBLE, false);
+	}
+
+	public static String getActiveAthleteButtonText() {
+		SharedPreferences storedStates = mContext.getSharedPreferences(SPLITS_SHARED_PREFERENCES,
+				Context.MODE_PRIVATE);
+		return storedStates.getString(STATE_RELAY_RACE_ACTIVE_ATHLETE_TEXT, "");
 	}
 
 	public static boolean isRelayRunning(String header) {

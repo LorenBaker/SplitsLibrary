@@ -29,6 +29,7 @@ import com.lbconsulting.splits.adapters.AllRacesCursorAdapter;
 import com.lbconsulting.splits.classes.DateTimeUtils;
 import com.lbconsulting.splits.classes.MyLog;
 import com.lbconsulting.splits.classes.MySettings;
+import com.lbconsulting.splits.classes.SplitsEvents.ChangeActionBarTitle;
 import com.lbconsulting.splits.classes.SplitsEvents.ShowRaceSplits;
 import com.lbconsulting.splits.database.AthletesTable;
 import com.lbconsulting.splits.database.RacesTable;
@@ -158,21 +159,6 @@ public class Results_AllRaces_Fragment extends Fragment implements LoaderCallbac
 		return view;
 	}
 
-	/*	public void onEvent(UpdateAllRacesAthlete event) {
-			mAthleteID = event.getAthleteID();
-			spinResultsAthletes.setSelection(event.getSpinnerPosition());
-		}*/
-
-	/*	public void onEvent(UpdateAllRacesRadioButtons event) {
-			mProhibitBestTimesRadioButtonUpdate = true;
-			if (event.isRelaysChecked()) {
-				rbInRelays.setChecked(true);
-			} else {
-				rbIndividualEvents.setChecked(true);
-			}
-			mProhibitBestTimesRadioButtonUpdate = false;
-		}*/
-
 	private void setRadioButtons(boolean inRelays) {
 		if (inRelays) {
 			rbInRelays.setChecked(true);
@@ -202,7 +188,8 @@ public class Results_AllRaces_Fragment extends Fragment implements LoaderCallbac
 		mLoaderManager.restartLoader(MySettings.LOADER_FRAG_RESULTS_ALL_RACES, null, mAllRacesFragmentCallbacks);
 		boolean inRelays = MySettings.getBestTimeInRelays();
 		setRadioButtons(inRelays);
-		// EventBus.getDefault().register(this);
+		// show the Active Fragment Title
+		EventBus.getDefault().post(new ChangeActionBarTitle(""));
 		super.onResume();
 	}
 

@@ -194,4 +194,17 @@ public class SplitsEvents {
 		}
 	}
 
+	public static class UpdateRaceTime {
+
+		long mRaceTime;
+
+		public UpdateRaceTime(long raceTime) {
+			mRaceTime = raceTime;
+		}
+
+		public long getRaceTime() {
+			return mRaceTime;
+		}
+	}
+
 }

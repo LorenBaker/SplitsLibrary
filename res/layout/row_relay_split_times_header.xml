@@ -7,7 +7,7 @@
 	android:orientation="horizontal" >
 
 	<TextView
-		style="@style/tvStyleSplitTableHeader"
+		style="@style/tvSplitTable.WhiteText.Genoa"
 		android:layout_width="0dp"
 		android:layout_height="match_parent"
 		android:layout_weight="11"
@@ -15,7 +15,7 @@
 		android:text="@string/relay_leg_text" />
 
 	<TextView
-		style="@style/tvStyleSplitTableHeader"
+		style="@style/tvSplitTable.WhiteText.Genoa"
 		android:layout_width="0dp"
 		android:layout_height="match_parent"
 		android:layout_weight="30"
@@ -23,7 +23,7 @@
 		android:text="@string/athlete_text" />
 
 	<TextView
-		style="@style/tvStyleSplitTableHeader"
+		style="@style/tvSplitTable.WhiteText.Genoa"
 		android:layout_width="0dp"
 		android:layout_height="match_parent"
 		android:layout_weight="25"
@@ -31,7 +31,7 @@
 		android:text="@string/event_text" />
 
 	<TextView
-		style="@style/tvStyleSplitTableHeader"
+		style="@style/tvSplitTable.WhiteText.Genoa"
 		android:layout_width="0dp"
 		android:layout_height="match_parent"
 		android:layout_weight="20"

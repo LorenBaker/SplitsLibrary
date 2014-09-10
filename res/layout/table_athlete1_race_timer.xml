@@ -8,11 +8,11 @@
 	<Spinner
 		android:id="@+id/spinAthlete1"
 		android:layout_width="match_parent"
-		android:layout_height="52dp" />
+		android:layout_height="@dimen/spinnerHeight" />
 
 	<TextView
 		android:id="@+id/tvAthlete1BestTime"
-		style="@style/tvStyleTitle"
+		style="@style/tvCenterVerticalRow.BlackText.Normal.Title"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:gravity="left|center_vertical"
@@ -48,18 +48,24 @@
 		<Button
 			android:id="@+id/btnAthlete1Start"
 			style="@style/btnStartSplitStop.Start"
+			android:layout_width="@dimen/btnStartSplitStopWidth"
+			android:layout_height="@dimen/btnStartSplitStopHeight"
 			android:text="@string/btnStart_text"
 			android:visibility="visible" />
 
 		<Button
 			android:id="@+id/btnAthlete1Stop"
 			style="@style/btnStartSplitStop.Stop"
+			android:layout_width="@dimen/btnStartSplitStopWidth"
+			android:layout_height="@dimen/btnStartSplitStopHeight"
 			android:text="@string/btnStop_text"
 			android:visibility="gone" />
 
 		<Button
 			android:id="@+id/btnAthlete1Split"
 			style="@style/btnStartSplitStop.Split"
+			android:layout_width="@dimen/btnStartSplitStopWidth"
+			android:layout_height="@dimen/btnStartSplitStopHeight"
 			android:text="@string/btnSplit_text"
 			android:visibility="gone" />
 	</LinearLayout>

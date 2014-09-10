@@ -36,6 +36,7 @@ import com.lbconsulting.splits.R;
 import com.lbconsulting.splits.adapters.fragMeetsCursorAdapter;
 import com.lbconsulting.splits.classes.MyLog;
 import com.lbconsulting.splits.classes.MySettings;
+import com.lbconsulting.splits.classes.SplitsEvents.ChangeActionBarTitle;
 import com.lbconsulting.splits.classes.SplitsEvents.ShowPreviousFragment;
 import com.lbconsulting.splits.database.MeetsTable;
 import com.lbconsulting.splits.dialogs.Deletion_Alert_DialogFragment;
@@ -294,6 +295,8 @@ public class Meets_Fragment extends Fragment implements LoaderCallbacks<Cursor> 
 		mMeetType = Integer.valueOf(sharedPrefs.getString(MySettings.KEY_MEET_TYPE,
 				String.valueOf(MySettings.SWIM_MEET)));
 		mLoaderManager.restartLoader(MySettings.LOADER_FRAG_MEETS, null, mMeetTitlesCallbacks);
+		// show the Active Fragment Title
+		EventBus.getDefault().post(new ChangeActionBarTitle(""));
 		super.onResume();
 	}
 

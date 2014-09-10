@@ -3,38 +3,37 @@
 	android:id="@+id/tblSplitTimesHheader"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:background="@drawable/table_split_times_header_genoa"
 	android:orientation="horizontal" >
 
 	<TextView
-		style="@style/tvStyleSplitTableHeader"
+		style="@style/tvSplitTable.WhiteText.Genoa"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:layout_weight="1"
+		android:layout_weight="7"
 		android:gravity="center"
 		android:text="@string/lap_text" />
 
 	<TextView
-		style="@style/tvStyleSplitTableHeader"
+		style="@style/tvSplitTable.WhiteText.Genoa"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:layout_weight="1"
+		android:layout_weight="10"
 		android:gravity="center"
 		android:text="@string/dist_text" />
 
 	<TextView
-		style="@style/tvStyleSplitTableHeader"
+		style="@style/tvSplitTable.WhiteText.Genoa"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:layout_weight="1"
+		android:layout_weight="10"
 		android:gravity="center"
 		android:text="@string/splits_text" />
 
 	<TextView
-		style="@style/tvStyleSplitTableHeader"
+		style="@style/tvSplitTable.WhiteText.Genoa"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:layout_weight="1"
+		android:layout_weight="10"
 		android:gravity="center"
 		android:text="@string/time_text" />
 

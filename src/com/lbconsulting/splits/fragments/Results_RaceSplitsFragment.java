@@ -21,7 +21,9 @@ import com.lbconsulting.splits.adapters.RaceSplitsCursorAdapter;
 import com.lbconsulting.splits.classes.DateTimeUtils;
 import com.lbconsulting.splits.classes.MyLog;
 import com.lbconsulting.splits.classes.MySettings;
+import com.lbconsulting.splits.classes.SplitsEvents.ChangeActionBarTitle;
 import com.lbconsulting.splits.classes.SplitsEvents.ShowPreviousFragment;
+import com.lbconsulting.splits.classes.SplitsEvents.UpdateRaceTime;
 import com.lbconsulting.splits.database.AthletesTable;
 import com.lbconsulting.splits.database.MeetsTable;
 import com.lbconsulting.splits.database.RacesTable;
@@ -130,6 +132,11 @@ public class Results_RaceSplitsFragment extends Fragment implements LoaderCallba
 		return view;
 	}
 
+	public void onEvent(UpdateRaceTime event) {
+		tvAthleteName_RaceAndTime.setText(getAthleteName_Race_Time(mAthleteID, mShortRaceTitle, event.getRaceTime(),
+				mNumberFormat));
+	}
+
 	private CharSequence getAthleteName_Race_Time(long athleteID, String shortRaceTitle, long raceTimeValue,
 			int numberFormat) {
 
@@ -154,12 +161,16 @@ public class Results_RaceSplitsFragment extends Fragment implements LoaderCallba
 	@Override
 	public void onResume() {
 		MyLog.i("Results_RaceSplitsFragment", "onResume()");
+		EventBus.getDefault().register(this);
+		// show the Active Fragment Title
+		EventBus.getDefault().post(new ChangeActionBarTitle(""));
 		super.onResume();
 	}
 
 	@Override
 	public void onPause() {
 		MyLog.i("Results_RaceSplitsFragment", "onPause()");
+		EventBus.getDefault().unregister(this);
 		super.onPause();
 	}
 

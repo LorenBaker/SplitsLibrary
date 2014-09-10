@@ -7,36 +7,29 @@
 		<!-- All customizations that are NOT specific to a particular API-level can go here. -->
 	</style>
 
-	<style name="btnStyleGenoa" parent="@android:style/Widget.Button">
-		<item name="android:textSize">17sp</item>
+	<style name="btnStyle" parent="@android:style/Widget.Button">
+		<item name="android:textSize">@dimen/TextSizeNormal</item>
+		<item name="android:gravity">center</item>
 		<item name="android:textStyle">bold</item>
 		<item name="android:textColor">@color/white</item>
-		<item name="android:gravity">center</item>
 		<item name="android:shadowColor">@color/black</item>
 		<item name="android:shadowDx">1</item>
 		<item name="android:shadowDy">1</item>
 		<item name="android:shadowRadius">0.6</item>
 		<item name="android:background">@drawable/btn_genoa</item>
-		<item name="android:padding">8dp</item>
+		<item name="android:padding">@dimen/btnPadding</item>
 	</style>
 
-	<style name="btnStyleBeige" parent="@android:style/Widget.Button">
-		<item name="android:textSize">15sp</item>
-		<item name="android:textStyle">bold</item>
-		<item name="android:textColor">#5d6153</item>
-		<item name="android:gravity">center</item>
-		<item name="android:shadowColor">#000000</item>
-		<item name="android:shadowDx">1</item>
-		<item name="android:shadowDy">1</item>
-		<item name="android:shadowRadius">0.6</item>
-		<item name="android:background">@drawable/btn_beige</item>
-		<item name="android:padding">10dip</item>
+	<style name="btnStyle.Genoa">
+		<item name="android:background">@drawable/btn_genoa</item>
+	</style>
+
+	<style name="btnStyle.OkFinished">
+		<item name="android:background">@drawable/btn_opal</item>
 	</style>
 
 	<style name="btnStartSplitStop" parent="@android:style/Widget.Button">
-		<item name="android:textSize">28sp</item>
-		<item name="android:height">75dp</item>
-		<item name="android:width">75dp</item>
+		<item name="android:textSize">@dimen/btnStartSplitStopTextSize</item>
 		<item name="android:gravity">center</item>
 		<item name="android:textStyle">bold</item>
 		<item name="android:textColor">@color/white</item>
@@ -44,7 +37,7 @@
 		<item name="android:shadowDx">1</item>
 		<item name="android:shadowDy">1</item>
 		<item name="android:shadowRadius">0.6</item>
-		<item name="android:padding">8dp</item>
+		<item name="android:padding">@dimen/btnStartSplitStopPadding</item>
 	</style>
 
 	<style name="btnStartSplitStop.Start">
@@ -59,162 +52,132 @@
 		<item name="android:background">@drawable/btn_stop</item>
 	</style>
 
-	<style name="tvStyleSmokewhite" parent="@android:style/Widget.TextView">
-		<item name="android:textSize">17sp</item>
-		<item name="android:textStyle">bold</item>
-		<item name="android:textColor">#000000</item>
+	<style name="tvCenterBoldShadow">
 		<item name="android:gravity">center</item>
-		<item name="android:shadowColor">#FFFFFF</item>
+		<item name="android:textStyle">bold</item>
 		<item name="android:shadowDx">1</item>
 		<item name="android:shadowDy">1</item>
 		<item name="android:shadowRadius">0.6</item>
+	</style>
+
+	<style name="tvCenterBoldShadow.BlackText">
+		<item name="android:textColor">@color/black</item>
+		<item name="android:shadowColor">@color/white</item>
+	</style>
+
+	<style name="tvCenterBoldShadow.WhiteText">
+		<item name="android:textColor">@color/white</item>
+		<item name="android:shadowColor">@color/black</item>
+	</style>
+
+	<style name="tvCenterBoldShadow.BlackText.BestTimesDivider">
+		<item name="android:textSize">@dimen/TextSizeNormal</item>
+		<item name="android:padding">@dimen/tvBestTimesDividerPadding</item>
+		<item name="android:background">@drawable/btn_beige</item>
+	</style>
+
+	<style name="tvCenterBoldShadow.BlackText.EventTitle">
+		<item name="android:textSize">@dimen/TextSizeNormal</item>
+		<item name="android:padding">@dimen/frag_create_event_textview_vertical_spacing</item>
 		<item name="android:background">@drawable/rec_bkgrd_smoke_white_stroke_black</item>
-		<item name="android:padding">5dp</item>
 	</style>
 
 	<style name="tvStyleRaceTimer" parent="@android:style/Widget.TextView">
-		<item name="android:textSize">40sp</item>
+		<item name="android:textSize">@dimen/TextSizeRaceTimer</item>
 		<item name="android:textColor">#004254</item>
 		<item name="android:gravity">center|center_vertical</item>
+		<item name="android:layout_marginBottom">@dimen/raceTimer_vertical_margin</item>
+		<item name="android:paddingBottom">@dimen/raceTimer_vertical_margin</item>
+		<item name="android:paddingTop">@dimen/raceTimer_vertical_margin</item>
 		<item name="android:background">@drawable/rec_bkgrd_smoke_white_stroke_black</item>
 	</style>
 
 	<style name="tvStyleListViewRow" parent="@android:style/Widget.TextView">
-		<item name="android:textSize">17sp</item>
+		<item name="android:textSize">@dimen/TextSizeNormal</item>
 		<item name="android:textStyle">normal</item>
-		<item name="android:textColor">#000000</item>
+		<item name="android:textColor">@color/black</item>
 		<item name="android:gravity">center_vertical</item>
-		<item name="android:shadowColor">#FFFFFF</item>
 		<item name="android:background">@drawable/rec_bkgrd_smoke_white_no_stroke</item>
-		<item name="android:padding">5dp</item>
+		<item name="android:padding">@dimen/listViewRowPadding</item>
 	</style>
 
-	<style name="tvStyleGenoaListViewRow" parent="@android:style/Widget.TextView">
-		<item name="android:textStyle">bold</item>
-		<item name="android:textColor">#FFFFFF</item>
-		<item name="android:gravity">center</item>
-		<item name="android:shadowColor">#000000</item>
-		<item name="android:shadowDx">1</item>
-		<item name="android:shadowDy">1</item>
-		<item name="android:shadowRadius">0.6</item>
+	<style name="tvCenterBoldShadow.WhiteText.GenoaListViewRow">
+		<item name="android:textSize">@dimen/TextSizeNormal</item>
+		<item name="android:padding">@dimen/listViewRowPadding</item>
 		<item name="android:background">@drawable/btn_genoa</item>
-		<item name="android:textSize">17sp</item>
-		<item name="android:padding">5dp</item>
 	</style>
 
-	<style name="tvStyleAllRaceTimeRow" parent="@android:style/Widget.TextView">
-		<item name="android:textSize">17sp</item>
-		<item name="android:textStyle">bold</item>
-		<item name="android:textColor">#000000</item>
+	<style name="tvCenterBoldShadow.WhiteText.GenoaSquareHeader">
+		<item name="android:textSize">@dimen/TextSizeNormal</item>
+		<item name="android:padding">@dimen/listViewRowPadding</item>
+		<item name="android:background">@drawable/table_split_times_header_genoa</item>
+	</style>
+
+	<style name="tvCenterVerticalRow">
 		<item name="android:gravity">center_vertical</item>
 		<item name="android:background">@drawable/rec_bkgrd_smoke_white_no_stroke</item>
-		<item name="android:paddingLeft">5dp</item>
-		<item name="android:paddingRight">5dp</item>
-		<item name="android:paddingTop">5dp</item>
+		<item name="android:paddingLeft">@dimen/listViewRowPadding</item>
+		<item name="android:paddingRight">@dimen/listViewRowPadding</item>
+		<item name="android:paddingTop">@dimen/listViewRowPadding</item>
 		<item name="android:paddingBottom">0dp</item>
 	</style>
 
-	<style name="tvStyleAllRaceDateRow" parent="@android:style/Widget.TextView">
-		<item name="android:textSize">17sp</item>
+	<style name="tvCenterVerticalRow.BlackText">
+		<item name="android:textColor">@color/black</item>
+	</style>
+
+	<style name="tvCenterVerticalRow.BlackText.Normal">
+		<item name="android:textSize">@dimen/TextSizeNormal</item>
 		<item name="android:textStyle">normal</item>
-		<item name="android:textColor">#000000</item>
-		<item name="android:gravity">center_vertical</item>
-		<item name="android:background">@drawable/rec_bkgrd_smoke_white_no_stroke</item>
-		<item name="android:paddingLeft">5dp</item>
-		<item name="android:paddingRight">5dp</item>
-		<item name="android:paddingTop">5dp</item>
-		<item name="android:paddingBottom">0dp</item>
 	</style>
 
-	<style name="tvStyleAllRaceMeetTitleRow" parent="@android:style/Widget.TextView">
-		<item name="android:textSize">17sp</item>
-		<item name="android:textStyle">italic</item>
-		<item name="android:textColor">#000000</item>
-		<item name="android:gravity">center_vertical</item>
-		<item name="android:background">@drawable/rec_bkgrd_smoke_white_no_stroke</item>
-		<item name="android:paddingLeft">5dp</item>
-		<item name="android:paddingRight">5dp</item>
-		<item name="android:paddingTop">0dp</item>
-		<item name="android:paddingBottom">1dp</item>
-	</style>
-
-	<style name="tvStyleGenoaListViewSeperatorRow" parent="@android:style/Widget.TextView">
+	<style name="tvCenterVerticalRow.BlackText.Bold">
+		<item name="android:textSize">@dimen/TextSizeNormal</item>
 		<item name="android:textStyle">bold</item>
-		<item name="android:textColor">#FFFFFF</item>
-		<item name="android:gravity">center</item>
-		<item name="android:shadowColor">#000000</item>
-		<item name="android:shadowDx">1</item>
-		<item name="android:shadowDy">1</item>
-		<item name="android:shadowRadius">0.6</item>
-		<item name="android:background">@drawable/btn_genoa</item>
-		<item name="android:textSize">17sp</item>
-		<item name="android:padding">1dp</item>
 	</style>
 
-	<style name="tvStyleTitle" parent="@android:style/Widget.TextView">
-		<item name="android:textSize">17sp</item>
-		<item name="android:textStyle">normal</item>
-		<item name="android:background">@drawable/rec_bkgrd_smoke_white_no_stroke</item>
-		<item name="android:paddingLeft">8dp</item>
-		<item name="android:paddingTop">1dp</item>
-		<item name="android:paddingBottom">1dp</item>
-		<item name="android:textColor">@color/black</item>
-	</style>
-
-	<style name="tvStyleAthleteDisplayName" parent="@android:style/Widget.TextView">
-		<item name="android:textSize">15sp</item>
+	<style name="tvCenterVerticalRow.BlackText.Italic">
+		<item name="android:textSize">@dimen/TextSizeNormal</item>
 		<item name="android:textStyle">italic</item>
-		<item name="android:textColor">#000000</item>
-		<item name="android:padding">0dp</item>
 	</style>
 
-	<style name="tvStyleSplitTableHeader" parent="@android:style/Widget.TextView">
-		<item name="android:textSize">13sp</item>
-		<item name="android:textStyle">normal</item>
-		<item name="android:gravity">right|center_vertical</item>
-		<item name="android:textColor">@color/whiteSmoke</item>
+	<style name="tvCenterBoldShadow.WhiteText.SeperatorRow">
+		<item name="android:textSize">@dimen/TextSizeNormal</item>
+		<item name="android:padding">@dimen/separatorRowPadding</item>
 		<item name="android:background">@drawable/table_split_times_header_genoa</item>
-		<item name="android:layout_marginLeft">0dp</item>
-		<item name="android:layout_marginRight">-1dp</item>
-		<item name="android:paddingLeft">1dp</item>
-		<item name="android:paddingRight">6dp</item>
 	</style>
 
-	<style name="tvStyle_BTResultsRow" parent="@android:style/Widget.TextView">
-		<item name="android:textSize">17sp</item>
-		<item name="android:textStyle">normal</item>
-		<item name="android:textColor">#000000</item>
-		<item name="android:gravity">center_vertical</item>
-		<item name="android:shadowColor">#FFFFFF</item>
-		<item name="android:background">@drawable/rec_bkgrd_smoke_white_no_stroke</item>
-		<item name="android:padding">5dp</item>
+	<style name="tvCenterVerticalRow.BlackText.Normal.Title">
+		<item name="android:paddingLeft">@dimen/titleRowHorizonalPadding</item>
+		<item name="android:paddingTop">@dimen/titleRowVerticalPadding</item>
+		<item name="android:paddingBottom">@dimen/titleRowVerticalPadding</item>
 	</style>
 
-	<style name="tvStyleBTResultsHeader" parent="@android:style/Widget.TextView">
-		<item name="android:textSize">17sp</item>
+	<style name="tvSplitTable" parent="@android:style/Widget.TextView">
+		<item name="android:textSize">@dimen/TextSizeSplitTable</item>
+		<item name="android:gravity">center|center_vertical</item>
 		<item name="android:textStyle">normal</item>
-		<item name="android:gravity">center</item>
-		<item name="android:textColor">@color/whiteSmoke</item>
-		<item name="android:background">@drawable/table_split_times_header_genoa</item>
-		<item name="android:layout_marginLeft">0dp</item>
-		<item name="android:layout_marginRight">-1dp</item>
-		<item name="android:paddingLeft">1dp</item>
-		<item name="android:paddingRight">1dp</item>
+		<item name="android:singleLine">true</item>
+		<item name="android:layout_marginLeft">@dimen/splitsTableLeftMargin</item>
+		<item name="android:layout_marginRight">@dimen/splitsTableRightMargin</item>
+		<item name="android:paddingLeft">@dimen/splitsTableLeftPadding</item>
+		<item name="android:paddingRight">@dimen/splitsTableRightPadding</item>
 	</style>
 
-	<style name="tvStyleSplitTable" parent="@android:style/Widget.TextView">
-		<item name="android:textSize">13sp</item>
-		<item name="android:textStyle">normal</item>
-		<item name="android:gravity">right|center_vertical</item>
+	<style name="tvSplitTable.BlackText">
 		<item name="android:textColor">@color/black</item>
-		<item name="android:layout_marginLeft">0dp</item>
-		<item name="android:layout_marginRight">-1dp</item>
-		<item name="android:paddingLeft">1dp</item>
-		<item name="android:paddingRight">6dp</item>
+	</style>
+
+	<style name="tvSplitTable.WhiteText">
+		<item name="android:textColor">@color/white</item>
+	</style>
+
+	<style name="tvSplitTable.WhiteText.Genoa">
+		<item name="android:background">@drawable/table_split_times_header_genoa</item>
 	</style>
 
 	<style name="txtStyleLinen" parent="@android:style/Widget.EditText">
-		<item name="android:textSize">17sp</item>
+		<item name="android:textSize">@dimen/TextSizeNormal</item>
 		<item name="android:textStyle">bold</item>
 		<item name="android:textColor">#000000</item>
 		<item name="android:gravity">center_vertical</item>
@@ -227,36 +190,31 @@
 	</style>
 
 	<style name="txtStyleDialogEntry" parent="@android:style/Widget.EditText">
-		<item name="android:textSize">15sp</item>
+		<item name="android:textSize">@dimen/TextSizeDialog</item>
 		<item name="android:textStyle">normal</item>
 		<item name="android:textColor">@color/black</item>
 		<item name="android:gravity">center_vertical</item>
-		<item name="android:paddingTop">2dp</item>
-		<item name="android:paddingBottom">2dp</item>
-		<item name="android:paddingLeft">8dp</item>
-		<item name="android:paddingRight">2dp</item>
+		<item name="android:paddingTop">@dimen/dialogEntryTopPadding</item>
+		<item name="android:paddingBottom">@dimen/dialogEntryBottomPadding</item>
+		<item name="android:paddingLeft">@dimen/dialogEntryLeftPadding</item>
+		<item name="android:paddingRight">@dimen/dialogEntryRightPadding</item>
 	</style>
 
 	<style name="tvStyleDialogMessage" parent="@android:style/Widget.TextView">
-		<item name="android:textSize">15sp</item>
+		<item name="android:textSize">@dimen/TextSizeDialog</item>
 		<item name="android:textStyle">normal</item>
 		<item name="android:gravity">left</item>
 		<item name="android:textColor">@color/black</item>
-		<item name="android:padding">7dp</item>
+		<item name="android:padding">@dimen/dialogMessagePadding</item>
 	</style>
 
 	<style name="tvStyleHelpText" parent="@android:style/Widget.TextView">
-		<item name="android:textSize">19sp</item>
-		<item name="android:typeface"> sans</item>
+		<item name="android:textSize">@dimen/TextSizeHelp</item>
 		<item name="android:textStyle">normal</item>
 		<item name="android:gravity">left</item>
 		<item name="android:textColor">@color/black</item>
-		<item name="android:shadowColor">@color/white</item>
 		<item name="android:background">#FFD3D3D3</item>
-		<item name="android:shadowDx">1</item>
-		<item name="android:shadowDy">1</item>
-		<item name="android:shadowRadius">0.6</item>
-		<item name="android:padding">3dp</item>
+		<item name="android:padding">@dimen/helpTextPadding</item>
 	</style>
 
 </resources>

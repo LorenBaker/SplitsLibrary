@@ -8,14 +8,14 @@
 
 	<TextView
 		android:id="@+id/tvEvent"
-		style="@style/tvStyle_BTResultsRow"
+		style="@style/tvCenterVerticalRow.BlackText.Normal"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:layout_weight="32" />
 
 	<TextView
 		android:id="@+id/tvTime"
-		style="@style/tvStyle_BTResultsRow"
+		style="@style/tvCenterVerticalRow.BlackText.Normal"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:layout_marginRight="1dp"
@@ -25,7 +25,7 @@
 
 	<TextView
 		android:id="@+id/tvDate"
-		style="@style/tvStyle_BTResultsRow"
+		style="@style/tvCenterVerticalRow.BlackText.Normal"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:layout_marginRight="6dp"

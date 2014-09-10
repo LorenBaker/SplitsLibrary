@@ -21,7 +21,9 @@ import com.lbconsulting.splits.adapters.RelaySplitsCursorAdapter;
 import com.lbconsulting.splits.classes.DateTimeUtils;
 import com.lbconsulting.splits.classes.MyLog;
 import com.lbconsulting.splits.classes.MySettings;
+import com.lbconsulting.splits.classes.SplitsEvents.ChangeActionBarTitle;
 import com.lbconsulting.splits.classes.SplitsEvents.ShowPreviousFragment;
+import com.lbconsulting.splits.classes.SplitsEvents.UpdateRaceTime;
 import com.lbconsulting.splits.database.MeetsTable;
 import com.lbconsulting.splits.database.RelaysTable;
 import com.lbconsulting.splits.database.SplitsTable;
@@ -129,6 +131,10 @@ public class Results_RelaySplitsFragment extends Fragment implements LoaderCallb
 		return view;
 	}
 
+	public void onEvent(UpdateRaceTime event) {
+		tvRelayNameAndTime.setText(getRelayNameAndTime(event.getRaceTime()));
+	}
+
 	private String getRelayNameAndTime(long relayTimeValue) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(mShortRelayTitle).append(": ")
@@ -149,12 +155,16 @@ public class Results_RelaySplitsFragment extends Fragment implements LoaderCallb
 	@Override
 	public void onResume() {
 		MyLog.i("Results_RelaySplitsFragment", "onResume()");
+		EventBus.getDefault().register(this);
+		// show the Active Fragment Title
+		EventBus.getDefault().post(new ChangeActionBarTitle(""));
 		super.onResume();
 	}
 
 	@Override
 	public void onPause() {
 		MyLog.i("Results_RelaySplitsFragment", "onPause()");
+		EventBus.getDefault().unregister(this);
 		super.onPause();
 	}
 

@@ -28,9 +28,10 @@ import android.widget.ListView;
 
 import com.lbconsulting.splits.R;
 import com.lbconsulting.splits.adapters.fragEventsCursorAdapter;
-import com.lbconsulting.splits.classes.SplitsEvents.ShowPreviousFragment;
 import com.lbconsulting.splits.classes.MyLog;
 import com.lbconsulting.splits.classes.MySettings;
+import com.lbconsulting.splits.classes.SplitsEvents.ChangeActionBarTitle;
+import com.lbconsulting.splits.classes.SplitsEvents.ShowPreviousFragment;
 import com.lbconsulting.splits.database.EventsTable;
 import com.lbconsulting.splits.dialogs.Deletion_Alert_DialogFragment;
 import com.lbconsulting.splits.dialogs.EditText_DialogFragment;
@@ -54,9 +55,6 @@ public class Events_Fragment extends Fragment implements LoaderCallbacks<Cursor>
 	public static Events_Fragment newInstance() {
 		MyLog.i("Events_Fragment", "newInstance()");
 		Events_Fragment fragment = new Events_Fragment();
-		/*Bundle args = new Bundle();
-		args.putInt(MySettings.KEY_MEET_TYPE, meetType);
-		fragment.setArguments(args);*/
 		return fragment;
 	}
 
@@ -70,11 +68,6 @@ public class Events_Fragment extends Fragment implements LoaderCallbacks<Cursor>
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		MyLog.i("Events_Fragment", "onCreateView()");
 		View view = inflater.inflate(R.layout.frag_events, container, false);
-
-		/*		Bundle bundle = getArguments();
-				if (bundle != null) {
-					mMeetType = bundle.getInt(MySettings.KEY_MEET_TYPE, MySettings.SWIM_MEET);
-				}*/
 
 		lvEvents = (ListView) view.findViewById(R.id.lvEvents);
 		if (lvEvents != null) {
@@ -233,6 +226,8 @@ public class Events_Fragment extends Fragment implements LoaderCallbacks<Cursor>
 		mMeetType = Integer.valueOf(sharedPrefs.getString(MySettings.KEY_MEET_TYPE,
 				String.valueOf(MySettings.SWIM_MEET)));
 		mLoaderManager.restartLoader(MySettings.LOADER_FRAG_EVENTS, null, mEventsCallbacks);
+		// show the Active Fragment Title
+		EventBus.getDefault().post(new ChangeActionBarTitle(""));
 		super.onResume();
 	}
 

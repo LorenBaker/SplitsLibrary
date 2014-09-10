@@ -276,6 +276,7 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 		} else {
 			btnAthlete1Split.setVisibility(View.GONE);
 		}
+
 		if (isAthlete1StopButtonVisible) {
 			btnAthlete1Stop.setVisibility(View.VISIBLE);
 		} else {
@@ -340,22 +341,12 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 			llAthlete2RaceTable.setVisibility(View.GONE);
 		}
 
-		// check if spinRaceEvents and spinRaceMeets have a selected items
-		/*		long raceEventID = spinRaceEvents.getSelectedItemId();
-				if (mAthlete1Race.getEventID() != raceEventID || mAthlete2Race.getEventID() != raceEventID) {
-					if (raceEventID > 0) {
-						mAthlete1Race.setEventID(raceEventID);
-						mAthlete2Race.setEventID(raceEventID);
-					}
-				}
-
-				long meetID = spinRaceMeets.getSelectedItemId();
-				if (mAthlete1Race.getMeetID() != meetID || mAthlete2Race.getMeetID() != meetID) {
-					if (meetID > 0) {
-						mAthlete1Race.setMeetID(meetID);
-						mAthlete2Race.setMeetID(meetID);
-					}
-				}*/
+		mEventShortTitle = EventsTable.getEventShortTitle(getActivity(), mAthlete1Race.getEventID());
+		if (isAthlete1StartButtonVisible || isAthlete2StartButtonVisible) {
+			EventBus.getDefault().post(new ChangeActionBarTitle(""));
+		} else {
+			EventBus.getDefault().post(new ChangeActionBarTitle(mEventShortTitle));
+		}
 
 		mAthlete1SplitsCursorAdapter.setNumberFormat(mNumberFormat);
 		mAthlete2SplitsCursorAdapter.setNumberFormat(mNumberFormat);
