@@ -42,6 +42,9 @@ public class Splits_ContentProvider extends ContentProvider {
 	private static final int SPLITS_MULTI_ROWS = 70;
 	private static final int SPLITS_SINGLE_ROW = 71;
 
+	private static final String CONTENT_AUTHORITY = "CONTENT_AUTHORITY";
+	private static final String AUTHORITY_CLASS = "com.lbconsulting.splits.app.data.Authority";
+
 	private static final int RACES_WITH_EVENT_FIELDS = 80;
 
 	public static String AUTHORITY = initAuthority();
@@ -56,11 +59,10 @@ public class Splits_ContentProvider extends ContentProvider {
 			// are different reflecting the paid and free versions.
 			// The respective CONTENT_AUTHORITY field values must be included in the respective
 			// paid and free project manifests.
-			Class<?> clz = Class.forName("com.lbconsulting.splits.app.data.Authority");
-
-			Field declaredField = clz.getDeclaredField("CONTENT_AUTHORITY");
-
+			Class<?> clz = Class.forName(AUTHORITY_CLASS);
+			Field declaredField = clz.getDeclaredField(CONTENT_AUTHORITY);
 			authority = declaredField.get(null).toString();
+
 		} catch (ClassNotFoundException e) {
 			MyLog.e("Splits_ContentProvider", "ClassNotFoundException in initAuthority.");
 			e.printStackTrace();
