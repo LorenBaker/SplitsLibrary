@@ -83,6 +83,18 @@ public class EventsTable {
 		MetersAbbr = mRes.getStringArray(R.array.units)[0];
 		MetersAbbr = MetersAbbr.substring(0, 1);
 		database.execSQL(DATATABLE_CREATE);
+
+		// Enter the default athlete: id=1
+		String insertDefaultProjection = "insert into "
+				+ TABLE_EVENTS
+				+ " ("
+				+ COL_EVENT_ID + ", "
+				+ COL_EVENT_LONG_TITLE + ", "
+				+ COL_EVENT_SHORT_TITLE + ") VALUES ";
+
+		String DEFAULT_EVENT = context.getResources().getString(R.string.default_event_entry);
+		database.execSQL(insertDefaultProjection + "(NULL, '" + DEFAULT_EVENT + "', '" + DEFAULT_EVENT + "');");
+
 		MyLog.i("EventsTable", "onCreate: " + TABLE_EVENTS + " created.");
 		CreateInitialEvents(context, database);
 		MyLog.i("EventsTable", "onCreate: " + " Initial swimming events created.");
@@ -345,16 +357,16 @@ public class EventsTable {
 		return cursor;
 	}
 
-	public static CursorLoader getAllEvents(Context context, int meetTypeID, String sortOrder) {
+	public static CursorLoader getAllEventsExcludingDefault(Context context, int meetTypeID, String sortOrder) {
 		Uri uri = CONTENT_URI;
 		String[] projection = PROJECTION_ALL;
-		String selection = COL_MEET_TYPE_ID + " = ?";
-		String selectionArgs[] = new String[] { String.valueOf(meetTypeID) };
+		String selection = COL_MEET_TYPE_ID + " = ? AND " + COL_EVENT_ID + " > ?";
+		String selectionArgs[] = new String[] { String.valueOf(meetTypeID), String.valueOf(1) };
 		CursorLoader cursorLoader = null;
 		try {
 			cursorLoader = new CursorLoader(context, uri, projection, selection, selectionArgs, sortOrder);
 		} catch (Exception e) {
-			MyLog.e("EventsTable", "Exception error in getAllEvents:");
+			MyLog.e("EventsTable", "Exception error in getAllEventsExcludingDefault:");
 			e.printStackTrace();
 		}
 		return cursorLoader;
@@ -373,9 +385,10 @@ public class EventsTable {
 		}
 		Uri uri = CONTENT_URI;
 		String[] projection = PROJECTION_ALL;
-		String selection = COL_MEET_TYPE_ID + " = ? AND " + COL_SELECTED + " = ? AND " + COL_IS_RELAY + " = ? ";
+		String selection = "(" + COL_MEET_TYPE_ID + " = ? AND " + COL_SELECTED + " = ? AND "
+				+ COL_IS_RELAY + " = ? ) OR " + COL_EVENT_ID + " = ?";
 		String selectionArgs[] = new String[] { String.valueOf(meetTypeID), String.valueOf(selectedValue),
-				String.valueOf(isRelayValue) };
+				String.valueOf(isRelayValue), String.valueOf(1) };
 		CursorLoader cursorLoader = null;
 		try {
 			cursorLoader = new CursorLoader(context, uri, projection, selection, selectionArgs, sortOrder);

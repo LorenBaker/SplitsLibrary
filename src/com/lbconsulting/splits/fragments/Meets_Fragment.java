@@ -33,11 +33,12 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.lbconsulting.splits.R;
+import com.lbconsulting.splits.activites.MainActivity;
 import com.lbconsulting.splits.adapters.fragMeetsCursorAdapter;
 import com.lbconsulting.splits.classes.MyLog;
 import com.lbconsulting.splits.classes.MySettings;
-import com.lbconsulting.splits.classes.SplitsEvents.ChangeActionBarTitle;
 import com.lbconsulting.splits.classes.SplitsEvents.ShowPreviousFragment;
+import com.lbconsulting.splits.classes.SplitsEvents.SplitFragmentOnResume;
 import com.lbconsulting.splits.database.MeetsTable;
 import com.lbconsulting.splits.dialogs.Deletion_Alert_DialogFragment;
 import com.lbconsulting.splits.dialogs.EditText_DialogFragment;
@@ -51,6 +52,7 @@ public class Meets_Fragment extends Fragment implements LoaderCallbacks<Cursor> 
 	private EditText txtMeetTitle;
 	private ListView lvMeetTitles;
 	private int mMeetType;
+	private CharSequence mActiveFragmentTitle;
 
 	private LoaderManager mLoaderManager = null;
 	private LoaderManager.LoaderCallbacks<Cursor> mMeetTitlesCallbacks;
@@ -66,6 +68,10 @@ public class Meets_Fragment extends Fragment implements LoaderCallbacks<Cursor> 
 		Meets_Fragment fragment = new Meets_Fragment();
 		return fragment;
 
+	}
+
+	public static int getFragmentID() {
+		return MainActivity.FRAG_MEETS;
 	}
 
 	@Override
@@ -295,8 +301,13 @@ public class Meets_Fragment extends Fragment implements LoaderCallbacks<Cursor> 
 		mMeetType = Integer.valueOf(sharedPrefs.getString(MySettings.KEY_MEET_TYPE,
 				String.valueOf(MySettings.SWIM_MEET)));
 		mLoaderManager.restartLoader(MySettings.LOADER_FRAG_MEETS, null, mMeetTitlesCallbacks);
+
+		mActiveFragmentTitle = getResources().getStringArray(R.array.navDrawerTitles)[MainActivity.FRAG_CREATE_EVENTS];
 		// show the Active Fragment Title
-		EventBus.getDefault().post(new ChangeActionBarTitle(""));
+		EventBus.getDefault().post(new SplitFragmentOnResume(MainActivity.FRAG_CREATE_EVENTS, mActiveFragmentTitle));
+
+		// show the Active Fragment Title
+		// EventBus.getDefault().post(new ChangeActionBarTitle(""));
 		super.onResume();
 	}
 
@@ -326,7 +337,8 @@ public class Meets_Fragment extends Fragment implements LoaderCallbacks<Cursor> 
 
 		switch (id) {
 			case MySettings.LOADER_FRAG_MEETS:
-				cursorLoader = MeetsTable.getAllMeets(getActivity(), mMeetType, MeetsTable.SORT_ORDER_MEET_TITLE);
+				cursorLoader = MeetsTable.getAllMeetsExcludingDefault(getActivity(), mMeetType,
+						MeetsTable.SORT_ORDER_MEET_TITLE);
 				break;
 
 			default:

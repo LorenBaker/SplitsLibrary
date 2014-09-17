@@ -47,6 +47,8 @@
 	<string name="createNewRelayRace_unable_to_start_relay">Unable to start relay.</string>
 	<string name="date_text">Date</string>
 	<string name="default_athlete_entry">[No Athlete]</string>
+	<string name="default_meet_entry">[No Meet]</string>
+	<string name="default_event_entry">[No Event]</string>
 	<string name="delete_text">Delete</string>
 	<string name="dialog_enter_athlete_name_title">Enter Athlete Name</string>
 	<string name="dialog_maxAthletesgMessage">You have reached the maximum number athletes allowed for this free trial version of Splits. Please purchase the unrestricted version.</string>

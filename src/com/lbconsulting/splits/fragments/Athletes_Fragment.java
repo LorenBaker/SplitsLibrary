@@ -27,11 +27,12 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.lbconsulting.splits.R;
+import com.lbconsulting.splits.activites.MainActivity;
 import com.lbconsulting.splits.adapters.fragAthletesCursorAdapter;
 import com.lbconsulting.splits.classes.MyLog;
 import com.lbconsulting.splits.classes.MySettings;
-import com.lbconsulting.splits.classes.SplitsEvents.ChangeActionBarTitle;
 import com.lbconsulting.splits.classes.SplitsEvents.ShowPreviousFragment;
+import com.lbconsulting.splits.classes.SplitsEvents.SplitFragmentOnResume;
 import com.lbconsulting.splits.database.AthletesTable;
 import com.lbconsulting.splits.dialogs.Deletion_Alert_DialogFragment;
 import com.lbconsulting.splits.dialogs.EditText_DialogFragment;
@@ -43,6 +44,7 @@ public class Athletes_Fragment extends Fragment implements LoaderCallbacks<Curso
 	private ListView lvAthletes;
 	private Button btnOkFinished;
 	private int mMeetType;
+	private CharSequence mActiveFragmentTitle;
 
 	private LoaderManager mLoaderManager = null;
 	private LoaderManager.LoaderCallbacks<Cursor> mAthletesCallbacks;
@@ -57,6 +59,10 @@ public class Athletes_Fragment extends Fragment implements LoaderCallbacks<Curso
 
 		Athletes_Fragment fragment = new Athletes_Fragment();
 		return fragment;
+	}
+
+	public static int getFragmentID() {
+		return MainActivity.FRAG_ATHLETES;
 	}
 
 	@Override
@@ -227,9 +233,13 @@ public class Athletes_Fragment extends Fragment implements LoaderCallbacks<Curso
 		SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
 		mMeetType = Integer
 				.valueOf(sharedPrefs.getString(MySettings.KEY_MEET_TYPE, String.valueOf(MySettings.SWIM_MEET)));
+
+		mActiveFragmentTitle = getResources().getStringArray(R.array.navDrawerTitles)[MainActivity.FRAG_ATHLETES];
+
 		mLoaderManager.restartLoader(MySettings.LOADER_FRAG_ATHLETES, null, mAthletesCallbacks);
 		// show the Active Fragment Title
-		EventBus.getDefault().post(new ChangeActionBarTitle(""));
+		EventBus.getDefault().post(new SplitFragmentOnResume(MainActivity.FRAG_ATHLETES, mActiveFragmentTitle));
+		// EventBus.getDefault().post(new ChangeActionBarTitle(""));
 		super.onResume();
 	}
 

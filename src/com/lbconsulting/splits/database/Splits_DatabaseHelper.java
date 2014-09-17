@@ -26,7 +26,7 @@ public class Splits_DatabaseHelper extends SQLiteOpenHelper {
 		MyLog.i("Splits_DatabaseHelper", "onCreate");
 		AthletesTable.onCreate(database, mContext);
 		EventsTable.onCreate(mContext, database);
-		MeetsTable.onCreate(database);
+		MeetsTable.onCreate(database, mContext);
 		RacesTable.onCreate(database);
 		RelaysTable.onCreate(database);
 		SplitsTable.onCreate(database);

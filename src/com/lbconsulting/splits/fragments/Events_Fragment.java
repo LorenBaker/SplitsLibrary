@@ -27,11 +27,12 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.lbconsulting.splits.R;
+import com.lbconsulting.splits.activites.MainActivity;
 import com.lbconsulting.splits.adapters.fragEventsCursorAdapter;
 import com.lbconsulting.splits.classes.MyLog;
 import com.lbconsulting.splits.classes.MySettings;
-import com.lbconsulting.splits.classes.SplitsEvents.ChangeActionBarTitle;
 import com.lbconsulting.splits.classes.SplitsEvents.ShowPreviousFragment;
+import com.lbconsulting.splits.classes.SplitsEvents.SplitFragmentOnResume;
 import com.lbconsulting.splits.database.EventsTable;
 import com.lbconsulting.splits.dialogs.Deletion_Alert_DialogFragment;
 import com.lbconsulting.splits.dialogs.EditText_DialogFragment;
@@ -43,6 +44,7 @@ public class Events_Fragment extends Fragment implements LoaderCallbacks<Cursor>
 	private ListView lvEvents;
 	private Button btnOkFinished;
 	private int mMeetType;
+	private CharSequence mActiveFragmentTitle;
 
 	private LoaderManager mLoaderManager = null;
 	private LoaderManager.LoaderCallbacks<Cursor> mEventsCallbacks;
@@ -56,6 +58,10 @@ public class Events_Fragment extends Fragment implements LoaderCallbacks<Cursor>
 		MyLog.i("Events_Fragment", "newInstance()");
 		Events_Fragment fragment = new Events_Fragment();
 		return fragment;
+	}
+
+	public static int getFragmentID() {
+		return MainActivity.FRAG_EVENTS;
 	}
 
 	@Override
@@ -226,8 +232,13 @@ public class Events_Fragment extends Fragment implements LoaderCallbacks<Cursor>
 		mMeetType = Integer.valueOf(sharedPrefs.getString(MySettings.KEY_MEET_TYPE,
 				String.valueOf(MySettings.SWIM_MEET)));
 		mLoaderManager.restartLoader(MySettings.LOADER_FRAG_EVENTS, null, mEventsCallbacks);
+
+		mActiveFragmentTitle = getResources().getStringArray(R.array.navDrawerTitles)[MainActivity.FRAG_EVENTS];
 		// show the Active Fragment Title
-		EventBus.getDefault().post(new ChangeActionBarTitle(""));
+		EventBus.getDefault().post(new SplitFragmentOnResume(MainActivity.FRAG_EVENTS, mActiveFragmentTitle));
+
+		// show the Active Fragment Title
+		// EventBus.getDefault().post(new ChangeActionBarTitle(""));
 		super.onResume();
 	}
 
@@ -251,7 +262,7 @@ public class Events_Fragment extends Fragment implements LoaderCallbacks<Cursor>
 
 		switch (id) {
 			case MySettings.LOADER_FRAG_EVENTS:
-				cursorLoader = EventsTable.getAllEvents(getActivity(), mMeetType,
+				cursorLoader = EventsTable.getAllEventsExcludingDefault(getActivity(), mMeetType,
 						EventsTable.SORT_ORDER_UNITS_STYLE_DISTANCE);
 				break;
 

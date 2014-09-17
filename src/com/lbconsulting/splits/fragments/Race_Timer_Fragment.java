@@ -36,6 +36,7 @@ import android.widget.Toast;
 import com.flurry.android.FlurryAgent;
 import com.lbconsulting.splits.R;
 import com.lbconsulting.splits.R.string;
+import com.lbconsulting.splits.activites.MainActivity;
 import com.lbconsulting.splits.adapters.AthleteSpinnerCursorAdapter;
 import com.lbconsulting.splits.adapters.EventsSpinnerCursorAdapter;
 import com.lbconsulting.splits.adapters.MeetsSpinnerCursorAdapter;
@@ -53,6 +54,7 @@ import com.lbconsulting.splits.classes.SplitsEvents.ShowEventsFragment;
 import com.lbconsulting.splits.classes.SplitsEvents.ShowMeetsFragment;
 import com.lbconsulting.splits.classes.SplitsEvents.ShowSplitButton;
 import com.lbconsulting.splits.classes.SplitsEvents.ShowStopButton;
+import com.lbconsulting.splits.classes.SplitsEvents.SplitFragmentOnResume;
 import com.lbconsulting.splits.database.AthletesTable;
 import com.lbconsulting.splits.database.EventsTable;
 import com.lbconsulting.splits.database.LastEventAthletesTable;
@@ -70,6 +72,7 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 	private boolean mResetAthletes = false;
 	private int mRaceCount = 0;
 	private long mRaceStartTime = -1;
+	private CharSequence mActiveFragmentTitle;
 
 	private final int mNumberFormat = DateTimeUtils.FORMAT_TENTHS;
 
@@ -135,6 +138,10 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 		MyLog.i("Race_Timer_Fragment", "newInstance()");
 		Race_Timer_Fragment fragment = new Race_Timer_Fragment();
 		return fragment;
+	}
+
+	public static int getFragmentID() {
+		return MainActivity.FRAG_RACE_TIMER;
 	}
 
 	@Override
@@ -342,8 +349,10 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 		}
 
 		mEventShortTitle = EventsTable.getEventShortTitle(getActivity(), mAthlete1Race.getEventID());
+		mActiveFragmentTitle = getString(R.string.race_text);
+		EventBus.getDefault().post(new SplitFragmentOnResume(MainActivity.FRAG_RACE_TIMER, mActiveFragmentTitle));
 		if (isAthlete1StartButtonVisible || isAthlete2StartButtonVisible) {
-			EventBus.getDefault().post(new ChangeActionBarTitle(""));
+			// EventBus.getDefault().post(new ChangeActionBarTitle(""));
 		} else {
 			EventBus.getDefault().post(new ChangeActionBarTitle(mEventShortTitle));
 		}
@@ -701,7 +710,7 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 			return;
 		}
 
-		if (mAthlete1Race.getMeetID() < 1) {
+		if (mAthlete1Race.getMeetID() < 2) {
 			String toastMessage = new StringBuilder()
 					.append(res.getString(R.string.createNewRace_unable_to_start_race))
 					.append(System.getProperty("line.separator"))
@@ -714,7 +723,7 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 			return;
 		}
 
-		if (mAthlete1Race.getEventID() < 1) {
+		if (mAthlete1Race.getEventID() < 2) {
 			String toastMessage = new StringBuilder()
 					.append(res.getString(R.string.createNewRace_unable_to_start_race))
 					.append(System.getProperty("line.separator"))

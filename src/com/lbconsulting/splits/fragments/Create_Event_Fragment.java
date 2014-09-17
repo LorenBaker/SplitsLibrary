@@ -28,10 +28,11 @@ import android.widget.Toast;
 
 import com.flurry.android.FlurryAgent;
 import com.lbconsulting.splits.R;
+import com.lbconsulting.splits.activites.MainActivity;
 import com.lbconsulting.splits.classes.MyLog;
 import com.lbconsulting.splits.classes.MySettings;
-import com.lbconsulting.splits.classes.SplitsEvents.ChangeActionBarTitle;
 import com.lbconsulting.splits.classes.SplitsEvents.ShowPreviousFragment;
+import com.lbconsulting.splits.classes.SplitsEvents.SplitFragmentOnResume;
 import com.lbconsulting.splits.database.EventsTable;
 
 import de.greenrobot.event.EventBus;
@@ -48,6 +49,7 @@ public class Create_Event_Fragment extends Fragment implements OnClickListener, 
 	private Button btnOkFinished;
 
 	private int mMeetType;
+	private CharSequence mActiveFragmentTitle;
 
 	private String YardsAbbr;
 	private String MetersAbbr;
@@ -61,6 +63,10 @@ public class Create_Event_Fragment extends Fragment implements OnClickListener, 
 		MyLog.i("Create_Event_Fragment", "newInstance()");
 		Create_Event_Fragment fragment = new Create_Event_Fragment();
 		return fragment;
+	}
+
+	public static int getFragmentID() {
+		return MainActivity.FRAG_CREATE_EVENTS;
 	}
 
 	@Override
@@ -287,8 +293,12 @@ public class Create_Event_Fragment extends Fragment implements OnClickListener, 
 				String.valueOf(MySettings.SWIM_MEET)));
 
 		spinUnits.setSelection(MySettings.getCreateEventUnitsPosition(spinUnits));
+		mActiveFragmentTitle = getResources().getStringArray(R.array.navDrawerTitles)[MainActivity.FRAG_CREATE_EVENTS];
 		// show the Active Fragment Title
-		EventBus.getDefault().post(new ChangeActionBarTitle(""));
+		EventBus.getDefault().post(new SplitFragmentOnResume(MainActivity.FRAG_CREATE_EVENTS, mActiveFragmentTitle));
+
+		// show the Active Fragment Title
+		// EventBus.getDefault().post(new ChangeActionBarTitle(""));
 		super.onResume();
 	}
 

@@ -17,12 +17,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.lbconsulting.splits.R;
+import com.lbconsulting.splits.activites.MainActivity;
 import com.lbconsulting.splits.adapters.RelaySplitsCursorAdapter;
 import com.lbconsulting.splits.classes.DateTimeUtils;
 import com.lbconsulting.splits.classes.MyLog;
 import com.lbconsulting.splits.classes.MySettings;
-import com.lbconsulting.splits.classes.SplitsEvents.ChangeActionBarTitle;
 import com.lbconsulting.splits.classes.SplitsEvents.ShowPreviousFragment;
+import com.lbconsulting.splits.classes.SplitsEvents.SplitFragmentOnResume;
 import com.lbconsulting.splits.classes.SplitsEvents.UpdateRaceTime;
 import com.lbconsulting.splits.database.MeetsTable;
 import com.lbconsulting.splits.database.RelaysTable;
@@ -44,6 +45,7 @@ public class Results_RelaySplitsFragment extends Fragment implements LoaderCallb
 	private String mShortRelayTitle = "";
 	private long mRelayTimeValue = -1;
 	private long mRelayDateValue = -1;
+	private CharSequence mActiveFragmentTitle;
 
 	private TextView tvMeetTitleAndDate;
 	private TextView tvRelayNameAndTime;
@@ -66,6 +68,10 @@ public class Results_RelaySplitsFragment extends Fragment implements LoaderCallb
 		args.putLong(MySettings.STATE_RACE_SPLITS_RACE_ID, relayID);
 		fragment.setArguments(args);
 		return fragment;
+	}
+
+	public static int getFragmentID() {
+		return MainActivity.FRAG_RESULTS_RELAY_SPLITS;
 	}
 
 	@Override
@@ -156,8 +162,13 @@ public class Results_RelaySplitsFragment extends Fragment implements LoaderCallb
 	public void onResume() {
 		MyLog.i("Results_RelaySplitsFragment", "onResume()");
 		EventBus.getDefault().register(this);
+
+		mActiveFragmentTitle = getString(R.string.relay_splits_text);
+		EventBus.getDefault()
+				.post(new SplitFragmentOnResume(MainActivity.FRAG_RESULTS_RELAY_SPLITS, mActiveFragmentTitle));
+
 		// show the Active Fragment Title
-		EventBus.getDefault().post(new ChangeActionBarTitle(""));
+		// EventBus.getDefault().post(new ChangeActionBarTitle(""));
 		super.onResume();
 	}
 

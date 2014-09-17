@@ -34,6 +34,7 @@ import android.widget.Toast;
 import com.flurry.android.FlurryAgent;
 import com.lbconsulting.splits.R;
 import com.lbconsulting.splits.R.string;
+import com.lbconsulting.splits.activites.MainActivity;
 import com.lbconsulting.splits.adapters.AthleteSpinnerCursorAdapter;
 import com.lbconsulting.splits.adapters.EventsSpinnerCursorAdapter;
 import com.lbconsulting.splits.adapters.MeetsSpinnerCursorAdapter;
@@ -52,6 +53,7 @@ import com.lbconsulting.splits.classes.SplitsEvents.ShowEventsFragment;
 import com.lbconsulting.splits.classes.SplitsEvents.ShowMeetsFragment;
 import com.lbconsulting.splits.classes.SplitsEvents.ShowSplitButton;
 import com.lbconsulting.splits.classes.SplitsEvents.ShowStopButton;
+import com.lbconsulting.splits.classes.SplitsEvents.SplitFragmentOnResume;
 import com.lbconsulting.splits.database.AthletesTable;
 import com.lbconsulting.splits.database.EventsTable;
 import com.lbconsulting.splits.database.LastEventAthletesTable;
@@ -74,6 +76,7 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 	// Relay Timer Variables - states not stored in mRelay
 	private Relay mRelay;
 	private String mRelayEventShortTitle = "";
+	private CharSequence mActiveFragmentTitle;
 
 	private boolean areRelaySpinnersEnabled = true;
 	private boolean mResetAthletes = false;
@@ -141,6 +144,10 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 		MyLog.i("Relay_Timer_Fragment", "newInstance()");
 		Relay_Timer_Fragment fragment = new Relay_Timer_Fragment();
 		return fragment;
+	}
+
+	public static int getFragmentID() {
+		return MainActivity.FRAG_RELAY_TIMER;
 	}
 
 	@Override
@@ -308,10 +315,13 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 		mLoaderManager.restartLoader(MySettings.LOADER_FRAG_RELAY_TIMER_ATHLETE3, null, mRelayTimerCallbacks);
 
 		mRelayEventShortTitle = EventsTable.getEventShortTitle(getActivity(), mRelay.getRelayEventID());
+		mActiveFragmentTitle = getString(R.string.relay_text);
+		EventBus.getDefault().post(new SplitFragmentOnResume(MainActivity.FRAG_RELAY_TIMER, mActiveFragmentTitle));
+
 		if (MySettings.isRelayStartButtonVisible()) {
 			mRelaySplitsCursorAdapter.swapCursor(null);
 			ShowStartButton();
-			EventBus.getDefault().post(new ChangeActionBarTitle(""));
+			// EventBus.getDefault().post(new ChangeActionBarTitle(""));
 		} else {
 			btnStart.setVisibility(View.GONE);
 			EventBus.getDefault().post(new ChangeActionBarTitle(mRelayEventShortTitle));
@@ -742,7 +752,7 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 			return;
 		}
 
-		if (mRelay.getRelayMeetID() < 1) {
+		if (mRelay.getRelayMeetID() < 2) {
 			String toastMessage = new StringBuilder()
 					.append(res.getString(R.string.createNewRelayRace_unable_to_start_relay))
 					.append(System.getProperty("line.separator"))
@@ -755,8 +765,7 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 			return;
 		}
 
-		if (mRelay.getRelayEventID() < 1) {
-			// if (mRelay.getRelayMeetID() < 1) {
+		if (mRelay.getRelayEventID() < 2) {
 			String toastMessage = new StringBuilder()
 					.append(res.getString(R.string.createNewRelayRace_unable_to_start_relay))
 					.append(System.getProperty("line.separator"))
@@ -766,7 +775,6 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 			mRelay.setRelayStartTime(-1);
 			SoundError();
 			return;
-			// }
 		}
 
 		// start clock

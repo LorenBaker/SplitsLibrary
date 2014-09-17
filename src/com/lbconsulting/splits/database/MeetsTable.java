@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.text.TextUtils;
 
+import com.lbconsulting.splits.R;
 import com.lbconsulting.splits.classes.MyLog;
 
 public class MeetsTable {
@@ -50,16 +51,27 @@ public class MeetsTable {
 					+ COL_CHECKED + " integer default 0 "
 					+ ");";
 
-	public static void onCreate(SQLiteDatabase database) {
+	public static void onCreate(SQLiteDatabase database, Context context) {
 		database.execSQL(DATATABLE_CREATE);
+
+		// Enter the default athlete: id=1
+		String insertProjection = "insert into "
+				+ TABLE_MEETS
+				+ " ("
+				+ COL_MEET_ID + ", "
+				+ COL_TITLE + ") VALUES ";
+
+		String DEFAULT_MEET = context.getResources().getString(R.string.default_meet_entry);
+		database.execSQL(insertProjection + "(NULL, '" + DEFAULT_MEET + "');");
+
 		MyLog.i("MeetsTable", "onCreate: " + TABLE_MEETS + " created.");
 
 	}
 
-	public static void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
+	public static void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion, Context context) {
 		MyLog.w(TABLE_MEETS, "Upgrading database from version " + oldVersion + " to version " + newVersion);
 		database.execSQL("DROP TABLE IF EXISTS " + TABLE_MEETS);
-		onCreate(database);
+		onCreate(database, context);
 	}
 
 	// /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -177,16 +189,16 @@ public class MeetsTable {
 		return cursor;
 	}
 
-	public static CursorLoader getAllMeets(Context context, int meetType, String sortOrder) {
+	public static CursorLoader getAllMeetsExcludingDefault(Context context, int meetType, String sortOrder) {
 		Uri uri = CONTENT_URI;
 		String[] projection = PROJECTION_ALL;
-		String selection = COL_MEET_TYPE_ID + " = ?";
-		String selectionArgs[] = new String[] { String.valueOf(meetType) };
+		String selection = COL_MEET_TYPE_ID + " = ? AND " + COL_MEET_ID + " > ?";
+		String selectionArgs[] = new String[] { String.valueOf(meetType), String.valueOf(1) };
 		CursorLoader cursorLoader = null;
 		try {
 			cursorLoader = new CursorLoader(context, uri, projection, selection, selectionArgs, sortOrder);
 		} catch (Exception e) {
-			MyLog.e("MeetsTable", "Exception error in getAllMeets:");
+			MyLog.e("MeetsTable", "Exception error in getAllMeetsExcludingDefault:");
 			e.printStackTrace();
 		}
 		return cursorLoader;
@@ -199,8 +211,9 @@ public class MeetsTable {
 		}
 		Uri uri = CONTENT_URI;
 		String[] projection = PROJECTION_ALL;
-		String selection = COL_MEET_TYPE_ID + " = ? AND " + COL_SELECTED + " = ? ";
-		String selectionArgs[] = new String[] { String.valueOf(meetTypeID), String.valueOf(selectedValue) };
+		String selection = "(" + COL_MEET_TYPE_ID + " = ? AND " + COL_SELECTED + " = ? ) OR " + COL_MEET_ID + " = ?";
+		String selectionArgs[] = new String[] { String.valueOf(meetTypeID), String.valueOf(selectedValue),
+				String.valueOf(1) };
 		CursorLoader cursorLoader = null;
 		try {
 			cursorLoader = new CursorLoader(context, uri, projection, selection, selectionArgs, sortOrder);
@@ -247,7 +260,7 @@ public class MeetsTable {
 
 	public static int UpdateMeetFieldValues(Context context, long meetID, ContentValues newFieldValues) {
 		int numberOfUpdatedRecords = -1;
-		if (meetID > 0) {
+		if (meetID > 1) {
 			ContentResolver cr = context.getContentResolver();
 			Uri uri = Uri.withAppendedPath(CONTENT_URI, String.valueOf(meetID));
 			String selection = null;
@@ -382,7 +395,7 @@ public class MeetsTable {
 
 	public static int DeleteMeet(Context context, long meetID) {
 		int numberOfDeletedRecords = 0;
-		if (meetID > 0) {
+		if (meetID > 1) {
 
 			// Races Table: iteratively delete all Races that contain the Meet
 			Cursor racesCursor = RacesTable.getAllRacesCursorWithMeet(context, meetID);

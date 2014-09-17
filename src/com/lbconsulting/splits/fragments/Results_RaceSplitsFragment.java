@@ -17,12 +17,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.lbconsulting.splits.R;
+import com.lbconsulting.splits.activites.MainActivity;
 import com.lbconsulting.splits.adapters.RaceSplitsCursorAdapter;
 import com.lbconsulting.splits.classes.DateTimeUtils;
 import com.lbconsulting.splits.classes.MyLog;
 import com.lbconsulting.splits.classes.MySettings;
-import com.lbconsulting.splits.classes.SplitsEvents.ChangeActionBarTitle;
 import com.lbconsulting.splits.classes.SplitsEvents.ShowPreviousFragment;
+import com.lbconsulting.splits.classes.SplitsEvents.SplitFragmentOnResume;
 import com.lbconsulting.splits.classes.SplitsEvents.UpdateRaceTime;
 import com.lbconsulting.splits.database.AthletesTable;
 import com.lbconsulting.splits.database.MeetsTable;
@@ -36,6 +37,7 @@ public class Results_RaceSplitsFragment extends Fragment implements LoaderCallba
 	private int mNumberFormat = DateTimeUtils.FORMAT_TENTHS;
 
 	private static long mRaceID = -1;
+	private CharSequence mActiveFragmentTitle;
 
 	public static long getRaceID() {
 		return mRaceID;
@@ -66,6 +68,10 @@ public class Results_RaceSplitsFragment extends Fragment implements LoaderCallba
 		args.putLong(MySettings.STATE_RACE_SPLITS_RACE_ID, raceID);
 		fragment.setArguments(args);
 		return fragment;
+	}
+
+	public static int getFragmentID() {
+		return MainActivity.FRAG_RESULTS_RACE_SPLITS;
 	}
 
 	@Override
@@ -162,8 +168,12 @@ public class Results_RaceSplitsFragment extends Fragment implements LoaderCallba
 	public void onResume() {
 		MyLog.i("Results_RaceSplitsFragment", "onResume()");
 		EventBus.getDefault().register(this);
+
+		mActiveFragmentTitle = getString(R.string.race_splits_text);
+		EventBus.getDefault()
+				.post(new SplitFragmentOnResume(MainActivity.FRAG_RESULTS_RACE_SPLITS, mActiveFragmentTitle));
 		// show the Active Fragment Title
-		EventBus.getDefault().post(new ChangeActionBarTitle(""));
+		// EventBus.getDefault().post(new ChangeActionBarTitle(""));
 		super.onResume();
 	}
 

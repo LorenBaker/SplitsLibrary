@@ -207,4 +207,24 @@ public class SplitsEvents {
 		}
 	}
 
+	public static class SplitFragmentOnResume {
+
+		int mActiveFragment;
+		CharSequence mActiveFragmentTitle;
+
+		public SplitFragmentOnResume(int activeFragment, CharSequence activeFragmentTitle) {
+			mActiveFragment = activeFragment;
+			mActiveFragmentTitle = activeFragmentTitle;
+		}
+
+		public int getActiveFragment() {
+			return mActiveFragment;
+		}
+
+		public CharSequence getActiveFragmentTitle() {
+			return mActiveFragmentTitle;
+		}
+
+	}
+
 }
