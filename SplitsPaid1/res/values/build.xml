@@ -2,5 +2,6 @@
 <resources>
 
 	<integer name="build">189259694</integer>
+	<string name="FLURRY_API_KEY">YCZHS8D67FCDQJZ8WYF7</string>
 
 </resources>

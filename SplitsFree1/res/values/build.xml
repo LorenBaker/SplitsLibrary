@@ -3,4 +3,6 @@
 
 	<integer name="build">539739646</integer>
 
+	<string name="FLURRY_API_KEY">NDSMQ6YCZZGWG2DX78CN</string>
+
 </resources>

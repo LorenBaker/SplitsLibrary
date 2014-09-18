@@ -6,85 +6,75 @@
 		<item>Yard</item>
 	</string-array>
 	<string-array name="swimming_events">
-		<item>10;25;1;Free;0;0</item>
-		<item>10;50;1;Free;0;0</item>
-		<item>10;100;1;Free;50;0</item>
-		<item>10;200;1;Free;50;0</item>
-		<item>10;400;1;Free;50;0</item>
-		<item>10;500;1;Free;50;0</item>
-		<item>10;1000;1;Free;50;0</item>
-		<item>10;1650;1;Free;50;0</item>
-		<item>10;50;0;Free;50;0</item>
-		<item>10;100;0;Free;0;0</item>
-		<item>10;200;0;Free;100;0</item>
-		<item>10;400;0;Free;100;0</item>
-		<item>10;1500;0;Free;100;0</item>
-		<item>10;25;1;Back;0;0</item>
-		<item>10;50;1;Back;0;0</item>
-		<item>10;100;1;Back;50;0</item>
-		<item>10;200;1;Back;50;0</item>
-		<item>10;50;0;Back;0;0</item>
-		<item>10;100;0;Back;0;0</item>
-		<item>10;200;0;Back;100;0</item>
-		<item>10;25;1;Breast;0;0</item>
-		<item>10;50;1;Breast;0;0</item>
-		<item>10;100;1;Breast;50;0</item>
-		<item>10;200;1;Breast;50;0</item>
-		<item>10;50;0;Breast;0;0</item>
-		<item>10;100;0;Breast;0;0</item>
-		<item>10;200;0;Breast;100;0</item>
-		<item>10;25;1;Fly;0;0</item>
-		<item>10;50;1;Fly;0;0</item>
-		<item>10;100;1;Fly;50;0</item>
-		<item>10;200;1;Fly;50;0</item>
-		<item>10;50;0;Fly;0;0</item>
-		<item>10;100;0;Fly;0;0</item>
-		<item>10;200;0;Fly;100;0</item>
-		<item>10;100;1;IM;25;0</item>
-		<item>10;200;1;IM;50;0</item>
-		<item>10;400;1;IM;50;0</item>
-		<item>10;200;0;IM;50;0</item>
-		<item>10;400;0;IM;100;0</item>
-		<item>10;400;0;Medley Relay;100;1</item>
-		<item>10;400;0;Free Relay;100;1</item>
-		<item>10;800;0;Free Relay;200;1</item>
-		<item>10;200;1;Medley Relay;50;1</item>
-		<item>10;200;1;Free Relay;50;1</item>
-		<item>10;400;1;Medley Relay;100;1</item>
-		<item>10;400;1;Free Relay;100;1</item>
+		<item>1;25;1;Free;0;0</item>
+		<item>1;50;1;Free;0;0</item>
+		<item>1;100;1;Free;50;0</item>
+		<item>1;200;1;Free;50;0</item>
+		<item>1;400;1;Free;50;0</item>
+		<item>1;500;1;Free;50;0</item>
+		<item>1;1000;1;Free;50;0</item>
+		<item>1;1650;1;Free;50;0</item>
+		<item>1;50;0;Free;50;0</item>
+		<item>1;100;0;Free;0;0</item>
+		<item>1;200;0;Free;100;0</item>
+		<item>1;400;0;Free;100;0</item>
+		<item>1;1500;0;Free;100;0</item>
+		<item>1;25;1;Back;0;0</item>
+		<item>1;50;1;Back;0;0</item>
+		<item>1;100;1;Back;50;0</item>
+		<item>1;200;1;Back;50;0</item>
+		<item>1;50;0;Back;0;0</item>
+		<item>1;100;0;Back;0;0</item>
+		<item>1;200;0;Back;100;0</item>
+		<item>1;25;1;Breast;0;0</item>
+		<item>1;50;1;Breast;0;0</item>
+		<item>1;100;1;Breast;50;0</item>
+		<item>1;200;1;Breast;50;0</item>
+		<item>1;50;0;Breast;0;0</item>
+		<item>1;100;0;Breast;0;0</item>
+		<item>1;200;0;Breast;100;0</item>
+		<item>1;25;1;Fly;0;0</item>
+		<item>1;50;1;Fly;0;0</item>
+		<item>1;100;1;Fly;50;0</item>
+		<item>1;200;1;Fly;50;0</item>
+		<item>1;50;0;Fly;0;0</item>
+		<item>1;100;0;Fly;0;0</item>
+		<item>1;200;0;Fly;100;0</item>
+		<item>1;100;1;IM;25;0</item>
+		<item>1;200;1;IM;50;0</item>
+		<item>1;400;1;IM;50;0</item>
+		<item>1;200;0;IM;50;0</item>
+		<item>1;400;0;IM;100;0</item>
+		<item>1;400;0;Medley Relay;100;1</item>
+		<item>1;400;0;Free Relay;100;1</item>
+		<item>1;800;0;Free Relay;200;1</item>
+		<item>1;200;1;Medley Relay;50;1</item>
+		<item>1;200;1;Free Relay;50;1</item>
+		<item>1;400;1;Medley Relay;100;1</item>
+		<item>1;400;1;Free Relay;100;1</item>
 	</string-array>
 	<string-array name="track_events">
-		<item>20;100;0;Dash;0;0</item>
-		<item>20;110;0;Hurdles;0;0</item>
-		<item>20;110;0;Dash;0;0</item>
-		<item>20;200;0;Dash;0;0</item>
-		<item>20;200;0;Hurdles;0;0</item>
-		<item>20;300;0;Hurdles;0;0</item>
-		<item>20;400;0;Dash;0;0</item>
-		<item>20;400;0;Hurdles;0;0</item>
-		<item>20;800;0;Run;400;0</item>
-		<item>20;1000;0;Run;400;0</item>
-		<item>20;1500;0;Run;400;0</item>
-		<item>20;1500;0;Walk;400;0</item>
-		<item>20;1600;0;Run;400;0</item>
-		<item>20;2000;0;SC;400;0</item>
-		<item>20;3000;0;Run;400;0</item>
-		<item>20;3000;0;Walk;400;0</item>
-		<item>20;3200;0;Run;400;0</item>
-		<item>20;5000;0;Run;400;0</item>
-		<item>20;10000;0;Run;400;0</item>
-		<item>20;400;0;Relay;100;1</item>
-		<item>20;1600;0;Relay;400;1</item>
-	</string-array>
-	<string-array name="resultsActivity_tabs">
-		<item>Best Times</item>
-		<item>All Races</item>
-	</string-array>
-	<string-array name="setupActivity_tabs">
-		<item>Athletes</item>
-		<item>Meets</item>
-		<item>Events</item>
-		<item>Create Events</item>
+		<item>2;100;0;Dash;0;0</item>
+		<item>2;110;0;Hurdles;0;0</item>
+		<item>2;110;0;Dash;0;0</item>
+		<item>2;200;0;Dash;0;0</item>
+		<item>2;200;0;Hurdles;0;0</item>
+		<item>2;300;0;Hurdles;0;0</item>
+		<item>2;400;0;Dash;0;0</item>
+		<item>2;400;0;Hurdles;0;0</item>
+		<item>2;800;0;Run;400;0</item>
+		<item>2;1000;0;Run;400;0</item>
+		<item>2;1500;0;Run;400;0</item>
+		<item>2;1500;0;Walk;400;0</item>
+		<item>2;1600;0;Run;400;0</item>
+		<item>2;2000;0;SC;400;0</item>
+		<item>2;3000;0;Run;400;0</item>
+		<item>2;3000;0;Walk;400;0</item>
+		<item>2;3200;0;Run;400;0</item>
+		<item>2;5000;0;Run;400;0</item>
+		<item>2;10000;0;Run;400;0</item>
+		<item>2;400;0;Relay;100;1</item>
+		<item>2;1600;0;Relay;400;1</item>
 	</string-array>
 	<string-array name="navDrawerTitles">
 		<item>Individual Races</item>

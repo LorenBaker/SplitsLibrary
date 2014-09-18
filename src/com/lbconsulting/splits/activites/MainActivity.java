@@ -57,7 +57,6 @@ import com.lbconsulting.splits.R.string;
 import com.lbconsulting.splits.classes.DateTimeUtils;
 import com.lbconsulting.splits.classes.MyLog;
 import com.lbconsulting.splits.classes.MySettings;
-import com.lbconsulting.splits.classes.SplitsBuild;
 import com.lbconsulting.splits.classes.SplitsEvents.AddAthletetNameToContacts;
 import com.lbconsulting.splits.classes.SplitsEvents.AddThumbnailToMemoryCache;
 import com.lbconsulting.splits.classes.SplitsEvents.ChangeActionBarTitle;
@@ -441,7 +440,7 @@ public class MainActivity extends Activity {
 						.newInstance(dialogTitle, -1, null, MySettings.DIALOG_EDIT_TEXT_ADD_ATHLETE_NAME);
 				editAthleteDisplayName.show(fm, "fragment_add_athlete_name");
 
-				if (SplitsBuild.isFree(this)) {
+				if (MySettings.isFreeVersion()) {
 					// increment and save the athlete count
 					mAthleteCount = mAthleteCount + 1;
 					Bundle SetupActivityBundle = new Bundle();
@@ -1012,7 +1011,7 @@ public class MainActivity extends Activity {
 		if (requestCode == CONTACTS_URI_REQUEST) {
 			// Make sure the request was successful
 			if (resultCode == RESULT_OK) {
-				if (SplitsBuild.isFree(this)) {
+				if (MySettings.isFreeVersion()) {
 					// increment and save the athlete count
 					mAthleteCount = mAthleteCount + 1;
 					Bundle SetupActivityBundle = new Bundle();
@@ -1028,7 +1027,7 @@ public class MainActivity extends Activity {
 
 	private boolean OkToAddAthlete() {
 		boolean result = true;
-		if (SplitsBuild.isFree(this)) {
+		if (MySettings.isFreeVersion()) {
 			if (mAthleteCount >= MySettings.MAX_NUMBER_OF_ATHLETES) {
 				result = false;
 				Resources res = getResources();

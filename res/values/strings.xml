@@ -61,7 +61,7 @@
 	<string name="distance_text">Distance</string>
 	<string name="drawer_close">Close navigation drawer</string>
 	<string name="drawer_open">Open navigation drawer</string>
-	<string name="event_by">by</string>
+	<string name="event_by">by\u0020</string>
 	<string name="event_distance_hint">Event Distance</string>
 	<string name="event_is_a_relay_text">Event is a relay</string>
 	<string name="event_style_hint">Event Style</string>
@@ -109,7 +109,6 @@
 	<string name="relay_splits_text">Relay Splits</string>
 	<string name="relay_text">Relay</string>
 	<string name="relay_times_text">Relay Times</string>
-	<string name="s_close_right_brack_text">s]</string>
 	<string name="save_to_contacts_text">Save To Contacts</string>
 	<string name="seconds_abbr_text">Sec</string>
 	<string name="section_label_placeholder_text">"Placeholder for fragment: "</string>

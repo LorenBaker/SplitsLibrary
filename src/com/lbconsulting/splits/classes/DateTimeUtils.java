@@ -14,14 +14,10 @@ public class DateTimeUtils {
 	private static final long millsPerMinute = 60 * 1000;
 	private static final long millsPerHour = 60 * 60 * 1000;
 
-	public static ArrayList<Integer> getHrsMinSec(float time) {
+	public static ArrayList<Integer> getHrsMinSec(long time) {
 		ArrayList<Integer> hrsMinSec = new ArrayList<Integer>();
 
-		long secs = (long) (time / millsPerSecond);
-		long mins = (long) (time / millsPerMinute);
-		long hrs = (long) (time / millsPerHour);
-
-		String milliseconds = String.valueOf((long) time);
+		String milliseconds = String.valueOf(time);
 		switch (milliseconds.length()) {
 			case 1:
 			case 2:
@@ -34,6 +30,13 @@ public class DateTimeUtils {
 		}
 
 		int milliSec = Integer.parseInt(milliseconds);
+
+		long timeWholeSeconds = time - Long.valueOf(milliSec);
+		long hrs = timeWholeSeconds / millsPerHour;
+		timeWholeSeconds = timeWholeSeconds - (hrs * millsPerHour);
+		long mins = timeWholeSeconds / millsPerMinute;
+		timeWholeSeconds = timeWholeSeconds - (mins * millsPerMinute);
+		long secs = timeWholeSeconds / millsPerSecond;
 
 		hrsMinSec.add((int) hrs);
 		hrsMinSec.add((int) mins);

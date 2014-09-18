@@ -9,16 +9,14 @@
 	<string name="settings_meet_type_title">Change Meet Type</string>
 	<string name="settings_current_selection_text">Current selection:</string>
 	<string name="settings_select_meet_type_dialog_title">Select Meet Type</string>
-
-	<string-array name="settings_meet_type_values">
-		<item>10</item>
-		<item>20</item>
-	</string-array>
-
 	<string name="settings_split_min_duration_title">Change Minimum Split Duration</string>
 	<string name="settings_split_min_duration_units">seconds</string>
 	<string name="settings_split_min_duration_dialog_title">Set Minimum Split Duration</string>
 
+	<string-array name="settings_meet_type_values">
+		<item>1</item>
+		<item>2</item>
+	</string-array>
 	<string-array name="settings_split_min_duration_entries">
 		<item>0.0 seconds</item>
 		<item>0.1 seconds</item>

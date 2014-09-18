@@ -43,7 +43,6 @@ import com.lbconsulting.splits.classes.DateTimeUtils;
 import com.lbconsulting.splits.classes.MyLog;
 import com.lbconsulting.splits.classes.MySettings;
 import com.lbconsulting.splits.classes.Relay;
-import com.lbconsulting.splits.classes.SplitsBuild;
 import com.lbconsulting.splits.classes.SplitsEvents.ChangeActionBarTitle;
 import com.lbconsulting.splits.classes.SplitsEvents.ClearRace;
 import com.lbconsulting.splits.classes.SplitsEvents.RaceComplete;
@@ -721,7 +720,7 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 	private void CreateNewRelayRace() {
 		Resources res = getActivity().getResources();
 		boolean isFree = false;
-		if (SplitsBuild.isFree(getActivity())) {
+		if (MySettings.isFreeVersion()) {
 			isFree = true;
 			if (mRelayRaceCount >= MySettings.MAX_NUMBER_OF_RELAYS) {
 				mRelay.setRelayStartTime(-1);

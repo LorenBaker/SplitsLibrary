@@ -1,7 +1,5 @@
 package com.lbconsulting.splits.database;
 
-import java.lang.reflect.Field;
-
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -42,43 +40,45 @@ public class Splits_ContentProvider extends ContentProvider {
 	private static final int SPLITS_MULTI_ROWS = 70;
 	private static final int SPLITS_SINGLE_ROW = 71;
 
-	private static final String CONTENT_AUTHORITY = "CONTENT_AUTHORITY";
-	private static final String AUTHORITY_CLASS = "com.lbconsulting.splits.app.data.Authority";
+	/*	private static final String CONTENT_AUTHORITY = "CONTENT_AUTHORITY";
+		private static final String AUTHORITY_CLASS = "com.lbconsulting.splits.app.data.Authority";*/
 
 	private static final int RACES_WITH_EVENT_FIELDS = 80;
 
-	public static String AUTHORITY = initAuthority();
+	public static String AUTHORITY = "com.lbconsulting.splits";
 
-	private static String initAuthority() {
-		// this method allows for both paid and free version to use the same content provider.
-		String authority = "something.went.wrong.if.this.is.used";
+	// public static String AUTHORITY = initAuthority();
 
-		try {
-			// Both paid and free projects must have the same class in the same package and
-			// have the same CONTENT_AUTHORITY field. However, the CONTENT_AUTHORITY field values
-			// are different reflecting the paid and free versions.
-			// The respective CONTENT_AUTHORITY field values must be included in the respective
-			// paid and free project manifests.
-			Class<?> clz = Class.forName(AUTHORITY_CLASS);
-			Field declaredField = clz.getDeclaredField(CONTENT_AUTHORITY);
-			authority = declaredField.get(null).toString();
+	/*	private static String initAuthority() {
+			// this method allows for both paid and free version to use the same content provider.
+			String authority = "something.went.wrong.if.this.is.used";
 
-		} catch (ClassNotFoundException e) {
-			MyLog.e("Splits_ContentProvider", "ClassNotFoundException in initAuthority.");
-			e.printStackTrace();
-		} catch (NoSuchFieldException e) {
-			MyLog.e("Splits_ContentProvider", "NoSuchFieldException in initAuthority.");
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			MyLog.e("Splits_ContentProvider", "IllegalArgumentException in initAuthority.");
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			MyLog.e("Splits_ContentProvider", "IllegalAccessException in initAuthority.");
-			e.printStackTrace();
-		}
+			try {
+				// Both paid and free projects must have the same class in the same package and
+				// have the same CONTENT_AUTHORITY field. However, the CONTENT_AUTHORITY field values
+				// are different reflecting the paid and free versions.
+				// The respective CONTENT_AUTHORITY field values must be included in the respective
+				// paid and free project manifests.
+				Class<?> clz = Class.forName(AUTHORITY_CLASS);
+				Field declaredField = clz.getDeclaredField(CONTENT_AUTHORITY);
+				authority = declaredField.get(null).toString();
 
-		return authority;
-	}
+			} catch (ClassNotFoundException e) {
+				MyLog.e("Splits_ContentProvider", "ClassNotFoundException in initAuthority.");
+				e.printStackTrace();
+			} catch (NoSuchFieldException e) {
+				MyLog.e("Splits_ContentProvider", "NoSuchFieldException in initAuthority.");
+				e.printStackTrace();
+			} catch (IllegalArgumentException e) {
+				MyLog.e("Splits_ContentProvider", "IllegalArgumentException in initAuthority.");
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				MyLog.e("Splits_ContentProvider", "IllegalAccessException in initAuthority.");
+				e.printStackTrace();
+			}
+
+			return authority;
+		}*/
 
 	private static final UriMatcher sURIMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 	static {

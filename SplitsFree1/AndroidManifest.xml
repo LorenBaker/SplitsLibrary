@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.lbconsulting.splits.app.data"
+	package="com.lbconsulting.splits.app.free"
 	android:versionCode="1"
 	android:versionName="1.1" >
 
@@ -33,7 +33,7 @@
 
 		<provider
 			android:name="com.lbconsulting.splits.database.Splits_ContentProvider"
-			android:authorities="com.lbconsulting.freesplits"
+			android:authorities="com.lbconsulting.splits"
 			android:exported="false" >
 		</provider>
 	</application>

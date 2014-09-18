@@ -5,7 +5,6 @@
 
 package com.lbconsulting.splits.classes;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -24,6 +23,7 @@ import com.lbconsulting.splits.R;
 public class MySettings {
 
 	private static Context mContext;
+	private static SplitsApplication mSplitsApplication;
 
 	public static final boolean DEVELOPER_MODE = false;
 	public static final boolean IS_BETA = true;
@@ -39,8 +39,8 @@ public class MySettings {
 
 	public static final String SPLITS_SHARED_PREFERENCES = "SplitsSharedPreferences";
 
-	public static final int SWIM_MEET = 10;
-	public static final int TRACK_MEET = 20;
+	public static final int SWIM_MEET = 1;
+	public static final int TRACK_MEET = 2;
 
 	public static final int METERS = 0;
 	public static final int YARDS = 1;
@@ -139,6 +139,7 @@ public class MySettings {
 
 	public static void setContext(Context context) {
 		MySettings.mContext = context;
+		mSplitsApplication = new SplitsApplication(mContext);
 		Resources res = context.getResources();
 		KEY_MEET_TYPE = res.getString(R.string.settings_meet_type_key);
 		KEY_MIN_SPLIT_DURATION = res.getString(R.string.settings_split_min_duration_key);
@@ -569,32 +570,43 @@ public class MySettings {
 	// FLURRY
 	public static String getFlurryAPIkey() {
 		// this method allows for both paid and free version to use different Flurry API keys.
-		String flurryAPIkey = "something.went.wrong.if.this.is.used";
+		// String flurryAPIkey = "something.went.wrong.if.this.is.used";
 
-		try {
-			// Both paid and free projects must have the same class in the same package and
-			// have the same FLURRY_API_KEY field. However, the FLURRY_API_KEY field values
-			// are different reflecting the paid and free versions.
+		/*		try {
+					// Both paid and free projects must have the same class in the same package and
+					// have the same FLURRY_API_KEY field. However, the FLURRY_API_KEY field values
+					// are different reflecting the paid and free versions.
 
-			Class<?> clz = Class.forName("com.lbconsulting.splits.app.data.Authority");
-			Field declaredField = clz.getDeclaredField("FLURRY_API_KEY");
-			flurryAPIkey = declaredField.get(null).toString();
+					Class<?> clz = Class.forName("com.lbconsulting.splits.app.data.Authority");
+					Field declaredField = clz.getDeclaredField("FLURRY_API_KEY");
+					flurryAPIkey = declaredField.get(null).toString();
 
-		} catch (ClassNotFoundException e) {
-			MyLog.e("Splits_ContentProvider", "ClassNotFoundException in getFlurryAPIkey.");
-			e.printStackTrace();
-		} catch (NoSuchFieldException e) {
-			MyLog.e("Splits_ContentProvider", "NoSuchFieldException in getFlurryAPIkey.");
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			MyLog.e("Splits_ContentProvider", "IllegalArgumentException in getFlurryAPIkey.");
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			MyLog.e("Splits_ContentProvider", "IllegalAccessException in getFlurryAPIkey.");
-			e.printStackTrace();
-		}
+				} catch (ClassNotFoundException e) {
+					MyLog.e("Splits_ContentProvider", "ClassNotFoundException in getFlurryAPIkey.");
+					e.printStackTrace();
+				} catch (NoSuchFieldException e) {
+					MyLog.e("Splits_ContentProvider", "NoSuchFieldException in getFlurryAPIkey.");
+					e.printStackTrace();
+				} catch (IllegalArgumentException e) {
+					MyLog.e("Splits_ContentProvider", "IllegalArgumentException in getFlurryAPIkey.");
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					MyLog.e("Splits_ContentProvider", "IllegalAccessException in getFlurryAPIkey.");
+					e.printStackTrace();
+				}*/
 
-		return flurryAPIkey;
+		return mSplitsApplication.getFlurryApiKey();
 	}
 
+	public static boolean isFreeVersion() {
+		return mSplitsApplication.isFreeVersion();
+	}
+
+	public static boolean isPaidVersion() {
+		return mSplitsApplication.isPaidVersion();
+	}
+
+	public static int getBuild() {
+		return mSplitsApplication.getBuild();
+	}
 }
