@@ -302,9 +302,9 @@ public class Meets_Fragment extends Fragment implements LoaderCallbacks<Cursor> 
 				String.valueOf(MySettings.SWIM_MEET)));
 		mLoaderManager.restartLoader(MySettings.LOADER_FRAG_MEETS, null, mMeetTitlesCallbacks);
 
-		mActiveFragmentTitle = getResources().getStringArray(R.array.navDrawerTitles)[MainActivity.FRAG_CREATE_EVENTS];
+		mActiveFragmentTitle = getResources().getStringArray(R.array.navDrawerTitles)[MainActivity.FRAG_MEETS];
 		// show the Active Fragment Title
-		EventBus.getDefault().post(new SplitFragmentOnResume(MainActivity.FRAG_CREATE_EVENTS, mActiveFragmentTitle));
+		EventBus.getDefault().post(new SplitFragmentOnResume(MainActivity.FRAG_MEETS, mActiveFragmentTitle));
 
 		// show the Active Fragment Title
 		// EventBus.getDefault().post(new ChangeActionBarTitle(""));

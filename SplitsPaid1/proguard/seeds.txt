@@ -2487,7 +2487,6 @@ com.lbconsulting.splits.app.paid.R$menu: int setup_frags_contextual_menu
 com.lbconsulting.splits.app.paid.R$plurals: int athletes
 com.lbconsulting.splits.app.paid.R$plurals: int events
 com.lbconsulting.splits.app.paid.R$plurals: int meets
-com.lbconsulting.splits.app.paid.R$string: int FLURRY_API_KEY
 com.lbconsulting.splits.app.paid.R$string: int about_email_button_text
 com.lbconsulting.splits.app.paid.R$string: int accountSpinnerLabel
 com.lbconsulting.splits.app.paid.R$string: int addContactButtonLabel

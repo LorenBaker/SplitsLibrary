@@ -2,7 +2,7 @@
 
 	<string name="dialogAbout_aboutText">
 <![CDATA[
-		<h1>Welcome to Splits</h1> <p>An app to time swim and track meet events.</p>
+		<h1>Welcome to <i>SPLITS</i></h1> <p><i>SPLITS</i> is a swim meet and track meet timing application.</p>	
 		]]>
 	</string>
 	<string name="copyright_text">

@@ -102,7 +102,7 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 	private MeetsSpinnerCursorAdapter mMeetsSpinnerAdapter;
 	private EventsSpinnerCursorAdapter mEventsSpinnerAdapter;
 
-	private Spinner spinRaceMeets;
+	private static Spinner spinRaceMeets;
 	private Spinner spinRaceEvents;
 	private Spinner spinAthlete1;
 	private Spinner spinAthlete2;
@@ -139,8 +139,8 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 		return fragment;
 	}
 
-	public static int getFragmentID() {
-		return MainActivity.FRAG_RACE_TIMER;
+	public static boolean isSpinRaceMeetsShown() {
+		return spinRaceMeets.isShown();
 	}
 
 	@Override
@@ -155,6 +155,7 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 		mMeetsSpinnerAdapter = new MeetsSpinnerCursorAdapter(getActivity(), null, 0);
 		spinRaceMeets.setAdapter(mMeetsSpinnerAdapter);
 		spinRaceMeets.setOnItemSelectedListener(this);
+		spinRaceMeets.getVisibility();
 
 		spinRaceEvents = (Spinner) view.findViewById(R.id.spinRaceEvents);
 		spinRaceEvents.setOnLongClickListener(this);
@@ -433,11 +434,11 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 		// delete the ongoing races from the database
 		if (isRaceRunning()) {
 			if (mAthlete1Race.getAthleteID() > 0) {
-				RacesTable.deleteRace(getActivity(), mAthlete1Race.getAthleteID());
+				RacesTable.deleteRace(getActivity(), mAthlete1Race.getAthleteRaceID());
 			}
 
 			if (mAthlete2Race.getAthleteID() > 0) {
-				RacesTable.deleteRace(getActivity(), mAthlete2Race.getAthleteID());
+				RacesTable.deleteRace(getActivity(), mAthlete2Race.getAthleteRaceID());
 			}
 		}
 
@@ -459,6 +460,10 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 			spinAthlete1.setSelection(MySettings.getIndexFromCursor(spinAthlete1, 1));
 			spinAthlete2.setSelection(MySettings.getIndexFromCursor(spinAthlete2, 1));
 		}
+
+		mLoaderManager.restartLoader(MySettings.LOADER_FRAG_RACE_TIMER_ATHLETE1_SPLITS, null, mRaceStartTimerCallbacks);
+		mLoaderManager.restartLoader(MySettings.LOADER_FRAG_RACE_TIMER_ATHLETE2_SPLITS, null, mRaceStartTimerCallbacks);
+
 	}
 
 	public void onEvent(ShowSplitButton event) {

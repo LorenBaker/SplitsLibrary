@@ -110,7 +110,7 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 	private EventsSpinnerCursorAdapter mEventsSpinnerAdapter;
 
 	// Relay Timer Views
-	private Spinner spinRelayMeets;
+	private static Spinner spinRelayMeets;
 	private Spinner spinRelayEvents;
 
 	private Spinner spinAthlete0;
@@ -145,8 +145,8 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 		return fragment;
 	}
 
-	public static int getFragmentID() {
-		return MainActivity.FRAG_RELAY_TIMER;
+	public static boolean isSpinRelayMeetsShown() {
+		return spinRelayMeets.isShown();
 	}
 
 	@Override
@@ -835,6 +835,8 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 			spinAthlete2.setSelection(MySettings.getIndexFromCursor(spinAthlete2, 1));
 			spinAthlete3.setSelection(MySettings.getIndexFromCursor(spinAthlete3, 1));
 		}
+
+		mLoaderManager.restartLoader(MySettings.LOADER_FRAG_RELAY_TIMER_SPLITS, null, mRelayTimerCallbacks);
 	}
 
 	private void ShowZeroTime() {

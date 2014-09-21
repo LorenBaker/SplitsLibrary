@@ -14,8 +14,8 @@ import android.widget.TextView;
 
 import com.flurry.android.FlurryAgent;
 import com.lbconsulting.splits.R;
-import com.lbconsulting.splits.activites.MainActivity;
 import com.lbconsulting.splits.classes.MyLog;
+import com.lbconsulting.splits.classes.MySettings;
 
 public class PlayStore_DialogFragment extends DialogFragment {
 
@@ -72,7 +72,7 @@ public class PlayStore_DialogFragment extends DialogFragment {
 					Intent intent = new Intent(Intent.ACTION_VIEW);
 					// TODO: verify play store market URI
 					// market://details?id=<package_name>
-					intent.setData(Uri.parse("market://details?id=" + MainActivity.PACKAGE_NAME));
+					intent.setData(Uri.parse("market://details?id=" + MySettings.getPaidPackageName()));
 					startActivity(intent);
 
 					getDialog().dismiss();

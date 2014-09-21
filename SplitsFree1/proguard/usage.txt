@@ -1439,7 +1439,8 @@ com.lbconsulting.splits.R$drawable:
     220:220:public R$drawable()
 com.lbconsulting.splits.R$id:
     259:259:public R$id()
-com.lbconsulting.splits.R$integer
+com.lbconsulting.splits.R$integer:
+    389:389:public R$integer()
 com.lbconsulting.splits.R$layout:
     392:392:public R$layout()
 com.lbconsulting.splits.R$menu:
@@ -1464,8 +1465,9 @@ com.lbconsulting.splits.activites.MainActivity:
     public static final int FRAG_CREATE_EVENTS
     public static final int FRAG_RESULTS_RACE_SPLITS
     public static final int FRAG_RESULTS_RELAY_SPLITS
-    private android.widget.LinearLayout mBestTimesContainer
     private static final int CONTACTS_URI_REQUEST
+    238:260:private void ShowBetaExpirationDialog()
+com.lbconsulting.splits.activites.MainActivity$2
 com.lbconsulting.splits.adapters.RelaySplitsCursorAdapter:
     70:71:public void setNumberFormat(int)
 com.lbconsulting.splits.app.free.BuildConfig
@@ -1497,8 +1499,8 @@ com.lbconsulting.splits.classes.DateTimeUtils:
 com.lbconsulting.splits.classes.MyLog:
     public static final java.lang.String TAG
     5:5:public MyLog()
-    10:13:public static void d(java.lang.String,java.lang.String)
-    28:31:public static void v(java.lang.String,java.lang.String)
+    13:13:public static void d(java.lang.String,java.lang.String)
+    31:31:public static void v(java.lang.String,java.lang.String)
 com.lbconsulting.splits.classes.MySettings:
     public static final boolean DEVELOPER_MODE
     public static final boolean IS_BETA
@@ -1580,11 +1582,10 @@ com.lbconsulting.splits.classes.MySettings:
     public static final java.lang.String HELP_MESSAGE
     23:23:public MySettings()
     229:230:public static java.lang.CharSequence getActiveFragmentTitle()
-    417:419:public static long getCreateEventUnitsID()
-    468:473:public static void ExecMultipleSQL(android.database.sqlite.SQLiteDatabase,java.util.ArrayList)
-    507:509:public static boolean isRelayActiveAthleteButtonVisible()
-    606:606:public static boolean isPaidVersion()
-    610:610:public static int getBuild()
+    372:374:public static long getCreateEventUnitsID()
+    423:428:public static void ExecMultipleSQL(android.database.sqlite.SQLiteDatabase,java.util.ArrayList)
+    462:464:public static boolean isRelayActiveAthleteButtonVisible()
+    536:536:public static boolean isPaidVersion()
 com.lbconsulting.splits.classes.Race:
     public static final java.lang.String STATE_START_TIME
     public static final java.lang.String STATE_ELAPSED_TIME
@@ -1613,8 +1614,6 @@ com.lbconsulting.splits.classes.Relay:
     public static final java.lang.String STATE_RELAY_BALANCE_OF_LAP
     public static final java.lang.String STATE_IS_RELAY_RACE_RUNNING
     421:421:public int getActiveAthlete()
-com.lbconsulting.splits.classes.SplitsApplication:
-    38:38:public int getBuild()
 com.lbconsulting.splits.classes.SplitsEvents:
     3:3:public SplitsEvents()
 com.lbconsulting.splits.classes.SplitsEvents$RaceSplitsResults
@@ -1834,10 +1833,6 @@ com.lbconsulting.splits.fragments.Events_Fragment:
     64:64:public static int getFragmentID()
 com.lbconsulting.splits.fragments.Meets_Fragment:
     74:74:public static int getFragmentID()
-com.lbconsulting.splits.fragments.Race_Timer_Fragment:
-    143:143:public static int getFragmentID()
-com.lbconsulting.splits.fragments.Relay_Timer_Fragment:
-    149:149:public static int getFragmentID()
 com.lbconsulting.splits.fragments.Results_AllRaces_Fragment:
     83:83:public static int getFragmentID()
 com.lbconsulting.splits.fragments.Results_BestTimes_Fragment:

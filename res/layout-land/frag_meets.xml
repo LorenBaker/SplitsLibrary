@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
-	android:layout_height="wrap_content"
+	android:layout_height="match_parent"
 	android:orientation="vertical"
 	android:paddingBottom="@dimen/fragment_land_vertical_padding"
 	android:paddingLeft="@dimen/fragment_land_horizontal_padding"
@@ -12,7 +12,7 @@
 		android:id="@+id/txtMeetTitle"
 		style="@style/txtStyleLinen"
 		android:layout_width="match_parent"
-		android:layout_height="52dp"
+		android:layout_height="@dimen/spinnerHeight"
 		android:hint="@string/meet_title_hint"
 		android:inputType="textAutoCorrect|textCapWords" />
 
@@ -20,7 +20,7 @@
 		android:id="@+id/btnCreateMeetTitle"
 		style="@style/btnStyle.Genoa"
 		android:layout_width="match_parent"
-		android:layout_height="52dp"
+		android:layout_height="@dimen/spinnerHeight"
 		android:gravity="center"
 		android:text="@string/btnCreateMeetTitle_add_meet_text" >
 	</Button>
@@ -29,8 +29,6 @@
 		android:id="@+id/lvMeetTitles"
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
-		android:layout_marginBottom="4dp"
-		android:layout_marginTop="4dp"
 		android:layout_weight="1" >
 	</ListView>
 

@@ -96,9 +96,8 @@ import de.greenrobot.event.EventBus;
 
 public class MainActivity extends Activity {
 
-	public static String PACKAGE_NAME;
+	// public static String PACKAGE_NAME;
 
-	// public static final String FRAG_TAG_SPLITS = "splits_fragment";
 	public static final String FRAG_TAG_BEST_TIMES = "results_best_times_fragment";
 
 	private int mActiveFragment = 0;
@@ -130,8 +129,6 @@ public class MainActivity extends Activity {
 	private boolean mIsRelay = false;
 	private boolean mIsDualPaneView = false;
 
-	private LinearLayout mBestTimesContainer;
-
 	private static final int CONTACTS_URI_REQUEST = 333;
 	private static LruCache<String, Bitmap> mMemoryCache;
 
@@ -142,8 +139,6 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		LinearLayout mBestTimesContainer = (LinearLayout) findViewById(R.id.bestTimesContainer);
-		PACKAGE_NAME = getApplicationContext().getPackageName();
-
 		if (mBestTimesContainer != null) {
 			mIsDualPaneView = true;
 		}
@@ -1116,19 +1111,22 @@ public class MainActivity extends Activity {
 	}
 
 	public void onEvent(SplitFragmentOnResume event) {
-		if (mActiveFragment < FRAG_ATHLETES || mActiveFragment > FRAG_CREATE_EVENTS) {
-			mPreviousRaceFragment = mActiveFragment;
-		}
-		mActiveFragment = event.getActiveFragment();
-		if (mActiveFragment != FRAG_ATHLETES) {
-			mActiveFragmentTitle = mMeetTypeString + " " + event.getActiveFragmentTitle();
-		} else {
-			// Athletes fragment title is not meet type dependent
-			mActiveFragmentTitle = event.getActiveFragmentTitle();
+		if (!mIsDualPaneView || event.getActiveFragment() != FRAG_RESULTS_BEST_TIMES) {
+			if (mActiveFragment < FRAG_ATHLETES || mActiveFragment > FRAG_CREATE_EVENTS) {
+				mPreviousRaceFragment = mActiveFragment;
+			}
+
+			mActiveFragment = event.getActiveFragment();
+			if (mActiveFragment != FRAG_ATHLETES) {
+				mActiveFragmentTitle = mMeetTypeString + " " + event.getActiveFragmentTitle();
+			} else {
+				// Athletes fragment title is not meet type dependent
+				mActiveFragmentTitle = event.getActiveFragmentTitle();
+			}
+			getActionBar().setTitle(mActiveFragmentTitle);
+			this.invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
 		}
 
-		getActionBar().setTitle(mActiveFragmentTitle);
-		this.invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
 	}
 
 	private class ImageLoadTask extends AsyncTask<Uri, Void, Void> {
@@ -1291,102 +1289,36 @@ public class MainActivity extends Activity {
 	public void onBackPressed() {
 		int backStackEntryCount = getFragmentManager().getBackStackEntryCount();
 		if (backStackEntryCount == 1) {
-			finish();
+
+			switch (mActiveFragment) {
+
+				case FRAG_RACE_TIMER:
+					if (Race_Timer_Fragment.isSpinRaceMeetsShown()) {
+						finish();
+					} else {
+						ClearRace();
+					}
+					break;
+
+				case FRAG_RELAY_TIMER:
+					if (Relay_Timer_Fragment.isSpinRelayMeetsShown()) {
+						finish();
+					} else {
+						ClearRace();
+					}
+					break;
+
+				default:
+					finish();
+					break;
+			}
+
 		} else {
 			MainActivity.super.onBackPressed();
 			this.invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
 		}
 
 	}
-
-	/*	private void setActiveFragmentTitle(int position) {
-			mActiveFragmentTitle = mFragmentTitles[position];
-			switch (position) {
-				case FRAG_RACE_TIMER:
-					mActiveFragmentTitle = getString(R.string.race_text);
-					break;
-				case FRAG_RELAY_TIMER:
-					mActiveFragmentTitle = getString(R.string.relay_text);
-					break;
-				case FRAG_RESULTS_BEST_TIMES:
-					if (!mIsDualPaneView) {
-						mActiveFragmentTitle = ": " + getString(R.string.best_times_text);
-					}
-					break;
-				case FRAG_RESULTS_ALL_RACES:
-					mActiveFragmentTitle = ": " + getString(R.string.all_races_text);
-					break;
-				case FRAG_RESULTS_RACE_SPLITS:
-					mActiveFragmentTitle = getString(R.string.race_splits_text);
-					break;
-				case FRAG_RESULTS_RELAY_SPLITS:
-					mActiveFragmentTitle = getString(R.string.relay_splits_text);
-					break;
-				default:
-					break;
-			}
-
-			if (position != FRAG_ATHLETES) {
-				mActiveFragmentTitle = mMeetTypeString + " " + mActiveFragmentTitle;
-			}
-
-		}*/
-
-	/*	@Override
-		public void onBackPressed() {
-			final Athletes_Fragment athletes_fragment = (Athletes_Fragment) getFragmentManager().findFragmentByTag(
-					"TAG_" + String.valueOf(FRAG_ATHLETES));
-			final Create_Event_Fragment create_event_fragment = (Create_Event_Fragment) getFragmentManager()
-					.findFragmentByTag("TAG_" + String.valueOf(FRAG_CREATE_EVENTS));
-			final Events_Fragment events_fragment = (Events_Fragment) getFragmentManager().findFragmentByTag(
-					"TAG_" + String.valueOf(FRAG_EVENTS));
-			final Meets_Fragment meets_fragment = (Meets_Fragment) getFragmentManager().findFragmentByTag(
-					"TAG_" + String.valueOf(FRAG_MEETS));
-			final Race_Timer_Fragment race_timer_fragment = (Race_Timer_Fragment) getFragmentManager().findFragmentByTag(
-					"TAG_" + String.valueOf(FRAG_RACE_TIMER));
-			final Relay_Timer_Fragment relay_timer_fragment = (Relay_Timer_Fragment) getFragmentManager()
-					.findFragmentByTag("TAG_" + String.valueOf(FRAG_RELAY_TIMER));
-			final Results_AllRaces_Fragment results_allraces_fragment = (Results_AllRaces_Fragment) getFragmentManager()
-					.findFragmentByTag("TAG_" + String.valueOf(FRAG_RESULTS_ALL_RACES));
-			final Results_BestTimes_Fragment results_besttimes_fragment = (Results_BestTimes_Fragment) getFragmentManager()
-					.findFragmentByTag("TAG_" + String.valueOf(FRAG_RESULTS_BEST_TIMES));
-			final Results_RaceSplitsFragment results_racesplits_fragment = (Results_RaceSplitsFragment) getFragmentManager()
-					.findFragmentByTag("TAG_" + String.valueOf(FRAG_RESULTS_RACE_SPLITS));
-			final Results_RelaySplitsFragment results_relaysplits_fragment = (Results_RelaySplitsFragment) getFragmentManager()
-					.findFragmentByTag("TAG_" + String.valueOf(FRAG_RESULTS_RELAY_SPLITS));
-
-			if (athletes_fragment != null) {
-				mActiveFragment = FRAG_ATHLETES;
-			} else if (create_event_fragment != null) {
-				mActiveFragment = FRAG_CREATE_EVENTS;
-			} else if (events_fragment != null) {
-				mActiveFragment = FRAG_EVENTS;
-			} else if (meets_fragment != null) {
-				mActiveFragment = FRAG_MEETS;
-			} else if (race_timer_fragment != null) {
-				mActiveFragment = FRAG_RACE_TIMER;
-			} else if (relay_timer_fragment != null) {
-				mActiveFragment = FRAG_RELAY_TIMER;
-			} else if (results_allraces_fragment != null) {
-				mActiveFragment = FRAG_RESULTS_ALL_RACES;
-			} else if (results_besttimes_fragment != null) {
-				mActiveFragment = FRAG_RESULTS_BEST_TIMES;
-			} else if (results_racesplits_fragment != null) {
-				mActiveFragment = FRAG_RESULTS_RACE_SPLITS;
-			} else if (results_relaysplits_fragment != null) {
-				mActiveFragment = FRAG_RESULTS_RELAY_SPLITS;
-			} else {
-				mActiveFragment = -1;
-			}
-
-			setActiveFragmentTitle(mActiveFragment);
-			getActionBar().setTitle(mActiveFragmentTitle);
-
-					if (fragment.allowBackPressed()) { // and then you define a method allowBackPressed with the logic to allow back
-														// pressed or not
-						super.onBackPressed();
-					}
-		}*/
 
 	/**
 	 * When using the ActionBarDrawerToggle, you must call it during

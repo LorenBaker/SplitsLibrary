@@ -16,13 +16,19 @@ public class SplitsApplication extends Application {
 	}
 
 	public boolean isFreeVersion() {
-		String packageName = mContext.getPackageName();
-		return packageName.toLowerCase(Locale.US).contains(".app.free");
+		/*String packageName = mContext.getPackageName();
+		return packageName.toLowerCase(Locale.US).contains(".app.free");*/
+		return !isPaidVersion();
 	}
 
 	public boolean isPaidVersion() {
 		String packageName = mContext.getPackageName();
-		return packageName.toLowerCase(Locale.US).contains(".app.paid");
+		int build = getBuild();
+		return packageName.toLowerCase(Locale.US).contains(".app.paid") && build == 189259694;
+	}
+
+	public String getPackageName() {
+		return mContext.getPackageName();
 	}
 
 	public String getFlurryApiKey() {

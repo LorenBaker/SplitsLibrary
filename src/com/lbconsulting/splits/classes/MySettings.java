@@ -26,7 +26,7 @@ public class MySettings {
 	private static SplitsApplication mSplitsApplication;
 
 	public static final boolean DEVELOPER_MODE = false;
-	public static final boolean IS_BETA = true;
+	public static final boolean IS_BETA = false;
 	public static final int BETA_EXPIRATION_MONTH = 10;
 	public static final int BETA_EXPIRATION_DAY = 21;
 	public static final int BETA_EXPIRATION_YEAR = 2014;
@@ -240,44 +240,6 @@ public class MySettings {
 		return storedStates.getLong(STATE_MAIN_ACTIVITY_SELECTED_RACE_ID, 0);
 	}
 
-	/*	public static int getSetupActivityVisibleFragment() {
-			SharedPreferences storedStates = mContext.getSharedPreferences(SPLITS_SHARED_PREFERENCES,
-					Context.MODE_PRIVATE);
-			return storedStates.getInt(STATE_SETUP_ACTIVITY_VISIBLE_FRAGMENT, SetupActivity.ATHLETES_FRAGMENT);
-		}*/
-
-	/*	public static int getSetupActivityAthleteCount() {
-			SharedPreferences storedStates = mContext.getSharedPreferences(SPLITS_SHARED_PREFERENCES,
-					Context.MODE_PRIVATE);
-			return storedStates.getInt(STATE_MAIN_ACTIVITY_ATHLETE_COUNT, 0);
-		}*/
-
-	/*	public static void setSetupActivityVisibleFragment(int visibleFragment) {
-			SharedPreferences outStates = mContext.getSharedPreferences(SPLITS_SHARED_PREFERENCES,
-					Context.MODE_PRIVATE);
-			SharedPreferences.Editor applicationStates = outStates.edit();
-			applicationStates.putInt(STATE_SETUP_ACTIVITY_VISIBLE_FRAGMENT, visibleFragment);
-			applicationStates.commit();
-		}*/
-
-	/*	public static int getResultsActivityVisibleFragment() {
-			SharedPreferences storedStates = mContext.getSharedPreferences(SPLITS_SHARED_PREFERENCES,
-					Context.MODE_PRIVATE);
-			return storedStates.getInt(STATE_RESULTS_ACTIVITY_VISIBLE_FRAGMENT, ResultsActivity.BEST_TIMES_FRAGMENT);
-		}*/
-
-	/*	public static int getHelpAboutActivityVisibleFragment() {
-			SharedPreferences storedStates = mContext.getSharedPreferences(SPLITS_SHARED_PREFERENCES,
-					Context.MODE_PRIVATE);
-			return storedStates.getInt(STATE_HELP_ABOUT_ACTIVITY_VISIBLE_FRAGMENT, HelpActivity.QUICK_START);
-		}*/
-
-	/*	public static long getResultsActivitySplitsRaceID() {
-			SharedPreferences storedStates = mContext.getSharedPreferences(SPLITS_SHARED_PREFERENCES,
-					Context.MODE_PRIVATE);
-			return storedStates.getLong(STATE_RACE_SPLITS_RACE_ID, -1);
-		}
-	*/
 	// RACE TIMER FRAGMENT
 	public static String getAthleteBestTimeText(String athlete) {
 		SharedPreferences storedStates = mContext.getSharedPreferences(SPLITS_SHARED_PREFERENCES,
@@ -335,13 +297,6 @@ public class MySettings {
 				Context.MODE_PRIVATE);
 		return storedStates.getInt(STATE_RT_RACE_COUNT, 0);
 	}
-
-	/*	public static int getMeetPosition(Spinner spinner) {
-			SharedPreferences storedStates = mContext.getSharedPreferences(SPLITS_SHARED_PREFERENCES,
-					Context.MODE_PRIVATE);
-			long itemID = storedStates.getLong(STATE_MEET_ID, -1);
-			return getIndexFromCursor(spinner, itemID);
-		}*/
 
 	public static long getMeetID() {
 		SharedPreferences storedStates = mContext.getSharedPreferences(SPLITS_SHARED_PREFERENCES,
@@ -570,31 +525,6 @@ public class MySettings {
 	// FLURRY
 	public static String getFlurryAPIkey() {
 		// this method allows for both paid and free version to use different Flurry API keys.
-		// String flurryAPIkey = "something.went.wrong.if.this.is.used";
-
-		/*		try {
-					// Both paid and free projects must have the same class in the same package and
-					// have the same FLURRY_API_KEY field. However, the FLURRY_API_KEY field values
-					// are different reflecting the paid and free versions.
-
-					Class<?> clz = Class.forName("com.lbconsulting.splits.app.data.Authority");
-					Field declaredField = clz.getDeclaredField("FLURRY_API_KEY");
-					flurryAPIkey = declaredField.get(null).toString();
-
-				} catch (ClassNotFoundException e) {
-					MyLog.e("Splits_ContentProvider", "ClassNotFoundException in getFlurryAPIkey.");
-					e.printStackTrace();
-				} catch (NoSuchFieldException e) {
-					MyLog.e("Splits_ContentProvider", "NoSuchFieldException in getFlurryAPIkey.");
-					e.printStackTrace();
-				} catch (IllegalArgumentException e) {
-					MyLog.e("Splits_ContentProvider", "IllegalArgumentException in getFlurryAPIkey.");
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					MyLog.e("Splits_ContentProvider", "IllegalAccessException in getFlurryAPIkey.");
-					e.printStackTrace();
-				}*/
-
 		return mSplitsApplication.getFlurryApiKey();
 	}
 
@@ -606,7 +536,11 @@ public class MySettings {
 		return mSplitsApplication.isPaidVersion();
 	}
 
-	public static int getBuild() {
-		return mSplitsApplication.getBuild();
+	/*	public static int getBuild() {
+			return mSplitsApplication.getBuild();
+		}*/
+
+	public static String getPaidPackageName() {
+		return "com.lbconsulting.splits.app.paid";
 	}
 }

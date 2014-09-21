@@ -241,10 +241,10 @@ public class SplitsTable {
 
 		if (raceID > 0) {
 			ContentResolver cr = context.getContentResolver();
-			Uri channelUri = CONTENT_URI;
+			Uri uri = CONTENT_URI;
 			String where = COL_RACE_ID + " = ? AND " + COL_IS_RELAY + " = ?";
 			String selectionArgs[] = new String[] { String.valueOf(raceID), String.valueOf(isRelayValue) };
-			numberOfDeletedRecords = cr.delete(channelUri, where, selectionArgs);
+			numberOfDeletedRecords = cr.delete(uri, where, selectionArgs);
 		}
 		return numberOfDeletedRecords;
 
