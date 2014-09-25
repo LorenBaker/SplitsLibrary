@@ -33,7 +33,8 @@ public class MySettings {
 	public static String BETA_EXPIRATION_MESSAGE = "";
 
 	// TODO: revise max number of races, relays, and athletes for free version
-	public static final int MAX_NUMBER_OF_RACES = 20;
+	// Each individual event has 1 or 2 races. Each relay has 4 races.
+	public static final int MAX_NUMBER_OF_RACES = 50;
 	public static final int MAX_NUMBER_OF_RELAYS = 3;
 	public static final int MAX_NUMBER_OF_ATHLETES = 5;
 
@@ -88,7 +89,7 @@ public class MySettings {
 	public static final String KEY_BEST_TIMES_SHOWN = "BestTimesShown";
 
 	public static final String STATE_MAIN_ACTIVITY_FIRST_TIME_SHOWN = "MainActivityFirstTimeShown";
-	public static final String STATE_MAIN_ACTIVITY_ATHLETE_COUNT = "MainActivityFreeAppAthleteCount";
+	// public static final String STATE_MAIN_ACTIVITY_ATHLETE_COUNT = "MainActivityFreeAppAthleteCount";
 
 	public static final String STATE_MAIN_ACTIVITY_ACTIVE_FRAGMENT = "MainActivityActiveFragment";
 	public static final String STATE_MAIN_ACTIVITY_PREVIOUS_FRAGMENT = "MainActivityPreviousFragment";
@@ -100,7 +101,7 @@ public class MySettings {
 	public static final String STATE_MEET_ID = "stateMeetID";
 
 	public static final String STATE_RT_ARE_SPINNERS_ENABLED = "raceTimerAreSpinnersEnabled";
-	public static final String STATE_RT_RACE_COUNT = "freeAppRaceCount";
+	// public static final String STATE_RT_RACE_COUNT = "freeAppRaceCount";
 
 	public static final String STATE_RT_ATHLETE1_START_BUTTTON_VISIBLE = "raceTimerAhtlete1StartButtonVisible";
 	public static final String STATE_RT_ATHLETE1_SPLIT_BUTTTON_VISIBLE = "raceTimerAhtlete1SplitButtonVisible";
@@ -118,7 +119,7 @@ public class MySettings {
 	public static final String STATE_RACE_SPLITS_RACE_ID = "raceSplitsRaceID";
 	public static final String STATE_RACE_SPLITS_IS_RELAY = "raceSplitsIsRelay";
 
-	public static final String STATE_RELAY_RACE_COUNT = "freeAppRelayRaceCount";
+	// public static final String STATE_RELAY_RACE_COUNT = "freeAppRelayRaceCount";
 	public static final String STATE_RELAY_RACE_ARE_SPINNERS_ENABLED = "relayRaceAreSpinnersEnabled";
 	public static final String STATE_RELAY_RACE_START_BUTTTON_VISIBLE = "relayRaceStartButtonVisible";
 	public static final String STATE_RELAY_RACE_SPLIT_BUTTTON_VISIBLE = "relayRaceSplitButtonVisible";
@@ -292,11 +293,11 @@ public class MySettings {
 		return intValues;
 	}
 
-	public static int getRaceCount() {
-		SharedPreferences storedStates = mContext.getSharedPreferences(SPLITS_SHARED_PREFERENCES,
-				Context.MODE_PRIVATE);
-		return storedStates.getInt(STATE_RT_RACE_COUNT, 0);
-	}
+	/*	public static int getRaceCount() {
+			SharedPreferences storedStates = mContext.getSharedPreferences(SPLITS_SHARED_PREFERENCES,
+					Context.MODE_PRIVATE);
+			return storedStates.getInt(STATE_RT_RACE_COUNT, 0);
+		}*/
 
 	public static long getMeetID() {
 		SharedPreferences storedStates = mContext.getSharedPreferences(SPLITS_SHARED_PREFERENCES,
@@ -434,11 +435,11 @@ public class MySettings {
 		return storedStates.getBoolean(STATE_RELAY_RACE_ARE_SPINNERS_ENABLED, true);
 	}
 
-	public static int getRelayRaceCount() {
-		SharedPreferences storedStates = mContext.getSharedPreferences(SPLITS_SHARED_PREFERENCES,
-				Context.MODE_PRIVATE);
-		return storedStates.getInt(STATE_RELAY_RACE_COUNT, 0);
-	}
+	/*	public static int getRelayRaceCount() {
+			SharedPreferences storedStates = mContext.getSharedPreferences(SPLITS_SHARED_PREFERENCES,
+					Context.MODE_PRIVATE);
+			return storedStates.getInt(STATE_RELAY_RACE_COUNT, 0);
+		}*/
 
 	public static boolean isRelayStartButtonVisible() {
 		SharedPreferences storedStates = mContext.getSharedPreferences(SPLITS_SHARED_PREFERENCES,

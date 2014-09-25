@@ -105,12 +105,12 @@ public class SplitsEvents {
 
 	}
 
-	public static class DuplicateAthleteSelected {
+	/*	public static class DuplicateAthleteSelected {
 
-		public DuplicateAthleteSelected() {
-		}
+			public DuplicateAthleteSelected() {
+			}
 
-	}
+		}*/
 
 	public static class AddAthletetNameToContacts {
 

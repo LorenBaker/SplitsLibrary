@@ -69,7 +69,7 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 
 	private int mMeetType;
 	private boolean mResetAthletes = false;
-	private int mRaceCount = 0;
+	// private int mRaceCount = 0;
 	private long mRaceStartTime = -1;
 	private CharSequence mActiveFragmentTitle;
 
@@ -244,7 +244,7 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 		mFirstTimeLoadingAthlete1ID = true;
 		mFirstTimeLoadingAthlete2ID = true;
 
-		mRaceCount = MySettings.getRaceCount();
+		// mRaceCount = MySettings.getRaceCount();
 
 		mAthlete1Race = new Race(getActivity());
 		mAthlete2Race = new Race(getActivity());
@@ -393,7 +393,7 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 		raceTimerBundle.putLong(MySettings.STATE_MEET_ID, mAthlete1Race.getMeetID());
 
 		raceTimerBundle.putBoolean(MySettings.STATE_RT_ARE_SPINNERS_ENABLED, areSpinnersEnabled);
-		raceTimerBundle.putInt(MySettings.STATE_RT_RACE_COUNT, mRaceCount);
+		// raceTimerBundle.putInt(MySettings.STATE_RT_RACE_COUNT, mRaceCount);
 
 		raceTimerBundle.putBoolean(MySettings.STATE_RT_ATHLETE1_START_BUTTTON_VISIBLE,
 				btnAthlete1Start.getVisibility() == View.VISIBLE);
@@ -685,10 +685,9 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 
 	private void CreateNewRace() {
 		Resources res = getActivity().getResources();
-		boolean isFree = false;
 		if (MySettings.isFreeVersion()) {
-			isFree = true;
-			if (mRaceCount >= MySettings.MAX_NUMBER_OF_RACES) {
+			int raceCount = RacesTable.getRaceCount(getActivity());
+			if (raceCount >= MySettings.MAX_NUMBER_OF_RACES) {
 				resetRaceStartTime();
 				SoundError();
 
@@ -744,9 +743,9 @@ public class Race_Timer_Fragment extends Fragment implements OnClickListener, On
 		mHandler.removeCallbacks(startTimer);
 		mHandler.postDelayed(startTimer, 0);
 		EventBus.getDefault().post(new ChangeActionBarTitle(mEventShortTitle));
-		if (isFree) {
-			mRaceCount += 1;
-		}
+		/*		if (isFree) {
+					mRaceCount += 1;
+				}*/
 
 		ArrayList<Long> athletes = new ArrayList<Long>();
 		athletes.add((long) 1);

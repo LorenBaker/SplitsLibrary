@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="com.lbconsulting.splits.app.paid"
-	android:versionCode="1"
-	android:versionName="1.1" >
+	android:versionCode="5"
+	android:versionName="1.1.5" >
 
 	<uses-sdk
 		android:minSdkVersion="16"
@@ -33,7 +33,7 @@
 
 		<provider
 			android:name="com.lbconsulting.splits.database.Splits_ContentProvider"
-			android:authorities="com.lbconsulting.splits"
+			android:authorities="com.lbconsulting.splits.paid"
 			android:exported="false" >
 		</provider>
 	</application>

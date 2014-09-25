@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="com.lbconsulting.splits"
-	android:versionCode="1"
-	android:versionName="1.1" >
+	android:versionCode="5"
+	android:versionName="1.1.5" >
 
 	<uses-sdk
 		android:minSdkVersion="16"
@@ -25,11 +25,14 @@
 		</activity>
 		<activity android:name="com.lbconsulting.splits.activites.PreferencesActivity" />
 
-		<provider
+		<!--
+        <provider
 			android:name="com.lbconsulting.splits.database.Splits_ContentProvider"
 			android:authorities="com.lbconsulting.splits"
 			android:exported="false" >
 		</provider>
+		-->
+
 	</application>
 
 </manifest>

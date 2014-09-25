@@ -10,11 +10,8 @@ import android.net.Uri;
 import android.text.TextUtils;
 
 import com.lbconsulting.splits.R;
-import com.lbconsulting.splits.classes.SplitsEvents.DuplicateAthleteSelected;
 import com.lbconsulting.splits.classes.MyLog;
 import com.lbconsulting.splits.classes.MySettings;
-
-import de.greenrobot.event.EventBus;
 
 public class AthletesTable {
 
@@ -96,7 +93,6 @@ public class AthletesTable {
 				athleteCursor.moveToFirst();
 				newAthleteID = athleteCursor.getLong(athleteCursor.getColumnIndexOrThrow(COL_ATHLETE_ID));
 				athleteCursor.close();
-				EventBus.getDefault().post(new DuplicateAthleteSelected());
 				return newAthleteID;
 			}
 
@@ -131,7 +127,6 @@ public class AthletesTable {
 				athleteCursor.moveToFirst();
 				newAthleteID = athleteCursor.getLong(athleteCursor.getColumnIndexOrThrow(COL_ATHLETE_ID));
 				athleteCursor.close();
-				EventBus.getDefault().post(new DuplicateAthleteSelected());
 				return newAthleteID;
 			}
 

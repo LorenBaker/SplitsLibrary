@@ -2064,7 +2064,6 @@ com.lbconsulting.splits.R$styleable: int StickyListHeadersListView_isDrawingList
 com.lbconsulting.splits.R$xml: int preferences
 com.lbconsulting.splits.activites.MainActivity
 com.lbconsulting.splits.activites.MainActivity: MainActivity()
-com.lbconsulting.splits.activites.MainActivity: void onEvent(com.lbconsulting.splits.classes.SplitsEvents$DuplicateAthleteSelected)
 com.lbconsulting.splits.activites.MainActivity: void onEvent(com.lbconsulting.splits.classes.SplitsEvents$AddAthletetNameToContacts)
 com.lbconsulting.splits.activites.MainActivity: void onEvent(com.lbconsulting.splits.classes.SplitsEvents$AddThumbnailToMemoryCache)
 com.lbconsulting.splits.activites.MainActivity: void onEvent(com.lbconsulting.splits.classes.SplitsEvents$ShowPreviousFragment)

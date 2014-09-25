@@ -1466,8 +1466,8 @@ com.lbconsulting.splits.activites.MainActivity:
     public static final int FRAG_RESULTS_RACE_SPLITS
     public static final int FRAG_RESULTS_RELAY_SPLITS
     private static final int CONTACTS_URI_REQUEST
-    238:260:private void ShowBetaExpirationDialog()
-com.lbconsulting.splits.activites.MainActivity$2
+    286:308:private void ShowBetaExpirationDialog()
+com.lbconsulting.splits.activites.MainActivity$3
 com.lbconsulting.splits.adapters.RelaySplitsCursorAdapter:
     70:71:public void setNumberFormat(int)
 com.lbconsulting.splits.app.free.BuildConfig
@@ -1499,8 +1499,8 @@ com.lbconsulting.splits.classes.DateTimeUtils:
 com.lbconsulting.splits.classes.MyLog:
     public static final java.lang.String TAG
     5:5:public MyLog()
-    13:13:public static void d(java.lang.String,java.lang.String)
-    31:31:public static void v(java.lang.String,java.lang.String)
+    10:13:public static void d(java.lang.String,java.lang.String)
+    28:31:public static void v(java.lang.String,java.lang.String)
 com.lbconsulting.splits.classes.MySettings:
     public static final boolean DEVELOPER_MODE
     public static final boolean IS_BETA
@@ -1543,7 +1543,6 @@ com.lbconsulting.splits.classes.MySettings:
     public static final int LOADER_FRAG_RELAY_TIMER_ATHLETE3
     public static final java.lang.String KEY_BEST_TIMES_SHOWN
     public static final java.lang.String STATE_MAIN_ACTIVITY_FIRST_TIME_SHOWN
-    public static final java.lang.String STATE_MAIN_ACTIVITY_ATHLETE_COUNT
     public static final java.lang.String STATE_MAIN_ACTIVITY_ACTIVE_FRAGMENT
     public static final java.lang.String STATE_MAIN_ACTIVITY_PREVIOUS_FRAGMENT
     public static final java.lang.String STATE_MAIN_ACTIVITY_DRAWER_TITLE
@@ -1552,7 +1551,6 @@ com.lbconsulting.splits.classes.MySettings:
     public static final java.lang.String STATE_MAIN_ACTIVITY_SELECTED_RACE_ID
     public static final java.lang.String STATE_MEET_ID
     public static final java.lang.String STATE_RT_ARE_SPINNERS_ENABLED
-    public static final java.lang.String STATE_RT_RACE_COUNT
     public static final java.lang.String STATE_RT_ATHLETE1_START_BUTTTON_VISIBLE
     public static final java.lang.String STATE_RT_ATHLETE1_SPLIT_BUTTTON_VISIBLE
     public static final java.lang.String STATE_RT_ATHLETE1_STOP_BUTTTON_VISIBLE
@@ -1565,7 +1563,6 @@ com.lbconsulting.splits.classes.MySettings:
     public static final java.lang.String STATE_BEST_TIMES_IN_RELAYS
     public static final java.lang.String STATE_RACE_SPLITS_RACE_ID
     public static final java.lang.String STATE_RACE_SPLITS_IS_RELAY
-    public static final java.lang.String STATE_RELAY_RACE_COUNT
     public static final java.lang.String STATE_RELAY_RACE_ARE_SPINNERS_ENABLED
     public static final java.lang.String STATE_RELAY_RACE_START_BUTTTON_VISIBLE
     public static final java.lang.String STATE_RELAY_RACE_SPLIT_BUTTTON_VISIBLE
@@ -1581,11 +1578,11 @@ com.lbconsulting.splits.classes.MySettings:
     public static final int DIALOG_EDIT_TEXT_EVENTS
     public static final java.lang.String HELP_MESSAGE
     23:23:public MySettings()
-    229:230:public static java.lang.CharSequence getActiveFragmentTitle()
-    372:374:public static long getCreateEventUnitsID()
-    423:428:public static void ExecMultipleSQL(android.database.sqlite.SQLiteDatabase,java.util.ArrayList)
-    462:464:public static boolean isRelayActiveAthleteButtonVisible()
-    536:536:public static boolean isPaidVersion()
+    230:231:public static java.lang.CharSequence getActiveFragmentTitle()
+    373:375:public static long getCreateEventUnitsID()
+    424:429:public static void ExecMultipleSQL(android.database.sqlite.SQLiteDatabase,java.util.ArrayList)
+    463:465:public static boolean isRelayActiveAthleteButtonVisible()
+    537:537:public static boolean isPaidVersion()
 com.lbconsulting.splits.classes.Race:
     public static final java.lang.String STATE_START_TIME
     public static final java.lang.String STATE_ELAPSED_TIME
@@ -1633,12 +1630,11 @@ com.lbconsulting.splits.database.AthletesTable:
     public static final java.lang.String CONTENT_ITEM_TYPE
     public static final java.lang.String SORT_ORDER_ATHLETE_DISPLAY_NAME
     private static final java.lang.String DATATABLE_CREATE
-    19:19:public AthletesTable()
-    77:80:public static void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int,android.content.Context)
-    213:237:public static android.database.Cursor getAllAthletesCursor(android.content.Context,boolean,long,java.lang.String)
-    313:335:public static int getTotalNumberOfAthletes(android.content.Context)
-    537:554:public static int SelectAllAthletes(android.content.Context,boolean)
-    579:596:public static int ToggleAthleteCheckbox(android.content.Context,long)
+    16:16:public AthletesTable()
+    74:77:public static void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int,android.content.Context)
+    208:232:public static android.database.Cursor getAllAthletesCursor(android.content.Context,boolean,long,java.lang.String)
+    532:549:public static int SelectAllAthletes(android.content.Context,boolean)
+    574:591:public static int ToggleAthleteCheckbox(android.content.Context,long)
 com.lbconsulting.splits.database.EventsTable:
     public static final java.lang.String TABLE_EVENTS
     public static final java.lang.String COL_EVENT_ID
@@ -1773,6 +1769,7 @@ com.lbconsulting.splits.database.SplitsTable:
     64:67:public static void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int)
     155:169:public static android.database.Cursor getSplitCursor(android.content.Context,long)
 com.lbconsulting.splits.database.Splits_ContentProvider:
+    public static final java.lang.String AUTHORITY
     private static final int ATHLETES_MULTI_ROWS
     private static final int ATHLETES_SINGLE_ROW
     private static final int EVENTS_MULTI_ROWS
@@ -1788,7 +1785,7 @@ com.lbconsulting.splits.database.Splits_ContentProvider:
     private static final int SPLITS_MULTI_ROWS
     private static final int SPLITS_SINGLE_ROW
     private static final int RACES_WITH_EVENT_FIELDS
-    673:673:public com.lbconsulting.splits.database.Splits_DatabaseHelper getOpenHelperForTest()
+    687:687:public com.lbconsulting.splits.database.Splits_DatabaseHelper getOpenHelperForTest()
 com.lbconsulting.splits.database.Splits_DatabaseHelper:
     private static final java.lang.String DATABASE_NAME
     private static final int DATABASE_VERSION
@@ -1826,7 +1823,7 @@ com.lbconsulting.splits.dialogs.PlayStore_DialogFragment:
     private static final java.lang.String DIALOG_TITLE
     private static final java.lang.String DIALOG_ITEM_MESSAGE
 com.lbconsulting.splits.fragments.Athletes_Fragment:
-    65:65:public static int getFragmentID()
+    private static final java.lang.String ARG_BACK_STACK_TAG
 com.lbconsulting.splits.fragments.Create_Event_Fragment:
     69:69:public static int getFragmentID()
 com.lbconsulting.splits.fragments.Events_Fragment:

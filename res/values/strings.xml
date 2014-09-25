@@ -33,7 +33,7 @@
 	<string name="btnCreateMeetTitle_meet_title_not_provided">Meet Title not provided!</string>
 	<string name="btnCreateMeetTitle_unable_to_create_meet">Unable To Create Meet</string>
 	<string name="btnOK_text">OK</string>
-	<string name="btnOK_Return_text">OK Return</string>
+	<string name="btnOK_Return_text">OK Return to Race</string>
 	<string name="btnSplit_text">Split</string>
 	<string name="btnStart_text">Start</string>
 	<string name="btnStop_text">Stop</string>

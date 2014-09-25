@@ -79,7 +79,7 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 
 	private boolean areRelaySpinnersEnabled = true;
 	private boolean mResetAthletes = false;
-	private int mRelayRaceCount = 0;
+	// private int mRelayRaceCount = 0;
 
 	// Variables from Preferences
 	private int mMeetType;
@@ -280,7 +280,7 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 		mFirstTimeLoadingAthlete2ID = true;
 		mFirstTimeLoadingAthlete3ID = true;
 
-		mRelayRaceCount = MySettings.getRelayRaceCount();
+		// mRelayRaceCount = MySettings.getRelayRaceCount();
 
 		if (mRelay == null) {
 			mRelay = new Relay(getActivity());
@@ -367,7 +367,7 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 		RelayTimerBundle.putLong(MySettings.STATE_MEET_ID, mRelay.getRelayMeetID());
 
 		RelayTimerBundle.putBoolean(MySettings.STATE_RELAY_RACE_ARE_SPINNERS_ENABLED, areRelaySpinnersEnabled);
-		RelayTimerBundle.putInt(MySettings.STATE_RELAY_RACE_COUNT, mRelayRaceCount);
+		// RelayTimerBundle.putInt(MySettings.STATE_RELAY_RACE_COUNT, mRelayRaceCount);
 
 		RelayTimerBundle.putLong(MySettings.STATE_RELAY_RACE_ELAPSED_TIME, mRelay.getRelayElapsedTime());
 
@@ -721,8 +721,9 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 		Resources res = getActivity().getResources();
 		boolean isFree = false;
 		if (MySettings.isFreeVersion()) {
-			isFree = true;
-			if (mRelayRaceCount >= MySettings.MAX_NUMBER_OF_RELAYS) {
+			// isFree = true;
+			int relayRaceCount = RelaysTable.getRaceCount(getActivity());
+			if (relayRaceCount >= MySettings.MAX_NUMBER_OF_RELAYS) {
 				mRelay.setRelayStartTime(-1);
 				SoundError();
 
@@ -780,9 +781,9 @@ public class Relay_Timer_Fragment extends Fragment implements OnClickListener, O
 		mHandler.removeCallbacks(startTimer);
 		mHandler.postDelayed(startTimer, 0);
 		EventBus.getDefault().post(new ChangeActionBarTitle(mRelayEventShortTitle));
-		if (isFree) {
-			mRelayRaceCount += 1;
-		}
+		/*		if (isFree) {
+					mRelayRaceCount += 1;
+				}*/
 		DisableSpinners();
 		ShowActiveAthlete(1);
 		btnActiveAthlete.setVisibility(View.VISIBLE);

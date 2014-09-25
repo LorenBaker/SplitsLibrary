@@ -16,6 +16,14 @@ import com.lbconsulting.splits.classes.MyLog;
 
 public class Splits_ContentProvider extends ContentProvider {
 
+	// public static final String AUTHORITY = "com.lbconsulting.splits.free";
+	public static final String AUTHORITY = "com.lbconsulting.splits.paid";
+	// public static String AUTHORITY = "";
+
+	/*	public static void setAUTHORITY(String authority) {
+			AUTHORITY = authority;
+		}*/
+
 	private Splits_DatabaseHelper database = null;
 
 	// UriMatcher switch constants
@@ -44,8 +52,6 @@ public class Splits_ContentProvider extends ContentProvider {
 		private static final String AUTHORITY_CLASS = "com.lbconsulting.splits.app.data.Authority";*/
 
 	private static final int RACES_WITH_EVENT_FIELDS = 80;
-
-	public static String AUTHORITY = "com.lbconsulting.splits";
 
 	// public static String AUTHORITY = initAuthority();
 
@@ -116,6 +122,14 @@ public class Splits_ContentProvider extends ContentProvider {
 	@Override
 	public boolean onCreate() {
 		MyLog.i("Splits_ContentProvider", "onCreate");
+
+		/*		MySettings.setContext(getContext());
+				if (MySettings.isFreeVersion()) {
+					setAUTHORITY(freeAUTHORITY);
+				} else {
+					setAUTHORITY(paidAUTHORITY);
+				}*/
+
 		// Construct the underlying database
 		// Defer opening the database until you need to perform
 		// a query or other transaction.

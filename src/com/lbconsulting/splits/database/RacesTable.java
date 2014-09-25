@@ -553,6 +553,29 @@ public class RacesTable {
 		return eventShortTitle;
 	}
 
+	public static int getRaceCount(Context context) {
+		int raceCount = 0;
+		Uri uri = CONTENT_URI;
+		String[] projection = { COL_RACE_ID };
+		String selection = null;
+		String selectionArgs[] = null;
+		String sortOrder = null;
+
+		ContentResolver cr = context.getContentResolver();
+		Cursor cursor = null;
+		try {
+			cursor = cr.query(uri, projection, selection, selectionArgs, sortOrder);
+		} catch (Exception e) {
+			MyLog.e("RacesTable", "Exception error in getRaceCount:");
+			e.printStackTrace();
+		}
+		if (cursor != null) {
+			raceCount = cursor.getCount();
+			cursor.close();
+		}
+		return raceCount;
+	}
+
 	// /////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Update Methods
 	// /////////////////////////////////////////////////////////////////////////////////////////////////////////

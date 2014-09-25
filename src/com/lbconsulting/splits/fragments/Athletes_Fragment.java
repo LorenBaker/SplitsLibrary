@@ -50,19 +50,23 @@ public class Athletes_Fragment extends Fragment implements LoaderCallbacks<Curso
 	private LoaderManager.LoaderCallbacks<Cursor> mAthletesCallbacks;
 	private fragAthletesCursorAdapter mAthletesCursorAdaptor;
 
+	private final static String ARG_BACK_STACK_TAG = "argBackStackTag";
+
+	private String mLastBackStackTag = "";
+
 	public Athletes_Fragment() {
 		// Empty constructor
 	}
 
-	public static Athletes_Fragment newInstance() {
+	public static Athletes_Fragment newInstance(String lastBackStackTag) {
 		MyLog.i("Athletes_Fragment", "newInstance()");
 
 		Athletes_Fragment fragment = new Athletes_Fragment();
+		// Supply the lastBackStackTag input as an argument.
+		Bundle args = new Bundle();
+		args.putString(ARG_BACK_STACK_TAG, lastBackStackTag);
+		fragment.setArguments(args);
 		return fragment;
-	}
-
-	public static int getFragmentID() {
-		return MainActivity.FRAG_ATHLETES;
 	}
 
 	@Override
@@ -76,6 +80,11 @@ public class Athletes_Fragment extends Fragment implements LoaderCallbacks<Curso
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		MyLog.i("Athletes_Fragment", "onCreateView()");
 		View view = inflater.inflate(R.layout.frag_athletes, container, false);
+
+		Bundle args = getArguments();
+		if (args != null) {
+			mLastBackStackTag = args.getString(ARG_BACK_STACK_TAG);
+		}
 
 		lvAthletes = (ListView) view.findViewById(R.id.lvAthletes);
 		if (lvAthletes != null) {
@@ -239,13 +248,42 @@ public class Athletes_Fragment extends Fragment implements LoaderCallbacks<Curso
 		mLoaderManager.restartLoader(MySettings.LOADER_FRAG_ATHLETES, null, mAthletesCallbacks);
 		// show the Active Fragment Title
 		EventBus.getDefault().post(new SplitFragmentOnResume(MainActivity.FRAG_ATHLETES, mActiveFragmentTitle));
-		// EventBus.getDefault().post(new ChangeActionBarTitle(""));
+
+		// MainActivity.displayBackStack(getFragmentManager());
+		// reset backStack
+		/*		if (!mLastBackStackTag.isEmpty()) {
+					try {
+						String backStackTag = "BS_" + MainActivity.FRAG_ATHLETES;
+						int backStackCount = getFragmentManager().getBackStackEntryCount();
+						if (backStackCount > 2) {
+							getFragmentManager().popBackStackImmediate(backStackTag, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+							MainActivity.displayBackStack(getFragmentManager());
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+				}*/
+		// MainActivity.displayBackStack(getFragmentManager());
 		super.onResume();
 	}
 
 	@Override
 	public void onPause() {
 		MyLog.i("Athletes_Fragment", "onPause()");
+
+		// reset backStack
+		/*		try {
+					String backStackTag = "BS_" + MainActivity.FRAG_ATHLETES;
+					int backStackCount = getFragmentManager().getBackStackEntryCount();
+					if (backStackCount > 1) {
+						getFragmentManager().popBackStackImmediate(backStackTag, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+						MainActivity.displayBackStack(getFragmentManager());
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+
+				}*/
 		super.onPause();
 	}
 

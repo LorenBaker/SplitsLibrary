@@ -4109,13 +4109,14 @@ com.lbconsulting.splits.activites.MainActivity -> com.lbconsulting.splits.activi
     java.lang.CharSequence mRaceTitle -> h
     java.lang.String[] mFragmentTitles -> i
     java.lang.String mMeetTypeString -> j
-    int mAthleteCount -> k
-    int mMeetType -> l
-    long mSelectedRaceID -> m
-    boolean mIsRelay -> n
-    boolean mIsDualPaneView -> o
+    int mMeetType -> k
+    long mSelectedRaceID -> l
+    boolean mIsRelay -> m
+    boolean mIsDualPaneView -> n
+    java.lang.String mLastBackStackTag -> o
     android.util.LruCache mMemoryCache -> p
     void onCreate(android.os.Bundle) -> onCreate
+    void updateDrawer(android.app.Fragment) -> a
     boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
     boolean onPrepareOptionsMenu(android.view.Menu) -> onPrepareOptionsMenu
     boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
@@ -4131,7 +4132,6 @@ com.lbconsulting.splits.activites.MainActivity -> com.lbconsulting.splits.activi
     java.lang.String MakeBestTimesLine(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String) -> b
     void onActivityResult(int,int,android.content.Intent) -> onActivityResult
     boolean OkToAddAthlete() -> e
-    void onEvent(com.lbconsulting.splits.classes.SplitsEvents$DuplicateAthleteSelected) -> onEvent
     void onEvent(com.lbconsulting.splits.classes.SplitsEvents$AddAthletetNameToContacts) -> onEvent
     void onEvent(com.lbconsulting.splits.classes.SplitsEvents$AddThumbnailToMemoryCache) -> onEvent
     void onEvent(com.lbconsulting.splits.classes.SplitsEvents$ShowPreviousFragment) -> onEvent
@@ -4144,6 +4144,7 @@ com.lbconsulting.splits.activites.MainActivity -> com.lbconsulting.splits.activi
     android.graphics.Bitmap getContactBitmapFromURI(android.content.Context,android.net.Uri) -> a
     void ClearRace() -> f
     void SelectFragment(int) -> a
+    void displayBackStack(android.app.FragmentManager) -> a
     void onBackPressed() -> onBackPressed
     void onPostCreate(android.os.Bundle) -> onPostCreate
     void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
@@ -4163,15 +4164,18 @@ com.lbconsulting.splits.activites.MainActivity$1 -> com.lbconsulting.splits.acti
     com.lbconsulting.splits.activites.MainActivity this$0 -> a
     void onDrawerClosed(android.view.View) -> b
     void onDrawerOpened(android.view.View) -> a
-com.lbconsulting.splits.activites.MainActivity$DrawerItemClickListener -> com.lbconsulting.splits.activites.b:
+com.lbconsulting.splits.activites.MainActivity$2 -> com.lbconsulting.splits.activites.b:
+    com.lbconsulting.splits.activites.MainActivity this$0 -> a
+    void onBackStackChanged() -> onBackStackChanged
+com.lbconsulting.splits.activites.MainActivity$DrawerItemClickListener -> com.lbconsulting.splits.activites.c:
     com.lbconsulting.splits.activites.MainActivity this$0 -> a
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
     com.lbconsulting.splits.activites.MainActivity access$1(com.lbconsulting.splits.activites.MainActivity$DrawerItemClickListener) -> a
-com.lbconsulting.splits.activites.MainActivity$DrawerItemClickListener$1 -> com.lbconsulting.splits.activites.c:
+com.lbconsulting.splits.activites.MainActivity$DrawerItemClickListener$1 -> com.lbconsulting.splits.activites.d:
     com.lbconsulting.splits.activites.MainActivity$DrawerItemClickListener this$1 -> a
     int val$position -> b
     void run() -> run
-com.lbconsulting.splits.activites.MainActivity$ImageLoadTask -> com.lbconsulting.splits.activites.d:
+com.lbconsulting.splits.activites.MainActivity$ImageLoadTask -> com.lbconsulting.splits.activites.e:
     com.lbconsulting.splits.activites.MainActivity this$0 -> a
     java.lang.Void doInBackground(android.net.Uri[]) -> a
     java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
@@ -4283,33 +4287,31 @@ com.lbconsulting.splits.classes.MySettings -> com.lbconsulting.splits.classes.c:
     boolean areSpinnersEnabled() -> g
     java.util.HashMap getRaceLongValues(java.lang.String) -> b
     java.util.HashMap getRaceIntValues(java.lang.String) -> c
-    int getRaceCount() -> h
-    long getMeetID() -> i
-    boolean isAthlete1StartButtonVisible() -> j
-    boolean isAthlete1SplitButtonVisible() -> k
-    boolean isAthlete1StopButtonVisible() -> l
-    boolean isAthlete1RaceTableVisible() -> m
-    boolean isAthlete2StartButtonVisible() -> n
-    boolean isAthlete2SplitButtonVisible() -> o
-    boolean isAthlete2StopButtonVisible() -> p
-    boolean isAthlete2RaceTableVisible() -> q
+    long getMeetID() -> h
+    boolean isAthlete1StartButtonVisible() -> i
+    boolean isAthlete1SplitButtonVisible() -> j
+    boolean isAthlete1StopButtonVisible() -> k
+    boolean isAthlete1RaceTableVisible() -> l
+    boolean isAthlete2StartButtonVisible() -> m
+    boolean isAthlete2SplitButtonVisible() -> n
+    boolean isAthlete2StopButtonVisible() -> o
+    boolean isAthlete2RaceTableVisible() -> p
     int getBestTimeAthletesPosition(android.widget.Spinner) -> a
-    boolean getBestTimeInRelays() -> r
+    boolean getBestTimeInRelays() -> q
     int getCreateEventUnitsPosition(android.widget.Spinner) -> b
     int getIndex(android.widget.Spinner,long) -> b
     int getIndexFromCursor(android.widget.Spinner,long) -> a
-    boolean areRelaySpinnersEnabled() -> s
-    int getRelayRaceCount() -> t
-    boolean isRelayStartButtonVisible() -> u
-    boolean isRelayStopButtonVisible() -> v
-    boolean isRelaySplitButtonVisible() -> w
-    java.lang.String getActiveAthleteButtonText() -> x
+    boolean areRelaySpinnersEnabled() -> r
+    boolean isRelayStartButtonVisible() -> s
+    boolean isRelayStopButtonVisible() -> t
+    boolean isRelaySplitButtonVisible() -> u
+    java.lang.String getActiveAthleteButtonText() -> v
     boolean isRelayRunning(java.lang.String) -> d
     java.util.HashMap getRelayIntValues(java.lang.String) -> e
     java.util.HashMap getRelayLongValues(java.lang.String) -> f
-    java.lang.String getFlurryAPIkey() -> y
-    boolean isFreeVersion() -> z
-    java.lang.String getPaidPackageName() -> A
+    java.lang.String getFlurryAPIkey() -> w
+    boolean isFreeVersion() -> x
+    java.lang.String getPaidPackageName() -> y
 com.lbconsulting.splits.classes.Race -> com.lbconsulting.splits.classes.d:
     android.content.Context mContext -> a
     long mStartTime -> b
@@ -4452,37 +4454,36 @@ com.lbconsulting.splits.classes.SplitsEvents$ChangeActionBarTitle -> com.lbconsu
     java.lang.String mEventShortTitle -> a
     java.lang.String getEventShortTitle() -> a
 com.lbconsulting.splits.classes.SplitsEvents$ClearRace -> com.lbconsulting.splits.classes.l:
-com.lbconsulting.splits.classes.SplitsEvents$DuplicateAthleteSelected -> com.lbconsulting.splits.classes.m:
-com.lbconsulting.splits.classes.SplitsEvents$RaceComplete -> com.lbconsulting.splits.classes.n:
+com.lbconsulting.splits.classes.SplitsEvents$RaceComplete -> com.lbconsulting.splits.classes.m:
     long mRaceElapsedTime -> a
     int mRaceTablePosition -> b
     long getRaceElapsedTime() -> a
     int getRaceTablePosition() -> b
-com.lbconsulting.splits.classes.SplitsEvents$RelaySplit -> com.lbconsulting.splits.classes.o:
+com.lbconsulting.splits.classes.SplitsEvents$RelaySplit -> com.lbconsulting.splits.classes.n:
     int mActiveAthlete -> a
     int getActiveAthlete() -> a
-com.lbconsulting.splits.classes.SplitsEvents$ShowAthletesFragment -> com.lbconsulting.splits.classes.p:
-com.lbconsulting.splits.classes.SplitsEvents$ShowEventsFragment -> com.lbconsulting.splits.classes.q:
-com.lbconsulting.splits.classes.SplitsEvents$ShowMeetsFragment -> com.lbconsulting.splits.classes.r:
-com.lbconsulting.splits.classes.SplitsEvents$ShowPreviousFragment -> com.lbconsulting.splits.classes.s:
-com.lbconsulting.splits.classes.SplitsEvents$ShowRaceSplits -> com.lbconsulting.splits.classes.t:
+com.lbconsulting.splits.classes.SplitsEvents$ShowAthletesFragment -> com.lbconsulting.splits.classes.o:
+com.lbconsulting.splits.classes.SplitsEvents$ShowEventsFragment -> com.lbconsulting.splits.classes.p:
+com.lbconsulting.splits.classes.SplitsEvents$ShowMeetsFragment -> com.lbconsulting.splits.classes.q:
+com.lbconsulting.splits.classes.SplitsEvents$ShowPreviousFragment -> com.lbconsulting.splits.classes.r:
+com.lbconsulting.splits.classes.SplitsEvents$ShowRaceSplits -> com.lbconsulting.splits.classes.s:
     long mRaceID -> a
     int mSplitsResultsFragment -> b
     long getRaceID() -> a
     int getSplitsResultsFragment() -> b
-com.lbconsulting.splits.classes.SplitsEvents$ShowSplitButton -> com.lbconsulting.splits.classes.u:
+com.lbconsulting.splits.classes.SplitsEvents$ShowSplitButton -> com.lbconsulting.splits.classes.t:
     int mRaceTablePosition -> a
     int getRaceTablePosition() -> a
-com.lbconsulting.splits.classes.SplitsEvents$ShowStopButton -> com.lbconsulting.splits.classes.v:
+com.lbconsulting.splits.classes.SplitsEvents$ShowStopButton -> com.lbconsulting.splits.classes.u:
     int mRaceTablePosition -> a
     int getRaceTablePosition() -> a
-com.lbconsulting.splits.classes.SplitsEvents$SplitFragmentOnResume -> com.lbconsulting.splits.classes.w:
+com.lbconsulting.splits.classes.SplitsEvents$SplitFragmentOnResume -> com.lbconsulting.splits.classes.v:
     int mActiveFragment -> a
     java.lang.CharSequence mActiveFragmentTitle -> b
     int getActiveFragment() -> a
     java.lang.CharSequence getActiveFragmentTitle() -> b
-com.lbconsulting.splits.classes.SplitsEvents$UpdateBestTimes -> com.lbconsulting.splits.classes.x:
-com.lbconsulting.splits.classes.SplitsEvents$UpdateRaceTime -> com.lbconsulting.splits.classes.y:
+com.lbconsulting.splits.classes.SplitsEvents$UpdateBestTimes -> com.lbconsulting.splits.classes.w:
+com.lbconsulting.splits.classes.SplitsEvents$UpdateRaceTime -> com.lbconsulting.splits.classes.x:
     long mRaceTime -> a
     long getRaceTime() -> a
 com.lbconsulting.splits.database.AthletesTable -> com.lbconsulting.splits.database.a:
@@ -4498,6 +4499,7 @@ com.lbconsulting.splits.database.AthletesTable -> com.lbconsulting.splits.databa
     android.database.Cursor getAthletesWithThumbnails(android.content.Context) -> b
     android.database.Cursor getAthletesWithContactUri(android.content.Context) -> c
     android.database.Cursor getAthletesWithOutThumbnails(android.content.Context) -> d
+    int getTotalNumberOfAthletes(android.content.Context) -> e
     android.content.CursorLoader getAllAthletesExcludingDefault(android.content.Context,int,java.lang.String) -> a
     android.content.CursorLoader getAllAthletes(android.content.Context,boolean,long,java.lang.String) -> a
     android.content.CursorLoader getAllAthletes(android.content.Context,boolean,long,long,long,java.lang.String) -> a
@@ -4509,7 +4511,7 @@ com.lbconsulting.splits.database.AthletesTable -> com.lbconsulting.splits.databa
     int setAthleteCheckbox(android.content.Context,long,boolean) -> a
     int ToggleAthleteSelectedBox(android.content.Context,long) -> e
     int DeleteAthlete(android.content.Context,long) -> f
-    int DeleteAllCheckedAthletes(android.content.Context) -> e
+    int DeleteAllCheckedAthletes(android.content.Context) -> f
 com.lbconsulting.splits.database.EventsTable -> com.lbconsulting.splits.database.b:
     android.content.Context mContext -> c
     android.content.res.Resources mRes -> d
@@ -4595,6 +4597,7 @@ com.lbconsulting.splits.database.RacesTable -> com.lbconsulting.splits.database.
     android.database.Cursor getAllRacesCursor(android.content.Context,long,int,boolean) -> d
     long getRelayID(android.content.Context,long) -> e
     java.lang.String getEventShortTitle(android.content.Context,long) -> f
+    int getRaceCount(android.content.Context) -> a
     int UpdateRaceFieldValues(android.content.Context,long,android.content.ContentValues) -> a
     int UpdateRelayRaceTime(android.content.Context,long,long,long) -> a
     void setAthleteEventBestTime(android.content.Context,java.lang.String,long,boolean,int) -> c
@@ -4608,6 +4611,7 @@ com.lbconsulting.splits.database.RelaysTable -> com.lbconsulting.splits.database
     android.database.Cursor getRelayRaceCursor(android.content.Context,long) -> a
     android.database.Cursor getAllRelayRacesCursor(android.content.Context,java.lang.String) -> b
     java.lang.String getEventShortTitle(android.content.Context,long) -> b
+    int getRaceCount(android.content.Context) -> a
     int UpdateRelayRaceFieldValues(android.content.Context,long,android.content.ContentValues) -> a
     void setRelayBestTime(android.content.Context,java.lang.String) -> a
     int deleteRelayRace(android.content.Context,long) -> c
@@ -4622,10 +4626,9 @@ com.lbconsulting.splits.database.SplitsTable -> com.lbconsulting.splits.database
     int UpdateSplitFieldValues(android.content.Context,long,android.content.ContentValues) -> a
     int DeleteAllSplits(android.content.Context,long,boolean) -> a
 com.lbconsulting.splits.database.Splits_ContentProvider -> com.lbconsulting.splits.database.Splits_ContentProvider:
-    com.lbconsulting.splits.database.Splits_DatabaseHelper database -> b
-    java.lang.String AUTHORITY -> a
-    android.content.UriMatcher sURIMatcher -> c
-    android.util.LruCache mMemoryCache -> d
+    com.lbconsulting.splits.database.Splits_DatabaseHelper database -> a
+    android.content.UriMatcher sURIMatcher -> b
+    android.util.LruCache mMemoryCache -> c
     android.util.LruCache getAthleteThumbnailMemoryCache() -> a
     boolean onCreate() -> onCreate
     int delete(android.net.Uri,java.lang.String,java.lang.String[]) -> delete
@@ -4835,7 +4838,8 @@ com.lbconsulting.splits.fragments.Athletes_Fragment -> com.lbconsulting.splits.c
     android.app.LoaderManager mLoaderManager -> e
     android.app.LoaderManager$LoaderCallbacks mAthletesCallbacks -> f
     com.lbconsulting.splits.adapters.fragAthletesCursorAdapter mAthletesCursorAdaptor -> g
-    com.lbconsulting.splits.fragments.Athletes_Fragment newInstance() -> a
+    java.lang.String mLastBackStackTag -> h
+    com.lbconsulting.splits.fragments.Athletes_Fragment newInstance(java.lang.String) -> a
     void onCreate(android.os.Bundle) -> onCreate
     android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> onCreateView
     void onActivityCreated(android.os.Bundle) -> onActivityCreated
@@ -5000,53 +5004,52 @@ com.lbconsulting.splits.fragments.PreferencesFragment -> com.lbconsulting.splits
 com.lbconsulting.splits.fragments.Race_Timer_Fragment -> com.lbconsulting.splits.c.v:
     int mMeetType -> a
     boolean mResetAthletes -> b
-    int mRaceCount -> c
-    long mRaceStartTime -> d
-    java.lang.CharSequence mActiveFragmentTitle -> e
-    int mNumberFormat -> f
-    boolean areSpinnersEnabled -> g
-    android.os.Handler mHandler -> h
-    long mClockElapsedTime -> i
-    int REFRESH_RATE -> j
-    com.lbconsulting.splits.classes.Race mAthlete1Race -> k
-    long mAthlete1StartingBestTime -> l
-    com.lbconsulting.splits.classes.Race mAthlete2Race -> m
-    long mAthlete2StartingBestTime -> n
-    java.lang.String mEventShortTitle -> o
-    boolean mFirstTimeLoadingMeetID -> p
-    boolean mFirstTimeLoadingEventID -> q
-    boolean mFirstTimeLoadingAthlete1ID -> r
-    boolean mFirstTimeLoadingAthlete2ID -> s
-    android.app.LoaderManager mLoaderManager -> t
-    android.app.LoaderManager$LoaderCallbacks mRaceStartTimerCallbacks -> u
-    com.lbconsulting.splits.adapters.MeetsSpinnerCursorAdapter mMeetsSpinnerAdapter -> v
-    com.lbconsulting.splits.adapters.EventsSpinnerCursorAdapter mEventsSpinnerAdapter -> w
-    android.widget.Spinner spinRaceMeets -> x
-    android.widget.Spinner spinRaceEvents -> y
-    android.widget.Spinner spinAthlete1 -> z
-    android.widget.Spinner spinAthlete2 -> A
-    android.widget.TextView tvRacetime -> B
-    android.widget.LinearLayout llAthlete1RaceTable -> C
-    android.widget.ListView lvAthlete1RaceSplits -> D
-    android.widget.TextView tvAthlete1BestTime -> E
-    android.widget.Button btnAthlete1Start -> F
-    android.widget.Button btnAthlete1Stop -> G
-    android.widget.Button btnAthlete1Split -> H
-    com.lbconsulting.splits.adapters.RaceSplitsCursorAdapter mAthlete1SplitsCursorAdapter -> I
-    com.lbconsulting.splits.adapters.AthleteSpinnerCursorAdapter mAthlete1SpinnerAdapter -> J
-    android.os.Vibrator mVibrator -> K
-    android.widget.LinearLayout llAthlete2RaceTable -> L
-    android.widget.ListView lvAthlete2RaceSplits -> M
-    android.widget.TextView tvAthlete2BestTime -> N
-    android.widget.Button btnAthlete2Start -> O
-    android.widget.Button btnAthlete2Stop -> P
-    android.widget.Button btnAthlete2Split -> Q
-    com.lbconsulting.splits.adapters.RaceSplitsCursorAdapter mAthlete2SplitsCursorAdapter -> R
-    com.lbconsulting.splits.adapters.AthleteSpinnerCursorAdapter mAthlete2SpinnerAdapter -> S
-    int mNumberOfAthleteLoaders -> T
-    boolean mSpinRaceEventChanged -> U
-    int mNumberOfLoadersCompleted -> V
-    java.lang.Runnable startTimer -> W
+    long mRaceStartTime -> c
+    java.lang.CharSequence mActiveFragmentTitle -> d
+    int mNumberFormat -> e
+    boolean areSpinnersEnabled -> f
+    android.os.Handler mHandler -> g
+    long mClockElapsedTime -> h
+    int REFRESH_RATE -> i
+    com.lbconsulting.splits.classes.Race mAthlete1Race -> j
+    long mAthlete1StartingBestTime -> k
+    com.lbconsulting.splits.classes.Race mAthlete2Race -> l
+    long mAthlete2StartingBestTime -> m
+    java.lang.String mEventShortTitle -> n
+    boolean mFirstTimeLoadingMeetID -> o
+    boolean mFirstTimeLoadingEventID -> p
+    boolean mFirstTimeLoadingAthlete1ID -> q
+    boolean mFirstTimeLoadingAthlete2ID -> r
+    android.app.LoaderManager mLoaderManager -> s
+    android.app.LoaderManager$LoaderCallbacks mRaceStartTimerCallbacks -> t
+    com.lbconsulting.splits.adapters.MeetsSpinnerCursorAdapter mMeetsSpinnerAdapter -> u
+    com.lbconsulting.splits.adapters.EventsSpinnerCursorAdapter mEventsSpinnerAdapter -> v
+    android.widget.Spinner spinRaceMeets -> w
+    android.widget.Spinner spinRaceEvents -> x
+    android.widget.Spinner spinAthlete1 -> y
+    android.widget.Spinner spinAthlete2 -> z
+    android.widget.TextView tvRacetime -> A
+    android.widget.LinearLayout llAthlete1RaceTable -> B
+    android.widget.ListView lvAthlete1RaceSplits -> C
+    android.widget.TextView tvAthlete1BestTime -> D
+    android.widget.Button btnAthlete1Start -> E
+    android.widget.Button btnAthlete1Stop -> F
+    android.widget.Button btnAthlete1Split -> G
+    com.lbconsulting.splits.adapters.RaceSplitsCursorAdapter mAthlete1SplitsCursorAdapter -> H
+    com.lbconsulting.splits.adapters.AthleteSpinnerCursorAdapter mAthlete1SpinnerAdapter -> I
+    android.os.Vibrator mVibrator -> J
+    android.widget.LinearLayout llAthlete2RaceTable -> K
+    android.widget.ListView lvAthlete2RaceSplits -> L
+    android.widget.TextView tvAthlete2BestTime -> M
+    android.widget.Button btnAthlete2Start -> N
+    android.widget.Button btnAthlete2Stop -> O
+    android.widget.Button btnAthlete2Split -> P
+    com.lbconsulting.splits.adapters.RaceSplitsCursorAdapter mAthlete2SplitsCursorAdapter -> Q
+    com.lbconsulting.splits.adapters.AthleteSpinnerCursorAdapter mAthlete2SpinnerAdapter -> R
+    int mNumberOfAthleteLoaders -> S
+    boolean mSpinRaceEventChanged -> T
+    int mNumberOfLoadersCompleted -> U
+    java.lang.Runnable startTimer -> V
     boolean isRaceRunning() -> c
     com.lbconsulting.splits.fragments.Race_Timer_Fragment newInstance() -> a
     boolean isSpinRaceMeetsShown() -> b
@@ -5107,47 +5110,46 @@ com.lbconsulting.splits.fragments.Relay_Timer_Fragment -> com.lbconsulting.split
     java.lang.CharSequence mActiveFragmentTitle -> g
     boolean areRelaySpinnersEnabled -> h
     boolean mResetAthletes -> i
-    int mRelayRaceCount -> j
-    int mMeetType -> k
-    boolean mFirstTimeLoadingMeetID -> l
-    boolean mFirstTimeLoadingEventID -> m
-    boolean mFirstTimeLoadingAthlete0ID -> n
-    boolean mFirstTimeLoadingAthlete1ID -> o
-    boolean mFirstTimeLoadingAthlete2ID -> p
-    boolean mFirstTimeLoadingAthlete3ID -> q
-    boolean mProhibitSpinnerUpdates -> r
-    java.lang.String MEDLEY -> s
-    java.lang.String FLY -> t
-    java.lang.String BACK -> u
-    java.lang.String BREAST -> v
-    java.lang.String FREE -> w
-    java.lang.String DASH -> x
-    android.app.LoaderManager mLoaderManager -> y
-    android.app.LoaderManager$LoaderCallbacks mRelayTimerCallbacks -> z
-    com.lbconsulting.splits.adapters.MeetsSpinnerCursorAdapter mMeetsSpinnerAdapter -> A
-    com.lbconsulting.splits.adapters.EventsSpinnerCursorAdapter mEventsSpinnerAdapter -> B
-    android.widget.Spinner spinRelayMeets -> C
-    android.widget.Spinner spinRelayEvents -> D
-    android.widget.Spinner spinAthlete0 -> E
-    android.widget.Spinner spinAthlete1 -> F
-    android.widget.Spinner spinAthlete2 -> G
-    android.widget.Spinner spinAthlete3 -> H
-    android.widget.Button btnActiveAthlete -> I
-    android.widget.TextView tvRelaytime -> J
-    android.widget.ListView lvRelaySplits -> K
-    android.widget.Button btnStart -> L
-    android.widget.Button btnStop -> M
-    android.widget.Button btnSplit -> N
-    com.lbconsulting.splits.adapters.RaceSplitsCursorAdapter mRelaySplitsCursorAdapter -> O
-    android.os.Vibrator mVibrator -> P
-    com.lbconsulting.splits.adapters.AthleteSpinnerCursorAdapter mAthlete0SpinnerAdapter -> Q
-    com.lbconsulting.splits.adapters.AthleteSpinnerCursorAdapter mAthlete1SpinnerAdapter -> R
-    com.lbconsulting.splits.adapters.AthleteSpinnerCursorAdapter mAthlete2SpinnerAdapter -> S
-    com.lbconsulting.splits.adapters.AthleteSpinnerCursorAdapter mAthlete3SpinnerAdapter -> T
-    int mNumberOfAthleteLoaders -> U
-    boolean mSpinRaceEventChanged -> V
-    int mNumberOfLoadersCompleted -> W
-    java.lang.Runnable startTimer -> X
+    int mMeetType -> j
+    boolean mFirstTimeLoadingMeetID -> k
+    boolean mFirstTimeLoadingEventID -> l
+    boolean mFirstTimeLoadingAthlete0ID -> m
+    boolean mFirstTimeLoadingAthlete1ID -> n
+    boolean mFirstTimeLoadingAthlete2ID -> o
+    boolean mFirstTimeLoadingAthlete3ID -> p
+    boolean mProhibitSpinnerUpdates -> q
+    java.lang.String MEDLEY -> r
+    java.lang.String FLY -> s
+    java.lang.String BACK -> t
+    java.lang.String BREAST -> u
+    java.lang.String FREE -> v
+    java.lang.String DASH -> w
+    android.app.LoaderManager mLoaderManager -> x
+    android.app.LoaderManager$LoaderCallbacks mRelayTimerCallbacks -> y
+    com.lbconsulting.splits.adapters.MeetsSpinnerCursorAdapter mMeetsSpinnerAdapter -> z
+    com.lbconsulting.splits.adapters.EventsSpinnerCursorAdapter mEventsSpinnerAdapter -> A
+    android.widget.Spinner spinRelayMeets -> B
+    android.widget.Spinner spinRelayEvents -> C
+    android.widget.Spinner spinAthlete0 -> D
+    android.widget.Spinner spinAthlete1 -> E
+    android.widget.Spinner spinAthlete2 -> F
+    android.widget.Spinner spinAthlete3 -> G
+    android.widget.Button btnActiveAthlete -> H
+    android.widget.TextView tvRelaytime -> I
+    android.widget.ListView lvRelaySplits -> J
+    android.widget.Button btnStart -> K
+    android.widget.Button btnStop -> L
+    android.widget.Button btnSplit -> M
+    com.lbconsulting.splits.adapters.RaceSplitsCursorAdapter mRelaySplitsCursorAdapter -> N
+    android.os.Vibrator mVibrator -> O
+    com.lbconsulting.splits.adapters.AthleteSpinnerCursorAdapter mAthlete0SpinnerAdapter -> P
+    com.lbconsulting.splits.adapters.AthleteSpinnerCursorAdapter mAthlete1SpinnerAdapter -> Q
+    com.lbconsulting.splits.adapters.AthleteSpinnerCursorAdapter mAthlete2SpinnerAdapter -> R
+    com.lbconsulting.splits.adapters.AthleteSpinnerCursorAdapter mAthlete3SpinnerAdapter -> S
+    int mNumberOfAthleteLoaders -> T
+    boolean mSpinRaceEventChanged -> U
+    int mNumberOfLoadersCompleted -> V
+    java.lang.Runnable startTimer -> W
     com.lbconsulting.splits.fragments.Relay_Timer_Fragment newInstance() -> a
     boolean isSpinRelayMeetsShown() -> b
     android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> onCreateView

@@ -18,6 +18,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentManager.OnBackStackChangedListener;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -61,7 +62,6 @@ import com.lbconsulting.splits.classes.SplitsEvents.AddAthletetNameToContacts;
 import com.lbconsulting.splits.classes.SplitsEvents.AddThumbnailToMemoryCache;
 import com.lbconsulting.splits.classes.SplitsEvents.ChangeActionBarTitle;
 import com.lbconsulting.splits.classes.SplitsEvents.ClearRace;
-import com.lbconsulting.splits.classes.SplitsEvents.DuplicateAthleteSelected;
 import com.lbconsulting.splits.classes.SplitsEvents.ShowAthletesFragment;
 import com.lbconsulting.splits.classes.SplitsEvents.ShowEventsFragment;
 import com.lbconsulting.splits.classes.SplitsEvents.ShowMeetsFragment;
@@ -123,11 +123,12 @@ public class MainActivity extends Activity {
 	private String[] mFragmentTitles;
 	private String mMeetTypeString = "";
 
-	private int mAthleteCount = 0;
+	// private int mAthleteCount = 0;
 	private int mMeetType;
 	private long mSelectedRaceID;
 	private boolean mIsRelay = false;
 	private boolean mIsDualPaneView = false;
+	private String mLastBackStackTag = "";
 
 	private static final int CONTACTS_URI_REQUEST = 333;
 	private static LruCache<String, Bitmap> mMemoryCache;
@@ -144,6 +145,11 @@ public class MainActivity extends Activity {
 		}
 
 		MySettings.setContext(this);
+		/*if (MySettings.isFreeVersion()) {
+			Splits_ContentProvider.setAUTHORITY(Splits_ContentProvider.freeAUTHORITY);
+		} else {
+			Splits_ContentProvider.setAUTHORITY(Splits_ContentProvider.paidAUTHORITY);
+		}*/
 
 		if (MySettings.IS_BETA) {
 			Calendar now = Calendar.getInstance();
@@ -221,9 +227,21 @@ public class MainActivity extends Activity {
 				};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-		if (savedInstanceState == null) {
-			SelectFragment(0);
-		}
+		getFragmentManager().addOnBackStackChangedListener(new OnBackStackChangedListener() {
+
+			@Override
+			public void onBackStackChanged() {
+				Fragment f = getFragmentManager().findFragmentById(R.id.content_frame);
+				if (f != null) {
+					updateDrawer(f);
+				}
+
+			}
+		});
+
+		/*		if (savedInstanceState == null) {
+					SelectFragment(0);
+				}*/
 
 		if (MySettings.isFirstTimeMainActivityShown()) {
 			Bundle MainActivityBundle = new Bundle();
@@ -232,6 +250,36 @@ public class MainActivity extends Activity {
 
 			ShowHelpQuickStart();
 		}
+	}
+
+	protected void updateDrawer(Fragment f) {
+		String fragmentName = f.getClass().getName();
+		// can use this approach to update the ActionBar title.
+		if (fragmentName.contains("Race_Timer_Fragment")) {
+			mDrawerList.setItemChecked(FRAG_RACE_TIMER, true);
+
+		} else if (fragmentName.contains("Relay_Timer_Fragment")) {
+			mDrawerList.setItemChecked(FRAG_RELAY_TIMER, true);
+
+		} else if (fragmentName.contains("Results_BestTimes_Fragment")) {
+			mDrawerList.setItemChecked(FRAG_RESULTS_BEST_TIMES, true);
+
+		} else if (fragmentName.contains("Results_AllRaces_Fragment")) {
+			mDrawerList.setItemChecked(FRAG_RESULTS_ALL_RACES, true);
+
+		} else if (fragmentName.contains("Athletes_Fragment")) {
+			mDrawerList.setItemChecked(FRAG_ATHLETES, true);
+
+		} else if (fragmentName.contains("Meets_Fragment")) {
+			mDrawerList.setItemChecked(FRAG_MEETS, true);
+
+		} else if (fragmentName.contains("Events_Fragment")) {
+			mDrawerList.setItemChecked(FRAG_EVENTS, true);
+
+		} else if (fragmentName.contains("Create_Event_Fragment")) {
+			mDrawerList.setItemChecked(FRAG_CREATE_EVENTS, true);
+		}
+
 	}
 
 	private void ShowBetaExpirationDialog() {
@@ -434,14 +482,6 @@ public class MainActivity extends Activity {
 				EditText_DialogFragment editAthleteDisplayName = EditText_DialogFragment
 						.newInstance(dialogTitle, -1, null, MySettings.DIALOG_EDIT_TEXT_ADD_ATHLETE_NAME);
 				editAthleteDisplayName.show(fm, "fragment_add_athlete_name");
-
-				if (MySettings.isFreeVersion()) {
-					// increment and save the athlete count
-					mAthleteCount = mAthleteCount + 1;
-					Bundle SetupActivityBundle = new Bundle();
-					SetupActivityBundle.putInt(MySettings.STATE_MAIN_ACTIVITY_ATHLETE_COUNT, mAthleteCount);
-					MySettings.set("", SetupActivityBundle);
-				}
 			} else {
 				return true;
 			}
@@ -1006,13 +1046,6 @@ public class MainActivity extends Activity {
 		if (requestCode == CONTACTS_URI_REQUEST) {
 			// Make sure the request was successful
 			if (resultCode == RESULT_OK) {
-				if (MySettings.isFreeVersion()) {
-					// increment and save the athlete count
-					mAthleteCount = mAthleteCount + 1;
-					Bundle SetupActivityBundle = new Bundle();
-					SetupActivityBundle.putInt(MySettings.STATE_MAIN_ACTIVITY_ATHLETE_COUNT, mAthleteCount);
-					MySettings.set("", SetupActivityBundle);
-				}
 				// Get the URI that points to the selected contact
 				Uri contactUri = data.getData();
 				new ImageLoadTask().execute(contactUri);
@@ -1022,8 +1055,9 @@ public class MainActivity extends Activity {
 
 	private boolean OkToAddAthlete() {
 		boolean result = true;
+		int athleteCount = AthletesTable.getTotalNumberOfAthletes(this);
 		if (MySettings.isFreeVersion()) {
-			if (mAthleteCount >= MySettings.MAX_NUMBER_OF_ATHLETES) {
+			if (athleteCount > MySettings.MAX_NUMBER_OF_ATHLETES) {
 				result = false;
 				Resources res = getResources();
 				String dialogTitle = res.getString(string.dialog_maxAthletesTitle);
@@ -1032,19 +1066,18 @@ public class MainActivity extends Activity {
 				FragmentManager fm = getFragmentManager();
 				PlayStore_DialogFragment frag = PlayStore_DialogFragment.newInstance(dialogTitle, dialogMessage);
 				frag.show(fm, "playStore_DialogFragment");
-
 			}
 		}
 		return result;
 	}
 
-	public void onEvent(DuplicateAthleteSelected event) {
-		// decrement and save the athlete count
-		mAthleteCount--;
-		Bundle SetupActivityBundle = new Bundle();
-		SetupActivityBundle.putInt(MySettings.STATE_MAIN_ACTIVITY_ATHLETE_COUNT, mAthleteCount);
-		MySettings.set("", SetupActivityBundle);
-	}
+	/*	public void onEvent(DuplicateAthleteSelected event) {
+			// decrement and save the athlete count
+			mAthleteCount--;
+			Bundle SetupActivityBundle = new Bundle();
+			SetupActivityBundle.putInt(MySettings.STATE_MAIN_ACTIVITY_ATHLETE_COUNT, mAthleteCount);
+			MySettings.set("", SetupActivityBundle);
+		}*/
 
 	public void onEvent(AddAthletetNameToContacts event) {
 		FragmentManager fm = getFragmentManager();
@@ -1112,7 +1145,11 @@ public class MainActivity extends Activity {
 
 	public void onEvent(SplitFragmentOnResume event) {
 		if (!mIsDualPaneView || event.getActiveFragment() != FRAG_RESULTS_BEST_TIMES) {
-			if (mActiveFragment < FRAG_ATHLETES || mActiveFragment > FRAG_CREATE_EVENTS) {
+			/*			if (mActiveFragment < FRAG_ATHLETES || mActiveFragment > FRAG_CREATE_EVENTS) {
+							mPreviousRaceFragment = mActiveFragment;
+						}*/
+
+			if (mActiveFragment == FRAG_RACE_TIMER || mActiveFragment == FRAG_RELAY_TIMER) {
 				mPreviousRaceFragment = mActiveFragment;
 			}
 
@@ -1217,12 +1254,12 @@ public class MainActivity extends Activity {
 			case FRAG_RACE_TIMER:
 				// /mActiveFragmentTitle = getString(R.string.race_text);
 				fragment = Race_Timer_Fragment.newInstance();
-				getFragmentManager().popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+				// getFragmentManager().popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 				break;
 			case FRAG_RELAY_TIMER:
 				// mActiveFragmentTitle = getString(R.string.relay_text);
 				fragment = Relay_Timer_Fragment.newInstance();
-				getFragmentManager().popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+				// getFragmentManager().popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 				break;
 			case FRAG_RESULTS_BEST_TIMES:
 				if (mIsDualPaneView) {
@@ -1236,7 +1273,7 @@ public class MainActivity extends Activity {
 				fragment = Results_AllRaces_Fragment.newInstance();
 				break;
 			case FRAG_ATHLETES:
-				fragment = Athletes_Fragment.newInstance();
+				fragment = Athletes_Fragment.newInstance(mLastBackStackTag);
 				break;
 			case FRAG_MEETS:
 				fragment = Meets_Fragment.newInstance();
@@ -1262,12 +1299,29 @@ public class MainActivity extends Activity {
 
 		// replace the old fragment
 		if (fragment != null) {
-			FragmentTransaction ft = getFragmentManager().beginTransaction();
-			ft.setCustomAnimations(R.anim.fade_in, R.anim.fade_out, R.anim.fade_in, R.anim.fade_out);
-			ft.replace(R.id.content_frame, fragment, "TAG_" + String.valueOf(mActiveFragment));
-			// Add this transaction to the back stack
-			ft.addToBackStack("BS_" + String.valueOf(mActiveFragment));
-			ft.commit();
+
+			String backStackName = fragment.getClass().getName();
+			String fragmentTag = backStackName;
+
+			FragmentManager manager = getFragmentManager();
+			boolean fragmentPopped = manager.popBackStackImmediate(backStackName, 0);
+
+			if (!fragmentPopped && manager.findFragmentByTag(fragmentTag) == null) { // fragment not in back stack,
+																						// create it.
+				FragmentTransaction ft = manager.beginTransaction();
+				ft.replace(R.id.content_frame, fragment, fragmentTag);
+				ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+				ft.addToBackStack(backStackName);
+				ft.commit();
+			}
+
+			/*			FragmentTransaction ft = getFragmentManager().beginTransaction();
+						ft.setCustomAnimations(R.anim.fade_in, R.anim.fade_out, R.anim.fade_in, R.anim.fade_out);
+						ft.replace(R.id.content_frame, fragment, "TAG_" + String.valueOf(position));
+						// Add this transaction to the back stack
+						mLastBackStackTag = "BS_" + String.valueOf(position);
+						ft.addToBackStack(mLastBackStackTag);
+						ft.commit();*/
 		}
 
 		// finish new title and then set it in the action bar
@@ -1285,8 +1339,19 @@ public class MainActivity extends Activity {
 
 	}
 
+	public static void displayBackStack(FragmentManager fm) {
+		int count = fm.getBackStackEntryCount();
+		MyLog.i("Backstack log", "There are " + count + " entries");
+		for (int i = 0; i < count; i++) {
+			// Display Backstack-entry data like
+			String name = fm.getBackStackEntryAt(i).getName();
+			MyLog.i("Backstack log", "entry " + i + ": " + name);
+		}
+	}
+
 	@Override
 	public void onBackPressed() {
+		displayBackStack(getFragmentManager());
 		int backStackEntryCount = getFragmentManager().getBackStackEntryCount();
 		if (backStackEntryCount == 1) {
 
