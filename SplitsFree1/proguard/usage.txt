@@ -1466,7 +1466,7 @@ com.lbconsulting.splits.activites.MainActivity:
     public static final int FRAG_RESULTS_RACE_SPLITS
     public static final int FRAG_RESULTS_RELAY_SPLITS
     private static final int CONTACTS_URI_REQUEST
-    286:308:private void ShowBetaExpirationDialog()
+    285:307:private void ShowBetaExpirationDialog()
 com.lbconsulting.splits.activites.MainActivity$3
 com.lbconsulting.splits.adapters.RelaySplitsCursorAdapter:
     70:71:public void setNumberFormat(int)
@@ -1785,7 +1785,7 @@ com.lbconsulting.splits.database.Splits_ContentProvider:
     private static final int SPLITS_MULTI_ROWS
     private static final int SPLITS_SINGLE_ROW
     private static final int RACES_WITH_EVENT_FIELDS
-    687:687:public com.lbconsulting.splits.database.Splits_DatabaseHelper getOpenHelperForTest()
+    682:682:public com.lbconsulting.splits.database.Splits_DatabaseHelper getOpenHelperForTest()
 com.lbconsulting.splits.database.Splits_DatabaseHelper:
     private static final java.lang.String DATABASE_NAME
     private static final int DATABASE_VERSION

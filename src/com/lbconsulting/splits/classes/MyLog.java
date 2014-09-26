@@ -4,7 +4,7 @@ import android.util.Log;
 
 public class MyLog {
 
-	public static final String TAG = "MeetTimer";
+	public static final String TAG = "Splits";
 
 	public static void d(String className, String msg) {
 		if (Log.isLoggable(TAG, Log.DEBUG)) {

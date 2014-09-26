@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -151,21 +150,21 @@ public class MainActivity extends Activity {
 			Splits_ContentProvider.setAUTHORITY(Splits_ContentProvider.paidAUTHORITY);
 		}*/
 
-		if (MySettings.IS_BETA) {
-			Calendar now = Calendar.getInstance();
+		/*		if (MySettings.IS_BETA) {
+					Calendar now = Calendar.getInstance();
 
-			if (now.get(Calendar.YEAR) > MySettings.BETA_EXPIRATION_YEAR) {
-				ShowBetaExpirationDialog();
-			} else if (now.get(Calendar.YEAR) == MySettings.BETA_EXPIRATION_YEAR) {
-				if (now.get(Calendar.MONTH) + 1 > MySettings.BETA_EXPIRATION_MONTH) {
-					ShowBetaExpirationDialog();
-				} else if (now.get(Calendar.MONTH) + 1 == MySettings.BETA_EXPIRATION_MONTH) {
-					if (now.get(Calendar.DAY_OF_MONTH) >= MySettings.BETA_EXPIRATION_DAY) {
+					if (now.get(Calendar.YEAR) > MySettings.BETA_EXPIRATION_YEAR) {
 						ShowBetaExpirationDialog();
+					} else if (now.get(Calendar.YEAR) == MySettings.BETA_EXPIRATION_YEAR) {
+						if (now.get(Calendar.MONTH) + 1 > MySettings.BETA_EXPIRATION_MONTH) {
+							ShowBetaExpirationDialog();
+						} else if (now.get(Calendar.MONTH) + 1 == MySettings.BETA_EXPIRATION_MONTH) {
+							if (now.get(Calendar.DAY_OF_MONTH) >= MySettings.BETA_EXPIRATION_DAY) {
+								ShowBetaExpirationDialog();
+							}
+						}
 					}
-				}
-			}
-		}
+				}*/
 
 		SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 		mMeetType = Integer.valueOf(sharedPrefs.getString(MySettings.KEY_MEET_TYPE,

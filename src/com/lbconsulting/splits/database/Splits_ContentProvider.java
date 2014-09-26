@@ -16,13 +16,8 @@ import com.lbconsulting.splits.classes.MyLog;
 
 public class Splits_ContentProvider extends ContentProvider {
 
-	// public static final String AUTHORITY = "com.lbconsulting.splits.free";
-	public static final String AUTHORITY = "com.lbconsulting.splits.paid";
-	// public static String AUTHORITY = "";
-
-	/*	public static void setAUTHORITY(String authority) {
-			AUTHORITY = authority;
-		}*/
+	public static final String AUTHORITY = "com.lbconsulting.splits.free";
+	// public static final String AUTHORITY = "com.lbconsulting.splits.paid";
 
 	private Splits_DatabaseHelper database = null;
 

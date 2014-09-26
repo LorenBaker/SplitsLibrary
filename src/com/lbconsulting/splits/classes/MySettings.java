@@ -34,7 +34,7 @@ public class MySettings {
 
 	// TODO: revise max number of races, relays, and athletes for free version
 	// Each individual event has 1 or 2 races. Each relay has 4 races.
-	public static final int MAX_NUMBER_OF_RACES = 50;
+	public static final int MAX_NUMBER_OF_RACES = 40;
 	public static final int MAX_NUMBER_OF_RELAYS = 3;
 	public static final int MAX_NUMBER_OF_ATHLETES = 5;
 
